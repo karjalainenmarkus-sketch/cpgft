@@ -1,0 +1,1573 @@
+/* ============================================================
+   CPG FastTrack — Shared Styles
+   ============================================================ */
+
+@font-face {
+  font-family: 'GT America';
+  src: url('../Fonts/GT-America-Expanded-Bold.woff2') format('woff2'),
+       url('../Fonts/GT-America-Expanded-Bold.woff') format('woff'),
+       url('../Fonts/GT-America-Expanded-Bold.otf') format('opentype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* ── Variables ─────────────────────────────────────────────── */
+/* NOTE: .logos-static = Sidebar-style static logo row (SVG, no marquee) */
+:root {
+  --green:    #004534;
+  --lime:     #D4FF62;
+  --lavender: #CACAFC;
+  --cream:    #F1F7E5;
+  --white:    #ffffff;
+  --muted:    #4a6155;
+  --border:   rgba(0,69,52,0.12);
+
+  --radius-sm:  8px;
+  --radius-md:  20px;
+  --radius-lg:  32px;
+  --radius-xl:  40px;
+
+  --max-w: 1160px;
+  --nav-h: 72px;
+
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* ── Reset ─────────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Poppins', sans-serif;
+  font-size: 17px;
+  line-height: 1.6;
+  color: var(--green);
+  background: var(--white);
+  overflow-x: hidden;
+}
+img { display: block; max-width: 100%; height: auto; }
+a { color: inherit; text-decoration: none; }
+ul { list-style: none; }
+
+/* ── Typography ────────────────────────────────────────────── */
+h1, h2, h3, h4 {
+  font-family: 'GT America', sans-serif;
+  font-weight: 700;
+  line-height: 1.05;
+  letter-spacing: -0.01em;
+}
+h1 { font-size: clamp(2.4rem, 5vw, 4.8rem); }
+h2 { font-size: clamp(1.8rem, 3.2vw, 2.6rem); }
+h3 { font-size: 1.1rem; line-height: 1.3; font-family: 'Poppins', sans-serif; font-weight: 700; }
+
+/* ── Layout ────────────────────────────────────────────────── */
+.container {
+  width: 100%;
+  max-width: var(--max-w);
+  margin-inline: auto;
+  padding-inline: 24px;
+}
+.section { padding-block: 88px; }
+
+/* ── Buttons ───────────────────────────────────────────────── */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 14px 28px;
+  border-radius: 100px;
+  font-family: 'Poppins', sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: opacity 0.15s, transform 0.15s;
+  border: none;
+  white-space: nowrap;
+  line-height: 1;
+}
+.btn:hover { opacity: 0.88; transform: translateY(-1px); }
+.btn-lime    { background: var(--lime);  color: var(--green); }
+.btn-green   { background: var(--green); color: var(--white); }
+.btn-outline { background: transparent; color: var(--green); border: 2px solid var(--green); }
+.btn-outline-white { background: transparent; color: var(--white); border: 2px solid rgba(255,255,255,0.4); }
+.btn-lg { font-size: 17px; padding: 18px 36px; }
+
+
+/* ============================================================
+   NAV
+   ============================================================ */
+.nav {
+  position: sticky;
+  top: 0;
+  z-index: 200;
+  height: var(--nav-h);
+  background: rgba(255,255,255,0.96);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+}
+.nav .container {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  gap: 32px;
+}
+.nav-logo { display: flex; align-items: center; flex-shrink: 0; }
+.nav-logo img { height: 16px; width: auto; }
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+  margin-left: auto;
+}
+.nav-links a {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--green);
+  opacity: 0.65;
+  transition: opacity 0.15s;
+}
+.nav-links a:hover, .nav-links a.active { opacity: 1; }
+
+.nav-cta { margin-left: 12px; }
+
+.nav-toggle {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+  margin-left: auto;
+}
+.nav-toggle span {
+  display: block;
+  width: 22px;
+  height: 2px;
+  background: var(--green);
+  margin: 5px 0;
+  border-radius: 2px;
+  transition: all 0.2s;
+}
+
+
+/* Minimal nav variant (no links) */
+.nav-minimal .container { justify-content: space-between; }
+.nav-minimal .nav-cta   { display: inline-flex !important; margin-left: 0; }
+
+
+/* ============================================================
+   HERO — Sidebar-style (lavender bg, centered text, card strip)
+   ============================================================ */
+.hero-new {
+  background: linear-gradient(160deg, #d4d4f7 0%, var(--lavender) 40%, #e8f5d8 100%);
+  padding-top: 80px;
+  overflow: hidden;
+  position: relative;
+}
+
+.hero-new-text {
+  text-align: center;
+  max-width: 720px;
+  margin-inline: auto;
+  padding-inline: 24px;
+  padding-bottom: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+}
+.hero-new-text h1 {
+  font-size: clamp(2.6rem, 5.5vw, 5rem);
+  color: var(--green);
+  line-height: 1.0;
+}
+.hero-new-text p {
+  font-size: 18px;
+  color: rgba(0,69,52,0.72);
+  max-width: 560px;
+  line-height: 1.65;
+}
+
+/* Logos strip — inside hero, Sidebar-style */
+.hero-logos {
+  text-align: center;
+  padding-bottom: 48px;
+  overflow: hidden;
+}
+.hero-logos-label {
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(0,69,52,0.5);
+  margin-bottom: 20px;
+}
+.hero-logos-track {
+  animation-duration: 22s;
+  animation-name: marquee-quarter;
+}
+.hero-logos-track img {
+  height: 36px;
+  width: auto;
+  object-fit: contain;
+  margin-inline: 40px;
+  flex-shrink: 0;
+  opacity: 0.7;
+  filter: grayscale(0.1);
+}
+
+/* Card strip */
+.hero-cards-wrap {
+  position: relative;
+  /* fade edges */
+  mask-image: linear-gradient(to right, transparent 0%, black 12%, black 88%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, black 12%, black 88%, transparent 100%);
+  /* fade bottom */
+  -webkit-mask-composite: destination-in;
+  mask-composite: intersect;
+}
+/* Combined vertical + horizontal fade */
+.hero-cards-wrap::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, transparent 60%, rgba(212,212,247,0.5) 100%);
+  pointer-events: none;
+}
+
+.hero-cards {
+  display: flex;
+  gap: 16px;
+  padding-inline: 24px;
+  padding-bottom: 48px;
+  align-items: flex-start;
+  width: max-content;
+  margin-inline: auto;
+}
+
+.hero-card-col {
+  flex-shrink: 0;
+  width: 200px;
+  margin-top: var(--offset, 0px);
+}
+
+.hero-card {
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 8px 32px rgba(0,69,52,0.15);
+  transition: transform 0.3s var(--ease), box-shadow 0.3s var(--ease);
+}
+.hero-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 52px rgba(0,69,52,0.22);
+}
+
+/* Photo fills the entire card */
+.hero-card-photo {
+  position: relative;
+  aspect-ratio: 3/4;
+  overflow: hidden;
+  background: #1a3a2a;
+}
+.hero-card-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top;
+  display: block;
+}
+
+/* Overlay sits on photo */
+.hero-card-overlay {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  padding: 40px 14px 14px;
+  background: linear-gradient(to top, rgba(0,30,18,0.92) 0%, transparent 100%);
+}
+.hero-card-featured .hero-card-overlay {
+  background: linear-gradient(to top, rgba(0,69,52,0.95) 0%, transparent 100%);
+}
+.hero-card-name {
+  font-weight: 700;
+  font-size: 13px;
+  color: var(--white);
+  line-height: 1.3;
+}
+.hero-card-role {
+  font-size: 11px;
+  color: rgba(255,255,255,0.65);
+  line-height: 1.4;
+  margin-top: 2px;
+  margin-bottom: 8px;
+}
+.hero-card-tag {
+  background: var(--lime);
+  color: var(--green);
+  font-size: 10px;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: 100px;
+  display: inline-block;
+  line-height: 1.4;
+}
+
+
+/* ============================================================
+   STATIC LOGO ROW — Sidebar-style (SVG, no animation)
+   ============================================================ */
+.logos-static {
+  padding-block: 52px;
+  text-align: center;
+  border-bottom: 1px solid var(--border);
+}
+.logos-static .logos-label { margin-bottom: 24px; }
+.logos-row-static {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 56px;
+  flex-wrap: wrap;
+}
+.logos-row-static img {
+  height: 32px;
+  width: auto;
+  opacity: 0.6;
+  filter: grayscale(0.15);
+  transition: opacity 0.2s;
+}
+.logos-row-static img:hover { opacity: 0.9; }
+
+
+/* ============================================================
+   MARQUEE LOGO ROWS
+   ============================================================ */
+.logos-section {
+  padding-block: 56px 40px;
+  overflow: hidden;
+}
+.logos-label {
+  text-align: center;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 24px;
+}
+.marquee-track {
+  display: flex;
+  width: max-content;
+  animation: marquee 28s linear infinite;
+}
+.marquee-track:hover { animation-play-state: paused; }
+.marquee-track img {
+  height: 34px;
+  width: auto;
+  object-fit: contain;
+  opacity: 0.75;
+  margin-inline: 32px;
+  flex-shrink: 0;
+}
+.marquee-lg img { height: 100px; margin-inline: 48px; }
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+.marquee-track-reverse { animation-direction: reverse; animation-duration: 22s; }
+
+
+/* ============================================================
+   USE CASE CARDS ("Not 1,000 Members")
+   ============================================================ */
+.use-cases { padding-block: 80px; }
+.section-header {
+  text-align: center;
+  max-width: 700px;
+  margin-inline: auto;
+  margin-bottom: 52px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.section-header p { color: var(--muted); font-size: 17px; }
+
+.scenarios-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+.scenario-card {
+  border-radius: var(--radius-lg);
+  padding: 32px 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  transition: transform 0.22s var(--ease), box-shadow 0.22s var(--ease);
+}
+.scenario-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 32px rgba(0,69,52,0.1);
+}
+.scenario-tag {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--green);
+  opacity: 0.5;
+}
+.scenario-card h3 {
+  font-family: 'GT America', sans-serif;
+  font-size: 1.25rem;
+  color: var(--green);
+  line-height: 1.2;
+  margin-top: 2px;
+}
+.scenario-card p {
+  font-size: 15px;
+  color: var(--muted);
+  line-height: 1.65;
+}
+
+/* Member logos row (below cards) */
+.member-logos {
+  margin-top: 52px;
+  text-align: center;
+}
+.member-logos .logos-label { margin-bottom: 20px; }
+
+
+/* ============================================================
+   HOW IT WORKS — dark Sidebar-style section
+   ============================================================ */
+.how-new {
+  background: linear-gradient(180deg, #003828 0%, #004d3c 55%, #005a48 100%);
+  padding-block: 100px 0;
+  overflow: hidden;
+}
+.how-new-header {
+  text-align: center;
+  max-width: 760px;
+  margin-inline: auto;
+  margin-bottom: 64px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.how-new-header h2 {
+  color: var(--white);
+  font-size: clamp(2rem, 4vw, 3.2rem);
+}
+.how-new-header p {
+  color: rgba(255,255,255,0.6);
+  font-size: 18px;
+  line-height: 1.65;
+}
+.how-new-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin-bottom: 72px;
+}
+.how-new-card {
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: var(--radius-lg);
+  padding: 36px 32px;
+  transition: background 0.2s;
+}
+.how-new-card:hover { background: rgba(255,255,255,0.09); }
+.how-new-card h3 {
+  color: var(--white);
+  font-family: 'Poppins', sans-serif;
+  font-weight: 700;
+  font-size: 1.05rem;
+  margin-bottom: 14px;
+  line-height: 1.35;
+}
+.how-new-card p {
+  color: rgba(255,255,255,0.62);
+  font-size: 15px;
+  line-height: 1.7;
+}
+
+/* Member logos strip at bottom of how-new */
+.how-new-members {
+  padding-top: 56px;
+  padding-bottom: 56px;
+  overflow: hidden;
+}
+.how-new-members-label {
+  text-align: center;
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: rgba(255,255,255,0.5);
+  margin-bottom: 20px;
+}
+.how-new-marquee img {
+  height: 36px;
+  width: auto;
+  object-fit: contain;
+  margin-inline: 36px;
+  flex-shrink: 0;
+  filter: brightness(0) invert(1);
+  opacity: 0.55;
+}
+.how-new-marquee { animation-duration: 32s; }
+
+/* Guest speakers section */
+.guest-speakers {
+  padding-block: 56px;
+  border-bottom: 1px solid var(--border);
+}
+.guest-speakers .logos-label {
+  text-align: center;
+  margin-bottom: 24px;
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: none;
+}
+.guest-speakers-track img {
+  height: 44px;
+  width: auto;
+  object-fit: contain;
+  margin-inline: 48px;
+  flex-shrink: 0;
+  opacity: 0.7;
+}
+.guest-speakers-track { animation-duration: 24s; animation-name: marquee-quarter; }
+
+@keyframes marquee-quarter {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-25%); }
+}
+
+/* Visual: image rising from bottom, fading into dark */
+.how-new-visual {
+  position: relative;
+  max-width: 900px;
+  margin-inline: auto;
+}
+.how-new-visual::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 50%;
+  background: linear-gradient(to top, #005a48 0%, transparent 100%);
+  pointer-events: none;
+}
+.how-new-visual-inner {
+  border-radius: var(--radius-xl) var(--radius-xl) 0 0;
+  overflow: hidden;
+  box-shadow: 0 -8px 80px rgba(212,255,98,0.08), 0 0 0 1px rgba(255,255,255,0.08);
+}
+.how-new-visual-inner img {
+  width: 100%;
+  display: block;
+}
+
+
+/* ============================================================
+   STATS (animated counters)
+   ============================================================ */
+.stats { padding-block: 72px; }
+.stats-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.stat {
+  flex: 1;
+  min-width: 150px;
+  text-align: center;
+  padding: 16px 24px;
+}
+.stat h4 {
+  font-family: 'GT America', sans-serif;
+  font-size: clamp(2rem, 3.5vw, 2.8rem);
+  color: var(--green);
+  margin-bottom: 4px;
+}
+.stat p { font-size: 13px; color: var(--muted); font-weight: 500; text-transform: uppercase; letter-spacing: 0.04em; }
+.stat-divider { width: 1px; height: 52px; background: var(--border); flex-shrink: 0; }
+
+
+/* ============================================================
+   STATS EDITORIAL (Chief-style — dark bg, huge serif numbers)
+   ============================================================ */
+.stats-editorial {
+  background: linear-gradient(160deg, #d4d4f7 0%, var(--lavender) 40%, #e8f5d8 100%);
+  padding-block: 96px;
+}
+
+.stats-editorial-header {
+  text-align: center;
+  max-width: 680px;
+  margin-inline: auto;
+  margin-bottom: 64px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.stats-editorial-header h2 {
+  font-size: clamp(2rem, 3.8vw, 3rem);
+  color: var(--green);
+  line-height: 1.1;
+}
+.stats-editorial-header h2 em {
+  font-style: normal;
+  color: var(--green);
+}
+.stats-editorial-header p {
+  color: rgba(0,69,52,0.6);
+  font-size: 17px;
+  line-height: 1.65;
+}
+
+.stats-editorial-row {
+  display: flex;
+  align-items: stretch;
+  justify-content: center;
+  max-width: 1040px;
+  margin-inline: auto;
+  padding-inline: 24px;
+}
+
+.stat-editorial {
+  flex: 1;
+  text-align: center;
+  padding: 0 48px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+.stat-editorial-num {
+  font-family: 'GT America', sans-serif;
+  font-style: normal;
+  font-size: clamp(2rem, 3.5vw, 3rem);
+  line-height: 1;
+  color: var(--green);
+  letter-spacing: -0.02em;
+  white-space: nowrap;
+}
+
+.stat-editorial p {
+  color: rgba(0,69,52,0.65);
+  font-size: 15px;
+  line-height: 1.65;
+  max-width: 240px;
+}
+
+.stat-editorial-divider {
+  width: 1px;
+  background: rgba(0,69,52,0.15);
+  flex-shrink: 0;
+  align-self: stretch;
+  min-height: 120px;
+}
+
+
+/* ============================================================
+   WHAT YOU GET  (auto-rotating tabs, sidebar-style)
+   ============================================================ */
+.what-you-get { padding-block: 80px; background: var(--cream); }
+.what-you-get .section-header { margin-bottom: 52px; }
+
+.wyg-tabs {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 56px;
+  align-items: center;
+}
+
+/* Left tab list */
+.wyg-list { display: flex; flex-direction: column; }
+
+.wyg-tab {
+  padding: 18px 0;
+  border-top: 1px solid var(--border);
+  cursor: pointer;
+  overflow: hidden;
+}
+.wyg-tab:last-child { border-bottom: 1px solid var(--border); }
+
+.wyg-tab-title {
+  font-family: 'GT America', sans-serif;
+  font-size: 1.05rem;
+  color: rgba(0,69,52,0.35);
+  transition: color 0.25s;
+  user-select: none;
+  letter-spacing: -0.01em;
+}
+.wyg-tab.active .wyg-tab-title {
+  color: var(--active-color, var(--green));
+}
+
+.wyg-tab-body {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.5s var(--ease), opacity 0.4s ease;
+  opacity: 0;
+}
+.wyg-tab.active .wyg-tab-body {
+  max-height: 160px;
+  opacity: 1;
+}
+.wyg-tab-body p {
+  font-size: 14px;
+  color: var(--muted);
+  line-height: 1.65;
+  padding-top: 10px;
+  padding-bottom: 6px;
+}
+
+/* Progress bar — thin line, color per tab */
+.wyg-progress-bar {
+  height: 2px;
+  background: var(--border);
+  border-radius: 2px;
+  margin-top: 10px;
+  overflow: hidden;
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+.wyg-tab.active .wyg-progress-bar { opacity: 1; }
+.wyg-progress-fill {
+  height: 100%;
+  width: 0%;
+  background: var(--active-color, var(--green));
+  border-radius: 2px;
+  transition: background 0.3s;
+}
+
+/* Right gradient visual panel */
+.wyg-visual {
+  position: relative;
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  aspect-ratio: 4/5;
+}
+.wyg-grad {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity 0.8s var(--ease);
+}
+.wyg-grad.active { opacity: 1; }
+
+
+/* ============================================================
+   MEMBERSHIPS
+   ============================================================ */
+.memberships-wrap {
+  padding: 0 20px 40px;
+  max-width: calc(var(--max-w) + 48px);
+  margin-inline: auto;
+}
+.memberships {
+  background: var(--cream);
+  border-radius: var(--radius-xl);
+  padding: 80px 64px;
+}
+.memberships h2 { text-align: center; margin-bottom: 56px; }
+
+.pricing-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  max-width: 860px;
+  margin-inline: auto;
+}
+.pricing-col {
+  border-radius: var(--radius-lg);
+  padding: 44px 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  background: var(--white);
+  border: 2px solid var(--border);
+  position: relative;
+}
+.pricing-col.featured {
+  background: var(--green);
+  border-color: var(--green);
+}
+.pricing-badge {
+  position: absolute;
+  top: -14px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--lime);
+  color: var(--green);
+  font-size: 12px;
+  font-weight: 700;
+  padding: 5px 16px;
+  border-radius: 100px;
+  white-space: nowrap;
+  letter-spacing: 0.03em;
+}
+.pricing-icon { width: 64px; height: 64px; margin-inline: auto; }
+.pricing-icon img { width: 64px; height: 64px; object-fit: contain; }
+.pricing-col h3 { font-family: 'GT America', sans-serif; font-size: 1.5rem; text-align: center; }
+.pricing-col.featured h3,
+.pricing-col.featured .pricing-price,
+.pricing-col.featured .pricing-desc,
+.pricing-col.featured .pricing-note,
+.pricing-col.featured .pricing-label { color: var(--white); }
+.pricing-price { text-align: center; font-family: 'GT America', sans-serif; font-size: 2rem; color: var(--green); }
+.pricing-price span { font-size: 14px; font-family: 'Poppins', sans-serif; font-weight: 400; opacity: 0.55; }
+.pricing-desc { text-align: center; font-size: 15px; color: var(--muted); line-height: 1.55; }
+.pricing-note { text-align: center; font-size: 13px; font-style: italic; color: var(--muted); }
+.pricing-col .btn { width: 100%; justify-content: center; }
+.pricing-col.featured .btn { background: var(--lime); color: var(--green); }
+.pricing-label { font-size: 12px; font-weight: 700; color: var(--muted); text-transform: uppercase; letter-spacing: 0.05em; }
+.pricing-features { display: flex; flex-direction: column; gap: 10px; margin-top: 4px; }
+.pricing-features li {
+  font-size: 14px;
+  padding-left: 22px;
+  position: relative;
+  line-height: 1.5;
+}
+.pricing-features li::before {
+  content: '✓';
+  position: absolute;
+  left: 0;
+  color: var(--lime);
+  font-weight: 700;
+}
+.pricing-col.featured .pricing-features li { color: rgba(255,255,255,0.85); }
+.pricing-col.featured .pricing-features li::before { color: var(--lime); }
+
+
+/* ============================================================
+   COACHES / TEAM
+   ============================================================ */
+.coaches { padding-block: 88px; }
+.team-header { text-align: center; margin-bottom: 12px; }
+.team-subhead {
+  text-align: center;
+  color: var(--muted);
+  max-width: 560px;
+  margin-inline: auto;
+  margin-bottom: 52px;
+  font-size: 16px;
+}
+.team-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+.team-grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; max-width: 780px; margin-inline: auto; margin-top: 40px; }
+
+.coach-card {
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  background: var(--cream);
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.25s var(--ease), box-shadow 0.25s var(--ease);
+}
+.coach-card:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(0,69,52,0.1); }
+.coach-photo { aspect-ratio: 1/1; overflow: hidden; background: rgba(0,69,52,0.06); }
+.coach-photo img { width: 100%; height: 100%; object-fit: cover; object-position: top; transition: transform 0.5s var(--ease); }
+.coach-card:hover .coach-photo img { transform: scale(1.04); }
+.coach-info { padding: 24px 24px 28px; display: flex; flex-direction: column; gap: 6px; }
+.coach-name { font-family: 'GT America', sans-serif; font-size: 1.05rem; }
+.coach-role { font-size: 13px; font-weight: 600; color: var(--muted); line-height: 1.4; }
+.coach-spec { font-size: 12px; color: var(--muted); margin-top: 2px; }
+.coach-spec strong { color: var(--green); }
+.coach-awards {
+  font-size: 11px;
+  color: var(--muted);
+  line-height: 1.55;
+  padding-top: 8px;
+  border-top: 1px solid var(--border);
+  margin-top: 4px;
+}
+
+
+/* ============================================================
+   STORY CARDS — Sidebar member story style
+   ============================================================ */
+.stories {
+  background: var(--white);
+  padding-block: 96px;
+}
+.stories-header {
+  text-align: center;
+  max-width: 680px;
+  margin-inline: auto;
+  margin-bottom: 56px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.stories-header h2 { color: var(--green); }
+.stories-header p  { color: var(--muted); font-size: 17px; }
+
+.stories-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+
+.story-card {
+  background: var(--cream);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 32px 28px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 28px;
+  transition: transform 0.22s var(--ease), box-shadow 0.22s var(--ease);
+}
+.story-card:hover { transform: translateY(-4px); box-shadow: 0 12px 36px rgba(0,69,52,0.1); }
+
+.story-card-body { display: flex; flex-direction: column; gap: 14px; }
+
+.story-card h3 {
+  font-family: 'GT America', sans-serif;
+  font-size: 1.1rem;
+  color: var(--green);
+  line-height: 1.3;
+}
+.story-subtitle {
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1.5;
+}
+.story-rule {
+  height: 1px;
+  background: var(--border);
+}
+.story-detail {
+  font-size: 13px;
+  color: var(--muted);
+  line-height: 1.6;
+}
+.story-detail strong { color: var(--green); font-weight: 600; }
+
+.story-card-footer {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding-top: 16px;
+  border-top: 1px solid var(--border);
+}
+.story-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: rgba(0,69,52,0.1);
+  flex-shrink: 0;
+}
+.story-name {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--green);
+}
+.story-role {
+  font-size: 12px;
+  color: var(--muted);
+  margin-top: 2px;
+}
+
+@media (max-width: 960px) {
+  .stories-grid { grid-template-columns: 1fr; }
+}
+
+
+/* ============================================================
+   MEMBERSHIPS — Sidebar-style clean cards
+   ============================================================ */
+.pricing-new { padding-block: 88px; }
+.pricing-new .section-header { margin-bottom: 52px; }
+
+.pricing-new-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  max-width: 900px;
+  margin-inline: auto;
+}
+
+.pricing-new-card {
+  border-radius: var(--radius-xl);
+  background: var(--cream);
+  padding: 48px 44px;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  border: 2px solid transparent;
+}
+.pricing-new-card:first-child {
+  border-color: var(--green);
+  box-shadow: 0 8px 40px rgba(0,69,52,0.15);
+}
+.pricing-new-card--dark {
+  background: var(--green);
+  border-color: transparent;
+}
+
+.pricing-new-top {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.pricing-new-badge {
+  display: inline-block;
+  background: var(--lime);
+  color: var(--green);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  padding: 8px 18px;
+  border-radius: 100px;
+  align-self: flex-start;
+}
+
+.pricing-new-name {
+  font-family: 'GT America', sans-serif;
+  font-size: 1.8rem;
+  color: var(--green);
+  line-height: 1;
+  margin-top: 4px;
+}
+.pricing-new-card--dark .pricing-new-name { color: var(--white); }
+
+.pricing-new-price {
+  font-family: 'GT America', sans-serif;
+  font-size: 3rem;
+  color: var(--green);
+  line-height: 1;
+  letter-spacing: -0.02em;
+}
+.pricing-new-price span {
+  font-family: 'Poppins', sans-serif;
+  font-size: 15px;
+  font-weight: 400;
+  opacity: 0.5;
+  margin-left: 2px;
+}
+.pricing-new-card--dark .pricing-new-price { color: var(--white); }
+
+.pricing-new-desc {
+  font-size: 15px;
+  color: var(--muted);
+  line-height: 1.65;
+}
+.pricing-new-card--dark .pricing-new-desc { color: rgba(255,255,255,0.65); }
+
+.pricing-new-note {
+  font-size: 13px;
+  font-style: italic;
+  color: var(--muted);
+}
+.pricing-new-card--dark .pricing-new-note { color: rgba(255,255,255,0.45); }
+
+.pricing-new-card .btn { align-self: flex-start; }
+
+.pricing-new-features { border-top: 1px solid rgba(0,69,52,0.1); padding-top: 28px; }
+.pricing-new-card--dark .pricing-new-features { border-color: rgba(255,255,255,0.12); }
+
+.pricing-new-features .pricing-label {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 16px;
+}
+.pricing-new-card--dark .pricing-new-features .pricing-label { color: rgba(255,255,255,0.4); }
+
+.pricing-new-features ul { display: flex; flex-direction: column; gap: 10px; }
+.pricing-new-features li {
+  font-size: 14px;
+  padding-left: 22px;
+  position: relative;
+  line-height: 1.5;
+  color: var(--green);
+}
+.pricing-new-features li::before {
+  content: '✓';
+  position: absolute;
+  left: 0;
+  color: var(--green);
+  font-weight: 700;
+}
+.pricing-new-card--dark .pricing-new-features li::before { color: var(--lime); }
+.pricing-new-card--dark .pricing-new-features li { color: rgba(255,255,255,0.8); }
+
+
+/* ============================================================
+   FASTTRACK TOPICS — tag cloud
+   ============================================================ */
+.fasttrack-topics {
+  background: var(--green);
+  padding-block: 88px;
+}
+.fasttrack-topics-header {
+  text-align: center;
+  margin-bottom: 52px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.fasttrack-topics-header h2 { color: var(--white); }
+.fasttrack-topics-header p { color: rgba(255,255,255,0.55); font-size: 17px; }
+
+.topics-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  justify-content: center;
+  max-width: 860px;
+  margin-inline: auto;
+}
+.topic-tag {
+  padding: 14px 24px;
+  border-radius: 100px;
+  font-size: 15px;
+  font-weight: 500;
+  border: 1px solid rgba(255,255,255,0.2);
+  color: rgba(255,255,255,0.85);
+  background: rgba(255,255,255,0.06);
+  transition: background 0.2s, border-color 0.2s;
+  cursor: default;
+}
+.topic-tag:hover { background: rgba(255,255,255,0.12); border-color: rgba(255,255,255,0.35); }
+.topic-tag--lime {
+  background: rgba(212,255,98,0.12);
+  border-color: rgba(212,255,98,0.3);
+  color: var(--lime);
+}
+.topic-tag--lime:hover { background: rgba(212,255,98,0.2); }
+.topic-tag--lavender {
+  background: rgba(202,202,252,0.12);
+  border-color: rgba(202,202,252,0.3);
+  color: var(--lavender);
+}
+.topic-tag--lavender:hover { background: rgba(202,202,252,0.2); }
+
+
+/* ============================================================
+   COACHES CAROUSEL — Sidebar-style cards
+   ============================================================ */
+.coaches-new { padding-block: 88px; overflow: hidden; }
+
+.coaches-new-header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 24px;
+  margin-bottom: 40px;
+}
+.coaches-new-header h2 { margin-bottom: 10px; }
+.coaches-new-header p { color: var(--muted); font-size: 16px; max-width: 480px; }
+
+.coaches-nav { display: flex; gap: 10px; flex-shrink: 0; }
+.coaches-nav-btn {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1px solid var(--border);
+  background: var(--white);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  color: var(--green);
+  transition: background 0.15s, border-color 0.15s, color 0.15s;
+}
+.coaches-nav-btn:hover { background: var(--green); color: var(--white); border-color: var(--green); }
+
+.coaches-carousel-wrap {
+  padding-left: max(24px, calc((100vw - var(--max-w)) / 2 + 24px));
+}
+.coaches-carousel {
+  display: flex;
+  gap: 20px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+  padding-right: 24px;
+  padding-bottom: 4px;
+}
+.coaches-carousel::-webkit-scrollbar { display: none; }
+
+.coach-card-new {
+  flex-shrink: 0;
+  width: 288px;
+  scroll-snap-align: start;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  background: var(--white);
+  border: 1px solid var(--border);
+  box-shadow: 0 2px 16px rgba(0,69,52,0.06);
+  transition: transform 0.25s var(--ease), box-shadow 0.25s var(--ease);
+}
+.coach-card-new:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 14px 40px rgba(0,69,52,0.13);
+}
+
+.coach-card-visual {
+  height: 280px;
+  position: relative;
+  overflow: hidden;
+}
+.coach-card-visual img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top;
+  display: block;
+}
+
+.coach-card-body {
+  padding: 22px 24px 26px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.coach-card-name {
+  font-family: 'GT America', sans-serif;
+  font-size: 1.05rem;
+  color: var(--green);
+  line-height: 1.2;
+}
+.coach-card-role {
+  font-size: 13px;
+  color: var(--muted);
+  line-height: 1.5;
+}
+.coach-card-tag {
+  display: inline-block;
+  background: var(--lime);
+  color: var(--green);
+  font-size: 11px;
+  font-weight: 700;
+  padding: 4px 11px;
+  border-radius: 100px;
+  margin-top: 4px;
+  margin-bottom: 2px;
+  line-height: 1.4;
+}
+.coach-card-bio {
+  font-size: 12px;
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+
+/* ============================================================
+   TOPICS  (FastTrack With Us)
+   ============================================================ */
+.topics { padding-block: 88px; }
+.topics .container { display: grid; grid-template-columns: 1fr 1fr; gap: 72px; align-items: center; }
+.topics-content h2 { margin-bottom: 32px; }
+.topics-list { display: flex; flex-direction: column; gap: 14px; }
+.topics-list li {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  font-size: 16px;
+  font-weight: 500;
+  padding: 14px 18px;
+  border-radius: var(--radius-sm);
+  background: var(--cream);
+  transition: background 0.15s;
+}
+.topics-list li:hover { background: #e8f2d8; }
+.topics-list li::before {
+  content: '';
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--lime);
+  border: 2px solid var(--green);
+  flex-shrink: 0;
+}
+.topics-image { border-radius: var(--radius-lg); overflow: hidden; box-shadow: 0 8px 40px rgba(0,69,52,0.1); }
+.topics-image img { width: 100%; aspect-ratio: 4/3; object-fit: cover; }
+
+
+/* ============================================================
+   WHO IT'S FOR
+   ============================================================ */
+.fit-wrap {
+  padding: 0 20px 40px;
+  max-width: calc(var(--max-w) + 48px);
+  margin-inline: auto;
+}
+.fit {
+  background: var(--green);
+  border-radius: var(--radius-xl);
+  padding: 80px 64px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
+  align-items: center;
+}
+.fit h2 { color: var(--white); margin-bottom: 32px; }
+.fit-list { display: flex; flex-direction: column; gap: 14px; }
+.fit-list li {
+  color: rgba(255,255,255,0.82);
+  font-size: 15px;
+  padding-left: 26px;
+  position: relative;
+  line-height: 1.55;
+}
+.fit-list li::before { content: '→'; position: absolute; left: 0; color: var(--lime); font-weight: 700; }
+.fit-cta {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: 20px;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: var(--radius-lg);
+  padding: 48px 40px;
+}
+.fit-cta h3 { color: var(--white); font-family: 'GT America', sans-serif; font-size: 1.5rem; }
+.fit-cta p  { color: rgba(255,255,255,0.65); font-size: 15px; max-width: 300px; }
+
+
+/* ============================================================
+   RETAILER LOGOS — centered static row, SVG
+   ============================================================ */
+.retailer-logos-section { padding-block: 64px; }
+.retailer-logos-label {
+  text-align: center;
+  margin-bottom: 32px;
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: none;
+}
+.retailer-logos-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 24px 56px;
+}
+.retailer-logos-row img {
+  height: 32px;
+  width: auto;
+  object-fit: contain;
+  opacity: 0.65;
+}
+.retailer-logos-row img:hover { opacity: 1; transition: opacity 0.2s; }
+
+
+/* ============================================================
+   WHO IT'S FOR — Sidebar checklist-row style
+   ============================================================ */
+.who-for {
+  padding-block: 96px;
+  background: linear-gradient(160deg, #001f14 0%, #003828 100%);
+}
+.who-for-header {
+  text-align: center;
+  max-width: 600px;
+  margin-inline: auto;
+  margin-bottom: 56px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.who-for-header h2 { color: var(--white); }
+.who-for-header p  { color: rgba(255,255,255,0.5); font-size: 17px; }
+
+.who-for-rows {
+  max-width: 860px;
+  margin-inline: auto;
+  margin-bottom: 52px;
+}
+.who-for-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+  align-items: center;
+  padding-block: 28px;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+.who-for-row:first-child { border-top: 1px solid rgba(255,255,255,0.1); }
+.who-for-left {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.who-for-check {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: var(--lime);
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+.who-for-check::after {
+  content: '✓';
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--green);
+  position: absolute;
+}
+.who-for-left strong {
+  font-family: 'GT America', sans-serif;
+  font-size: 1rem;
+  color: var(--white);
+  line-height: 1.3;
+}
+.who-for-row > p {
+  font-size: 15px;
+  color: rgba(255,255,255,0.6);
+  line-height: 1.65;
+}
+
+.who-for-cta {
+  text-align: center;
+}
+
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+.footer {
+  background: var(--green);
+  color: rgba(255,255,255,0.65);
+  padding: 52px 0 28px;
+}
+.footer-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 32px;
+  flex-wrap: wrap;
+  margin-bottom: 32px;
+}
+.footer-logo { display: flex; align-items: center; gap: 10px; }
+.footer-logo img { height: 28px; width: auto; filter: brightness(0) invert(1); opacity: 0.9; }
+.footer-links { display: flex; gap: 20px; flex-wrap: wrap; }
+.footer-links a { font-size: 13px; transition: color 0.15s; }
+.footer-links a:hover { color: var(--white); }
+.footer-bottom {
+  padding-top: 20px;
+  border-top: 1px solid rgba(255,255,255,0.1);
+  font-size: 12px;
+  text-align: center;
+  color: rgba(255,255,255,0.3);
+}
+
+
+/* ============================================================
+   STUB PAGE
+   ============================================================ */
+.stub-hero {
+  padding: 120px 24px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  min-height: 60vh;
+}
+.stub-hero h1 { font-size: clamp(2rem, 5vw, 3.2rem); }
+.stub-hero p  { color: var(--muted); font-size: 17px; max-width: 480px; }
+
+
+/* ============================================================
+   SCROLL REVEAL (JS adds .revealed)
+   ============================================================ */
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.65s var(--ease), transform 0.65s var(--ease);
+}
+.reveal.revealed { opacity: 1; transform: translateY(0); }
+.reveal-delay-1 { transition-delay: 0.1s; }
+.reveal-delay-2 { transition-delay: 0.2s; }
+.reveal-delay-3 { transition-delay: 0.3s; }
+.reveal-delay-4 { transition-delay: 0.4s; }
+.reveal-delay-5 { transition-delay: 0.5s; }
+
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media (max-width: 960px) {
+  .hero-new-text h1 { font-size: 2.6rem; }
+  .hero-card-col { width: 160px; }
+  .hero-cards { gap: 12px; }
+  .how-new-cards { grid-template-columns: 1fr; }
+  .scenarios-grid { grid-template-columns: repeat(2, 1fr); }
+  .wyg-tabs { grid-template-columns: 1fr; gap: 32px; }
+  .wyg-visual { order: -1; aspect-ratio: 16/9; }
+  .memberships { padding: 56px 40px; }
+  .pricing-grid { max-width: 100%; }
+  .fit { grid-template-columns: 1fr; gap: 40px; padding: 56px 40px; }
+  .topics .container { grid-template-columns: 1fr; gap: 40px; }
+  .team-grid { grid-template-columns: repeat(2, 1fr); }
+  .marquee-lg img { height: 64px; }
+  .retail-logos img { height: 72px; }
+  .stats-editorial-row { flex-direction: column; gap: 0; }
+  .stat-editorial { padding: 48px 24px; }
+  .stat-editorial-divider { width: 100%; min-height: 1px; height: 1px; align-self: auto; }
+  .coaches-new-header { align-items: flex-start; flex-direction: column; }
+  .coach-card-new { width: 260px; }
+  .pricing-new-grid { grid-template-columns: 1fr; max-width: 480px; }
+  .who-for-row { grid-template-columns: 1fr; gap: 8px; }
+}
+
+@media (max-width: 640px) {
+  .pricing-new-card { padding: 36px 28px; }
+  .pricing-new-price { font-size: 2.2rem; }
+  .topic-tag { font-size: 14px; padding: 12px 20px; }
+  .who-for-grid { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 640px) {
+  :root { --nav-h: 64px; }
+  .nav-links, .nav-cta { display: none; }
+  .nav-toggle { display: block; }
+  .nav-links.open {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: var(--nav-h);
+    left: 0; right: 0;
+    background: var(--white);
+    padding: 20px 24px;
+    border-bottom: 1px solid var(--border);
+    gap: 16px;
+    box-shadow: 0 8px 24px rgba(0,69,52,0.08);
+  }
+  .hero-new { padding-top: 56px; }
+  .hero-new-text { padding-bottom: 32px; }
+  .hero-card-col { width: 140px; }
+  .hero-cards { gap: 10px; }
+  .memberships-wrap, .fit-wrap { padding-inline: 12px; }
+  .how-new-cards { grid-template-columns: 1fr; gap: 12px; }
+  .how-new-header h2 { font-size: 1.8rem; }
+  .memberships { padding: 40px 24px; border-radius: 24px; }
+  .fit { padding: 40px 24px; border-radius: 24px; }
+  .scenarios-grid { grid-template-columns: 1fr; }
+  .team-grid, .team-grid-2 { grid-template-columns: 1fr; }
+  .pricing-grid { grid-template-columns: 1fr; }
+  .stat-divider { display: none; }
+  .stats-row { gap: 8px; }
+  .floating-cta p { display: none; }
+}
