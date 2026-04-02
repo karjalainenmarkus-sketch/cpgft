@@ -2,15 +2,6 @@
    CPG FastTrack — Shared Styles
    ============================================================ */
 
-@font-face {
-  font-family: 'GT America';
-  src: url('../Fonts/GT-America-Expanded-Bold.woff2') format('woff2'),
-       url('../Fonts/GT-America-Expanded-Bold.woff') format('woff'),
-       url('../Fonts/GT-America-Expanded-Bold.otf') format('opentype');
-  font-weight: 700;
-  font-style: normal;
-  font-display: swap;
-}
 
 /* ── Variables ─────────────────────────────────────────────── */
 /* NOTE: .logos-static = Sidebar-style static logo row (SVG, no marquee) */
@@ -51,7 +42,7 @@ ul { list-style: none; }
 
 /* ── Typography ────────────────────────────────────────────── */
 h1, h2, h3, h4 {
-  font-family: 'GT America', sans-serif;
+  font-family: 'Outfit', sans-serif;
   font-weight: 700;
   line-height: 1.05;
   letter-spacing: -0.01em;
@@ -185,6 +176,10 @@ h3 { font-size: 1.1rem; line-height: 1.3; font-family: 'Poppins', sans-serif; fo
 .hero-new-text p {
   font-size: 18px;
   color: rgba(0,69,52,0.72);
+}
+.hero-sub-lg {
+  font-size: 22px !important;
+  color: var(--green);
   max-width: 560px;
   line-height: 1.65;
 }
@@ -220,6 +215,7 @@ h3 { font-size: 1.1rem; line-height: 1.3; font-family: 'Poppins', sans-serif; fo
 /* Card strip */
 .hero-cards-wrap {
   position: relative;
+  padding-top: 88px;
   /* fade edges */
   mask-image: linear-gradient(to right, transparent 0%, black 12%, black 88%, transparent 100%);
   -webkit-mask-image: linear-gradient(to right, transparent 0%, black 12%, black 88%, transparent 100%);
@@ -418,7 +414,7 @@ h3 { font-size: 1.1rem; line-height: 1.3; font-family: 'Poppins', sans-serif; fo
   opacity: 0.5;
 }
 .scenario-card h3 {
-  font-family: 'GT America', sans-serif;
+  font-family: 'Outfit', sans-serif;
   font-size: 1.25rem;
   color: var(--green);
   line-height: 1.2;
@@ -492,7 +488,7 @@ h3 { font-size: 1.1rem; line-height: 1.3; font-family: 'Poppins', sans-serif; fo
   line-height: 1.7;
 }
 
-/* Member logos strip at bottom of how-new */
+/* Member logos strip inside how-new */
 .how-new-members {
   padding-top: 56px;
   padding-bottom: 56px;
@@ -500,20 +496,20 @@ h3 { font-size: 1.1rem; line-height: 1.3; font-family: 'Poppins', sans-serif; fo
 }
 .how-new-members-label {
   text-align: center;
-  font-size: 15px;
+  font-size: 18px;
   font-weight: 600;
   letter-spacing: 0.04em;
-  color: rgba(255,255,255,0.5);
+  color: rgba(255,255,255,0.6);
   margin-bottom: 20px;
 }
 .how-new-marquee img {
-  height: 36px;
+  height: 44px;
   width: auto;
   object-fit: contain;
   margin-inline: 36px;
   flex-shrink: 0;
   filter: brightness(0) invert(1);
-  opacity: 0.55;
+  opacity: 0.75;
 }
 .how-new-marquee { animation-duration: 32s; }
 
@@ -524,21 +520,29 @@ h3 { font-size: 1.1rem; line-height: 1.3; font-family: 'Poppins', sans-serif; fo
 }
 .guest-speakers .logos-label {
   text-align: center;
-  margin-bottom: 24px;
+  margin-bottom: 32px;
   font-size: 15px;
   font-weight: 600;
   letter-spacing: 0.04em;
   text-transform: none;
 }
+.guest-speakers-track {
+  animation: none !important;
+  display: flex;
+  width: 100% !important;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 24px 40px;
+}
 .guest-speakers-track img {
-  height: 44px;
+  height: 52px;
   width: auto;
   object-fit: contain;
-  margin-inline: 48px;
+  opacity: 0.65;
   flex-shrink: 0;
-  opacity: 0.7;
 }
-.guest-speakers-track { animation-duration: 24s; animation-name: marquee-quarter; }
+.guest-speakers-track img:hover { opacity: 1; transition: opacity 0.2s; }
 
 @keyframes marquee-quarter {
   from { transform: translateX(0); }
@@ -568,6 +572,10 @@ h3 { font-size: 1.1rem; line-height: 1.3; font-family: 'Poppins', sans-serif; fo
   width: 100%;
   display: block;
 }
+.how-new-visual-placeholder {
+  height: 320px;
+  background: rgba(255,255,255,0.05);
+}
 
 
 /* ============================================================
@@ -587,7 +595,7 @@ h3 { font-size: 1.1rem; line-height: 1.3; font-family: 'Poppins', sans-serif; fo
   padding: 16px 24px;
 }
 .stat h4 {
-  font-family: 'GT America', sans-serif;
+  font-family: 'Outfit', sans-serif;
   font-size: clamp(2rem, 3.5vw, 2.8rem);
   color: var(--green);
   margin-bottom: 4px;
@@ -648,7 +656,7 @@ h3 { font-size: 1.1rem; line-height: 1.3; font-family: 'Poppins', sans-serif; fo
 }
 
 .stat-editorial-num {
-  font-family: 'GT America', sans-serif;
+  font-family: 'Outfit', sans-serif;
   font-style: normal;
   font-size: clamp(2rem, 3.5vw, 3rem);
   line-height: 1;
@@ -698,7 +706,7 @@ h3 { font-size: 1.1rem; line-height: 1.3; font-family: 'Poppins', sans-serif; fo
 .wyg-tab:last-child { border-bottom: 1px solid var(--border); }
 
 .wyg-tab-title {
-  font-family: 'GT America', sans-serif;
+  font-family: 'Outfit', sans-serif;
   font-size: 1.05rem;
   color: rgba(0,69,52,0.35);
   transition: color 0.25s;
@@ -761,6 +769,9 @@ h3 { font-size: 1.1rem; line-height: 1.3; font-family: 'Poppins', sans-serif; fo
 }
 .wyg-grad.active { opacity: 1; }
 
+/* Tab-embedded visual — hidden on desktop, shown on mobile */
+.wyg-tab-visual { display: none; }
+
 
 /* ============================================================
    MEMBERSHIPS
@@ -814,13 +825,13 @@ h3 { font-size: 1.1rem; line-height: 1.3; font-family: 'Poppins', sans-serif; fo
 }
 .pricing-icon { width: 64px; height: 64px; margin-inline: auto; }
 .pricing-icon img { width: 64px; height: 64px; object-fit: contain; }
-.pricing-col h3 { font-family: 'GT America', sans-serif; font-size: 1.5rem; text-align: center; }
+.pricing-col h3 { font-family: 'Outfit', sans-serif; font-size: 1.5rem; text-align: center; }
 .pricing-col.featured h3,
 .pricing-col.featured .pricing-price,
 .pricing-col.featured .pricing-desc,
 .pricing-col.featured .pricing-note,
 .pricing-col.featured .pricing-label { color: var(--white); }
-.pricing-price { text-align: center; font-family: 'GT America', sans-serif; font-size: 2rem; color: var(--green); }
+.pricing-price { text-align: center; font-family: 'Outfit', sans-serif; font-size: 2rem; color: var(--green); }
 .pricing-price span { font-size: 14px; font-family: 'Poppins', sans-serif; font-weight: 400; opacity: 0.55; }
 .pricing-desc { text-align: center; font-size: 15px; color: var(--muted); line-height: 1.55; }
 .pricing-note { text-align: center; font-size: 13px; font-style: italic; color: var(--muted); }
@@ -874,7 +885,7 @@ h3 { font-size: 1.1rem; line-height: 1.3; font-family: 'Poppins', sans-serif; fo
 .coach-photo img { width: 100%; height: 100%; object-fit: cover; object-position: top; transition: transform 0.5s var(--ease); }
 .coach-card:hover .coach-photo img { transform: scale(1.04); }
 .coach-info { padding: 24px 24px 28px; display: flex; flex-direction: column; gap: 6px; }
-.coach-name { font-family: 'GT America', sans-serif; font-size: 1.05rem; }
+.coach-name { font-family: 'Outfit', sans-serif; font-size: 1.05rem; }
 .coach-role { font-size: 13px; font-weight: 600; color: var(--muted); line-height: 1.4; }
 .coach-spec { font-size: 12px; color: var(--muted); margin-top: 2px; }
 .coach-spec strong { color: var(--green); }
@@ -906,11 +917,38 @@ h3 { font-size: 1.1rem; line-height: 1.3; font-family: 'Poppins', sans-serif; fo
 }
 .stories-header h2 { color: var(--green); }
 .stories-header p  { color: var(--muted); font-size: 17px; }
+.stories-nav-below { display: flex; gap: 8px; justify-content: center; padding-top: 24px; }
 
+.stories-carousel-wrap {
+  overflow: hidden;
+  margin-top: 48px;
+  position: relative;
+}
+.stories-carousel-wrap::after {
+  content: '';
+  position: absolute;
+  top: 0; right: 0; bottom: 16px;
+  width: 80px;
+  background: linear-gradient(to right, transparent, rgba(255,255,255,0.9));
+  pointer-events: none;
+}
 .stories-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 16px;
+  display: flex;
+  gap: 20px;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scroll-snap-type: x proximity;
+  -webkit-overflow-scrolling: touch;
+  padding-inline: max(24px, calc((100vw - 1200px) / 2));
+  padding-bottom: 16px;
+  scrollbar-width: none;
+  align-items: stretch;
+}
+.stories-grid::-webkit-scrollbar { display: none; }
+.stories-grid .story-card {
+  flex: 0 0 360px;
+  scroll-snap-align: start;
+  height: auto;
 }
 
 .story-card {
@@ -929,7 +967,7 @@ h3 { font-size: 1.1rem; line-height: 1.3; font-family: 'Poppins', sans-serif; fo
 .story-card-body { display: flex; flex-direction: column; gap: 14px; }
 
 .story-card h3 {
-  font-family: 'GT America', sans-serif;
+  font-family: 'Outfit', sans-serif;
   font-size: 1.1rem;
   color: var(--green);
   line-height: 1.3;
@@ -958,12 +996,17 @@ h3 { font-size: 1.1rem; line-height: 1.3; font-family: 'Poppins', sans-serif; fo
   border-top: 1px solid var(--border);
 }
 .story-avatar {
-  width: 40px;
-  height: 40px;
+  width: 44px;
+  height: 44px;
   border-radius: 50%;
-  background: rgba(0,69,52,0.1);
+  background: rgba(0,69,52,0.08);
   flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px;
 }
+.story-avatar img { width: 100%; height: 100%; object-fit: contain; }
 .story-name {
   font-size: 13px;
   font-weight: 600;
@@ -975,9 +1018,6 @@ h3 { font-size: 1.1rem; line-height: 1.3; font-family: 'Poppins', sans-serif; fo
   margin-top: 2px;
 }
 
-@media (max-width: 960px) {
-  .stories-grid { grid-template-columns: 1fr; }
-}
 
 
 /* ============================================================
@@ -1032,7 +1072,7 @@ h3 { font-size: 1.1rem; line-height: 1.3; font-family: 'Poppins', sans-serif; fo
 }
 
 .pricing-new-name {
-  font-family: 'GT America', sans-serif;
+  font-family: 'Outfit', sans-serif;
   font-size: 1.8rem;
   color: var(--green);
   line-height: 1;
@@ -1041,7 +1081,7 @@ h3 { font-size: 1.1rem; line-height: 1.3; font-family: 'Poppins', sans-serif; fo
 .pricing-new-card--dark .pricing-new-name { color: var(--white); }
 
 .pricing-new-price {
-  font-family: 'GT America', sans-serif;
+  font-family: 'Outfit', sans-serif;
   font-size: 3rem;
   color: var(--green);
   line-height: 1;
@@ -1103,6 +1143,33 @@ h3 { font-size: 1.1rem; line-height: 1.3; font-family: 'Poppins', sans-serif; fo
 .pricing-new-card--dark .pricing-new-features li::before { color: var(--lime); }
 .pricing-new-card--dark .pricing-new-features li { color: rgba(255,255,255,0.8); }
 
+/* Risk-free banner */
+.risk-free-banner {
+  background: #EDEDFF;
+  border: 1px solid var(--lavender);
+  border-radius: var(--radius-lg);
+  padding: 20px 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 8px;
+  max-width: 800px;
+  margin-inline: auto;
+  margin-top: 48px;
+}
+.risk-free-title {
+  font-family: 'Outfit', sans-serif;
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #5B52C7;
+  margin-bottom: 4px;
+}
+.risk-free-sub {
+  font-size: 15px;
+  color: #7870D0;
+  line-height: 1.6;
+}
 
 /* ============================================================
    FASTTRACK TOPICS — tag cloud
@@ -1129,6 +1196,7 @@ h3 { font-size: 1.1rem; line-height: 1.3; font-family: 'Poppins', sans-serif; fo
   max-width: 860px;
   margin-inline: auto;
 }
+.topics-row { display: contents; }
 .topic-tag {
   padding: 14px 24px;
   border-radius: 100px;
@@ -1238,7 +1306,7 @@ h3 { font-size: 1.1rem; line-height: 1.3; font-family: 'Poppins', sans-serif; fo
   gap: 6px;
 }
 .coach-card-name {
-  font-family: 'GT America', sans-serif;
+  font-family: 'Outfit', sans-serif;
   font-size: 1.05rem;
   color: var(--green);
   line-height: 1.2;
@@ -1338,7 +1406,7 @@ h3 { font-size: 1.1rem; line-height: 1.3; font-family: 'Poppins', sans-serif; fo
   border-radius: var(--radius-lg);
   padding: 48px 40px;
 }
-.fit-cta h3 { color: var(--white); font-family: 'GT America', sans-serif; font-size: 1.5rem; }
+.fit-cta h3 { color: var(--white); font-family: 'Outfit', sans-serif; font-size: 1.5rem; }
 .fit-cta p  { color: rgba(255,255,255,0.65); font-size: 15px; max-width: 300px; }
 
 
@@ -1375,7 +1443,7 @@ h3 { font-size: 1.1rem; line-height: 1.3; font-family: 'Poppins', sans-serif; fo
    ============================================================ */
 .who-for {
   padding-block: 96px;
-  background: linear-gradient(160deg, #001f14 0%, #003828 100%);
+  background: linear-gradient(160deg, #d4d4f7 0%, var(--lavender) 40%, #e8f5d8 100%);
 }
 .who-for-header {
   text-align: center;
@@ -1386,8 +1454,8 @@ h3 { font-size: 1.1rem; line-height: 1.3; font-family: 'Poppins', sans-serif; fo
   flex-direction: column;
   gap: 14px;
 }
-.who-for-header h2 { color: var(--white); }
-.who-for-header p  { color: rgba(255,255,255,0.5); font-size: 17px; }
+.who-for-header h2 { color: var(--green); }
+.who-for-header p  { color: rgba(0,69,52,0.6); font-size: 17px; }
 
 .who-for-rows {
   max-width: 860px;
@@ -1400,9 +1468,9 @@ h3 { font-size: 1.1rem; line-height: 1.3; font-family: 'Poppins', sans-serif; fo
   gap: 32px;
   align-items: center;
   padding-block: 28px;
-  border-bottom: 1px solid rgba(255,255,255,0.1);
+  border-bottom: 1px solid rgba(0,69,52,0.12);
 }
-.who-for-row:first-child { border-top: 1px solid rgba(255,255,255,0.1); }
+.who-for-row:first-child { border-top: 1px solid rgba(0,69,52,0.12); }
 .who-for-left {
   display: flex;
   align-items: center;
@@ -1412,7 +1480,7 @@ h3 { font-size: 1.1rem; line-height: 1.3; font-family: 'Poppins', sans-serif; fo
   width: 28px;
   height: 28px;
   border-radius: 50%;
-  background: var(--lime);
+  background: var(--green);
   flex-shrink: 0;
   display: flex;
   align-items: center;
@@ -1423,18 +1491,18 @@ h3 { font-size: 1.1rem; line-height: 1.3; font-family: 'Poppins', sans-serif; fo
   content: '✓';
   font-size: 13px;
   font-weight: 700;
-  color: var(--green);
+  color: var(--white);
   position: absolute;
 }
 .who-for-left strong {
-  font-family: 'GT America', sans-serif;
-  font-size: 1rem;
-  color: var(--white);
+  font-family: 'Outfit', sans-serif;
+  font-size: 1.25rem;
+  color: var(--green);
   line-height: 1.3;
 }
 .who-for-row > p {
   font-size: 15px;
-  color: rgba(255,255,255,0.6);
+  color: rgba(0,69,52,0.85);
   line-height: 1.65;
 }
 
@@ -1442,6 +1510,79 @@ h3 { font-size: 1.1rem; line-height: 1.3; font-family: 'Poppins', sans-serif; fo
   text-align: center;
 }
 
+
+/* ============================================================
+   EMAIL SIGNUP
+   ============================================================ */
+.email-signup {
+  background: linear-gradient(160deg, #d4d4f7 0%, var(--lavender) 40%, #e8f5d8 100%);
+  padding-block: 96px;
+  text-align: center;
+}
+.email-signup-inner {
+  max-width: 640px;
+  margin-inline: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+.email-signup-headline {
+  font-family: 'Outfit', sans-serif;
+  font-size: clamp(2rem, 4vw, 3rem);
+  color: var(--green);
+  line-height: 1.1;
+  margin: 0;
+}
+.email-signup-sub {
+  font-size: 17px;
+  color: var(--green);
+  opacity: 0.65;
+  max-width: 480px;
+  line-height: 1.6;
+  margin: 0;
+}
+.email-signup-form {
+  display: flex;
+  gap: 10px;
+  width: 100%;
+  max-width: 520px;
+}
+.email-signup-input {
+  flex: 1;
+  padding: 14px 20px;
+  border-radius: 100px;
+  border: none;
+  font-family: 'Poppins', sans-serif;
+  font-size: 15px;
+  outline: none;
+  background: rgba(255,255,255,0.9);
+  color: var(--green);
+}
+.email-signup-input::placeholder { color: rgba(0,69,52,0.45); }
+.btn-green {
+  background: var(--green);
+  color: var(--white);
+  border-radius: 100px;
+  padding: 14px 28px;
+  font-size: 15px;
+  font-weight: 600;
+  white-space: nowrap;
+  border: none;
+  cursor: pointer;
+}
+.btn-green:hover { background: #003828; }
+.email-signup-trust {
+  font-size: 13px;
+  color: var(--green);
+  opacity: 0.55;
+  font-style: italic;
+  margin: 0;
+}
+@media (max-width: 600px) {
+  .email-signup-form { flex-direction: column; }
+  .btn-green { width: 100%; }
+}
 
 /* ============================================================
    FOOTER
@@ -1533,16 +1674,11 @@ h3 { font-size: 1.1rem; line-height: 1.3; font-family: 'Poppins', sans-serif; fo
 }
 
 @media (max-width: 640px) {
-  .pricing-new-card { padding: 36px 28px; }
-  .pricing-new-price { font-size: 2.2rem; }
-  .topic-tag { font-size: 14px; padding: 12px 20px; }
-  .who-for-grid { grid-template-columns: 1fr; }
-}
-
-@media (max-width: 640px) {
   :root { --nav-h: 64px; }
-  .nav-links, .nav-cta { display: none; }
-  .nav-toggle { display: block; }
+
+  /* Nav */
+  .nav-toggle { display: block; padding: 10px; }
+  .nav-minimal .nav-cta { padding: 10px 18px; font-size: 13px; }
   .nav-links.open {
     display: flex;
     flex-direction: column;
@@ -1555,19 +1691,164 @@ h3 { font-size: 1.1rem; line-height: 1.3; font-family: 'Poppins', sans-serif; fo
     gap: 16px;
     box-shadow: 0 8px 24px rgba(0,69,52,0.08);
   }
-  .hero-new { padding-top: 56px; }
-  .hero-new-text { padding-bottom: 32px; }
-  .hero-card-col { width: 140px; }
+
+  /* What You Get — Sidebar-style mobile layout */
+  .wyg-tabs { display: flex; flex-direction: column; gap: 0; }
+  .wyg-visual { display: none; }
+
+  /* Active tab = card */
+  .wyg-tab { border: none; padding: 0; }
+  .wyg-tab:last-child { border: none; }
+  .wyg-tab.active {
+    background: var(--white);
+    border-radius: 20px;
+    padding: 24px;
+    margin-bottom: 8px;
+  }
+  .wyg-tab.active .wyg-tab-title {
+    font-size: 1.25rem;
+    margin-bottom: 8px;
+  }
+  .wyg-tab.active .wyg-tab-body { max-height: none; }
+  .wyg-tab.active .wyg-tab-body p { font-size: 16px; padding-bottom: 0; }
+  .wyg-tab-visual {
+    display: none;
+    height: 180px;
+    border-radius: 12px;
+    margin-top: 20px;
+    overflow: hidden;
+  }
+  .wyg-tab.active .wyg-tab-visual { display: block; }
+  .wyg-tab.active .wyg-progress-bar { display: none; }
+
+  /* Inactive tabs: large muted text items */
+  .wyg-tab:not(.active) {
+    padding: 16px 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .wyg-tab:not(.active):first-child { border-top: 1px solid var(--border); }
+  .wyg-tab:not(.active) .wyg-tab-title {
+    font-size: 1.2rem;
+    color: rgba(0,69,52,0.3);
+  }
+  .wyg-tab:not(.active) .wyg-progress-bar { display: none; }
+
+  /* Hero */
+  .hero-new { padding-top: 48px; }
+  .hero-new-text { padding-bottom: 24px; padding-inline: 24px; }
+  .hero-new-text h1 { font-size: clamp(1.9rem, 8vw, 2.4rem); }
+  .hero-sub-lg { font-size: 17px !important; }
+  .hero-cards-wrap { padding-top: 48px; }
+  .hero-card-col { width: 130px; }
   .hero-cards { gap: 10px; }
-  .memberships-wrap, .fit-wrap { padding-inline: 12px; }
+
+  /* Sections */
+  .section { padding-block: 56px; }
+  .stories { padding-block: 56px; }
+  .stats-editorial { padding-block: 56px; }
+  .who-for { padding-block: 56px; }
+  .email-signup { padding-block: 56px; }
+  .coaches-new { padding-block: 56px; }
+
+  /* How new */
   .how-new-cards { grid-template-columns: 1fr; gap: 12px; }
   .how-new-header h2 { font-size: 1.8rem; }
+
+  /* Stats */
+  .stats-editorial-row { flex-direction: column; gap: 0; }
+  .stat-editorial { padding: 32px 16px; }
+  .stat-divider { display: none; }
+  .stat-editorial-divider { width: 100%; min-height: 1px; height: 1px; }
+
+  /* Stories carousel */
+  .stories-grid .story-card { flex: 0 0 min(300px, 85vw); }
+  .story-card { padding: 24px 20px; }
+
+  /* Coaches carousel */
+  .coach-card-new { width: min(260px, 80vw); }
+
+  /* Memberships */
+  .pricing-new-card { padding: 32px 24px; }
+  .pricing-new-price { font-size: 2.2rem; }
+  .pricing-new-grid { max-width: 100%; }
+
+  /* Topics — 3 independently scrolling rows */
+  .topics .container { grid-template-columns: 1fr; gap: 32px; }
+  .topics-tags { display: flex; flex-direction: column; gap: 10px; max-width: none; }
+  .topics-row {
+    display: flex;
+    overflow-x: auto;
+    overflow-y: hidden;
+    gap: 10px;
+    justify-content: center;
+    margin-inline: -24px;
+    padding-inline: 24px;
+    scrollbar-width: none;
+  }
+  .topics-row::-webkit-scrollbar { display: none; }
+  .topic-tag { font-size: 14px; padding: 12px 20px; white-space: nowrap; flex-shrink: 0; }
+
+  /* Who it's for */
+  .who-for-row { grid-template-columns: 1fr; gap: 8px; }
+  .who-for-grid { grid-template-columns: 1fr; }
+
+  /* Misc */
+  .memberships-wrap, .fit-wrap { padding-inline: 12px; }
   .memberships { padding: 40px 24px; border-radius: 24px; }
   .fit { padding: 40px 24px; border-radius: 24px; }
   .scenarios-grid { grid-template-columns: 1fr; }
   .team-grid, .team-grid-2 { grid-template-columns: 1fr; }
   .pricing-grid { grid-template-columns: 1fr; }
-  .stat-divider { display: none; }
   .stats-row { gap: 8px; }
-  .floating-cta p { display: none; }
+
+  /* Email signup */
+  .email-signup-form { flex-direction: column; }
+  .btn-green { width: 100%; }
+  .email-signup-input { font-size: 16px; } /* prevents iOS zoom */
+
+  /* Risk free */
+  .risk-free-banner { padding: 20px 24px; }
+}
+
+
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track { animation: none !important; }
+}
+
+/* ============================================================
+   STICKY MOBILE CTA
+   ============================================================ */
+.sticky-cta {
+  display: none;
+}
+@media (max-width: 640px) {
+  .sticky-cta {
+    display: flex;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 16px 24px;
+    background: rgba(255,255,255,0.95);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border-top: 1px solid var(--border);
+    z-index: 999;
+    box-shadow: 0 -4px 24px rgba(0,69,52,0.1);
+    opacity: 0;
+    transform: translateY(100%);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    pointer-events: none;
+  }
+  .sticky-cta.visible {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+  }
+  .sticky-cta .btn {
+    width: 100%;
+    text-align: center;
+    justify-content: center;
+  }
+  body { padding-bottom: 88px; }
 }
