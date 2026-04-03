@@ -15,9 +15,9 @@
   <!-- ── NAV ───────────────────────────────────────────────── -->
   <nav class="nav nav-minimal">
     <div class="container">
-      <a href="index.html" class="nav-logo">
+      <span class="nav-logo">
         <img src="https://cpgfasttrack.com/wp-content/uploads/2026/03/CPG-Fast-Track-1024x80.png" alt="CPG FastTrack">
-      </a>
+      </span>
       <a href="https://wsrwt15qmdi.typeform.com/to/EsXEwmC3" class="btn btn-lime nav-cta" target="_blank" rel="noopener">Apply Now</a>
     </div>
   </nav>
@@ -63,7 +63,7 @@
     <div class="hero-cards-wrap">
       <div class="hero-cards">
 
-        <div class="hero-card-col" style="--offset:-40px">
+        <div class="hero-card-col" style="--offset:-15px">
           <div class="hero-card">
             <div class="hero-card-photo">
               <img src="https://cpgfasttrack.com/wp-content/uploads/2026/03/Lisa.png" alt="Lisa Barnett">
@@ -76,7 +76,7 @@
           </div>
         </div>
 
-        <div class="hero-card-col" style="--offset:32px">
+        <div class="hero-card-col" style="--offset:12px">
           <div class="hero-card">
             <div class="hero-card-photo">
               <img src="https://cpgfasttrack.com/wp-content/uploads/2026/03/Dave.png" alt="Dave Colina">
@@ -89,7 +89,7 @@
           </div>
         </div>
 
-        <div class="hero-card-col" style="--offset:-80px">
+        <div class="hero-card-col" style="--offset:-20px">
           <div class="hero-card">
             <div class="hero-card-photo">
               <img src="https://cpgfasttrack.com/wp-content/uploads/2026/03/Markus.png" alt="Markus Karjalainen">
@@ -115,7 +115,7 @@
           </div>
         </div>
 
-        <div class="hero-card-col" style="--offset:-48px">
+        <div class="hero-card-col" style="--offset:-15px">
           <div class="hero-card">
             <div class="hero-card-photo">
               <img src="https://cpgfasttrack.com/wp-content/uploads/2026/03/Jason.png" alt="Jason Feifer">
@@ -128,7 +128,7 @@
           </div>
         </div>
 
-        <div class="hero-card-col" style="--offset:48px">
+        <div class="hero-card-col" style="--offset:15px">
           <div class="hero-card">
             <div class="hero-card-photo">
               <img src="https://cpgfasttrack.com/wp-content/uploads/2026/03/Matt-A.png" alt="Matt Adelmann">
@@ -141,7 +141,7 @@
           </div>
         </div>
 
-        <div class="hero-card-col" style="--offset:16px">
+        <div class="hero-card-col" style="--offset:10px">
           <div class="hero-card">
             <div class="hero-card-photo">
               <img src="https://cpgfasttrack.com/wp-content/uploads/2024/05/matt-1.png" alt="Matt Gartland">
@@ -164,6 +164,7 @@
       <div class="how-new-header reveal">
         <h2>Not 1,000 Members.<br>Just the Right Ones.</h2>
         <p>Forget noisy industry groups and generic professional networks. Stop cobbling together fragmented resources, paying expensive consultants, or trying to navigate your toughest challenges alone.</p>
+        <p class="how-new-peer-callout">The <strong>peer group is the product</strong> — small, curated groups of CPG operators at your exact stage. Real accountability, honest feedback, and people who've faced the same problems you're facing right now.</p>
       </div>
       <div class="how-new-cards">
         <div class="how-new-card reveal reveal-delay-1">
@@ -188,21 +189,24 @@
         <img src="assets/Members/member-yulu.svg" alt="Yulu">
         <img src="assets/Members/member-wellious.svg" alt="Wellious">
         <img src="assets/Members/member-mai-vino.svg" alt="Mai Vino">
-        <img src="assets/Members/member-dumplin.svg" alt="Dumplin" style="height:90px">
+        <img src="assets/Members/member-dumplin.svg" alt="Dumplin">
         <img src="assets/Members/member-wimp.svg" alt="Wimp">
         <img src="assets/Members/member-happy-wolf.svg" alt="Happy Wolf">
-        <img src="assets/Members/member-taylor-chip.svg" alt="Taylor Chip">
         <img src="assets/Members/member-fig-brew.svg" alt="FigBrew">
-        <img src="assets/Members/member-hi-bar.svg" alt="HiBar">
         <img src="assets/Members/member-yulu.svg" alt="">
         <img src="assets/Members/member-wellious.svg" alt="">
         <img src="assets/Members/member-mai-vino.svg" alt="">
         <img src="assets/Members/member-dumplin.svg" alt="">
         <img src="assets/Members/member-wimp.svg" alt="">
         <img src="assets/Members/member-happy-wolf.svg" alt="">
-        <img src="assets/Members/member-taylor-chip.svg" alt="">
         <img src="assets/Members/member-fig-brew.svg" alt="">
-        <img src="assets/Members/member-hi-bar.svg" alt="">
+        <img src="assets/Members/member-yulu.svg" alt="">
+        <img src="assets/Members/member-wellious.svg" alt="">
+        <img src="assets/Members/member-mai-vino.svg" alt="">
+        <img src="assets/Members/member-dumplin.svg" alt="">
+        <img src="assets/Members/member-wimp.svg" alt="">
+        <img src="assets/Members/member-happy-wolf.svg" alt="">
+        <img src="assets/Members/member-fig-brew.svg" alt="">
       </div>
     </div>
 
@@ -792,7 +796,7 @@
     counters.forEach(c => counterObs.observe(c));
 
     // Auto-rotating "What You Get" tabs
-    const DURATION = 6000;
+    const DURATION = 10000;
     const tabs  = Array.from(document.querySelectorAll('.wyg-tab'));
     const grads = Array.from(document.querySelectorAll('.wyg-grad'));
     let current = 0;
@@ -856,6 +860,18 @@
         timer = setTimeout(next, DURATION);
       });
     });
+
+    // Pause auto-rotation on hover
+    const wygList = document.getElementById('wyg-list');
+    if (wygList) {
+      wygList.addEventListener('mouseenter', () => {
+        clearTimeout(timer);
+        cancelAnimationFrame(raf);
+      });
+      wygList.addEventListener('mouseleave', () => {
+        timer = setTimeout(next, DURATION);
+      });
+    }
 
     // Stories carousel arrows
     const storiesCarousel = document.getElementById('stories-carousel');
