@@ -161,7 +161,7 @@
 
     /* Archive */
     .nl-archive {
-      padding: 80px 24px 120px;
+      padding: 80px 24px 60px;
       max-width: 760px;
       margin: 0 auto;
     }
@@ -263,7 +263,7 @@
       <div class="nl-curator-label">Curated by</div>
       <div class="nl-curator-name">Jason Feifer</div>
       <div class="nl-curator-role">Editor in Chief, Entrepreneur Magazine · Author · Podcast Host</div>
-      <p class="nl-curator-bio">Jason has interviewed hundreds of the world's most successful entrepreneurs. Every issue distills what's actually working in CPG — no fluff, no filler, just the signal that moves brands forward.</p>
+      <p class="nl-curator-bio">Jason has interviewed hundreds of the world's most successful entrepreneurs. Every issue distills what's actually working in CPG — the signal that moves brands forward.</p>
     </div>
   </div>
 
@@ -314,6 +314,10 @@
   </footer>
 
   <script>
+    document.getElementById('nav-toggle').addEventListener('click', function() {
+      document.getElementById('nav-links').classList.toggle('open');
+    });
+
     document.getElementById('nl-form').addEventListener('submit', function(e) {
       e.preventDefault();
       const email = document.getElementById('nl-email').value;
