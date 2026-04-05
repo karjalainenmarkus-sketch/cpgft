@@ -840,10 +840,11 @@
       <div class="email-signup-inner">
         <h2 class="email-signup-headline">Get 3 Hours of CPG FastTrack Live — Free</h2>
         <p class="email-signup-sub">Subscribe to our weekly newsletter and we'll send you instant access to 3 of our best professional sessions. No fluff, no pitch.</p>
-        <form class="email-signup-form" action="https://app.kit.com/forms/8202032/subscriptions" method="post">
-          <input type="email" class="email-signup-input" name="email_address" placeholder="Email Address" required>
+        <form class="email-signup-form" id="ck-form">
+          <input type="email" class="email-signup-input" id="ck-email" placeholder="Email Address" required>
           <button type="submit" class="btn btn-green">Send Me the Recordings</button>
         </form>
+        <p class="email-signup-success" id="ck-success" style="display:none">✓ Check your inbox — the recordings are on their way.</p>
         <p class="email-signup-trust">Trusted by 3,000+ CPG founders and professionals.</p>
       </div>
     </div>
@@ -1009,6 +1010,25 @@
         stickyCta.classList.toggle('visible', !entries[0].isIntersecting);
       }, { threshold: 0 });
       heroObs.observe(heroSection);
+    }
+
+    // ConvertKit email signup — stay on page
+    const ckForm = document.getElementById('ck-form');
+    if (ckForm) {
+      ckForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const email = document.getElementById('ck-email').value;
+        try {
+          await fetch('https://app.kit.com/forms/8202032/subscriptions', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+            body: 'email_address=' + encodeURIComponent(email),
+            mode: 'no-cors'
+          });
+        } catch (err) { /* no-cors swallows errors, treat as success */ }
+        ckForm.style.display = 'none';
+        document.getElementById('ck-success').style.display = 'block';
+      });
     }
   </script>
 
