@@ -2249,6 +2249,8 @@ h3 { font-size: 1.1rem; line-height: 1.3; font-family: 'Poppins', sans-serif; fo
     max-height: 280px;
   }
   .wyg-tab.active .wyg-tab-visual { display: flex; }
+  .wyg-tab-visual.wyg-mock { padding: 16px; }
+  .wyg-tab-visual .wyg-mock-card { max-height: 248px; overflow-y: auto; }
   .wyg-tab.active .wyg-progress-bar { display: none; }
 
   /* Inactive tabs: large muted text items */
