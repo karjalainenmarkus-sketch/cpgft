@@ -785,8 +785,9 @@ h3 { font-size: 1.1rem; line-height: 1.3; font-family: 'Poppins', sans-serif; fo
   padding-bottom: 6px;
 }
 
-/* Progress bar — thin line, color per tab */
-.wyg-progress-bar {
+/* Progress bar — hidden (tabs are click-only) */
+.wyg-progress-bar { display: none; }
+.wyg-progress-bar-UNUSED {
   height: 2px;
   background: var(--border);
   border-radius: 2px;

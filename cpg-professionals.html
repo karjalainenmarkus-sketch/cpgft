@@ -904,83 +904,29 @@
     }, { threshold: 0.5 });
     counters.forEach(c => counterObs.observe(c));
 
-    // Auto-rotating "What You Get" tabs
-    const DURATION = 10000;
+    // "What You Get" tabs — click only
     const tabs  = Array.from(document.querySelectorAll('.wyg-tab'));
     const grads = Array.from(document.querySelectorAll('.wyg-grad'));
     let current = 0;
-    let timer, startTime, raf;
 
     function activateTab(index) {
       tabs.forEach((t, i) => {
         const isActive = i === index;
         t.classList.toggle('active', isActive);
-        // Apply the tab's accent color as a CSS variable
         if (isActive) {
           const color = t.dataset.color || 'var(--green)';
           t.style.setProperty('--active-color', color);
-          t.querySelector('.wyg-progress-fill').style.background = color;
         }
       });
       grads.forEach((g, i) => g.classList.toggle('active', i === index));
       current = index;
     }
 
-    function animateProgress(tab) {
-      const fill = tab.querySelector('.wyg-progress-fill');
-      if (!fill) return;
-      fill.style.transition = 'none';
-      fill.style.width = '0%';
-      startTime = performance.now();
-      function step(now) {
-        const pct = Math.min((now - startTime) / DURATION * 100, 100);
-        fill.style.width = pct + '%';
-        if (pct < 100) raf = requestAnimationFrame(step);
-      }
-      requestAnimationFrame(() => { raf = requestAnimationFrame(step); });
-    }
+    activateTab(0);
 
-    function next() {
-      cancelAnimationFrame(raf);
-      activateTab((current + 1) % tabs.length);
-      animateProgress(tabs[current]);
-      timer = setTimeout(next, DURATION);
-    }
-
-    // Start when section scrolls into view
-    const wygObs = new IntersectionObserver((entries) => {
-      if (entries[0].isIntersecting) {
-        activateTab(0);
-        animateProgress(tabs[0]);
-        timer = setTimeout(next, DURATION);
-        wygObs.disconnect();
-      }
-    }, { threshold: 0.2 });
-    const wygSection = document.querySelector('.what-you-get');
-    if (wygSection) wygObs.observe(wygSection);
-
-    // Click to jump
     tabs.forEach((tab, i) => {
-      tab.addEventListener('click', () => {
-        clearTimeout(timer);
-        cancelAnimationFrame(raf);
-        activateTab(i);
-        animateProgress(tabs[i]);
-        timer = setTimeout(next, DURATION);
-      });
+      tab.addEventListener('click', () => activateTab(i));
     });
-
-    // Pause auto-rotation on hover
-    const wygList = document.getElementById('wyg-list');
-    if (wygList) {
-      wygList.addEventListener('mouseenter', () => {
-        clearTimeout(timer);
-        cancelAnimationFrame(raf);
-      });
-      wygList.addEventListener('mouseleave', () => {
-        timer = setTimeout(next, DURATION);
-      });
-    }
 
     // Stories carousel arrows
     const storiesCarousel = document.getElementById('stories-carousel');
