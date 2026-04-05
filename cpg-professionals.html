@@ -908,10 +908,6 @@
   </section>
 
   <!-- ── STICKY MOBILE CTA ────────────────────────────────────── -->
-  <div class="sticky-cta" id="sticky-cta">
-    <a href="https://wsrwt15qmdi.typeform.com/to/EsXEwmC3" class="btn btn-green btn-lg" target="_blank" rel="noopener">Apply Now →</a>
-  </div>
-
   <!-- ── FOOTER ─────────────────────────────────────────────── -->
   <footer class="footer">
     <div class="container">
@@ -1006,15 +1002,6 @@
     });
 
     // Sticky CTA — show after hero scrolls out of view
-    const stickyCta = document.getElementById('sticky-cta');
-    const heroSection = document.getElementById('hero');
-    if (stickyCta && heroSection) {
-      const heroObs = new IntersectionObserver((entries) => {
-        stickyCta.classList.toggle('visible', !entries[0].isIntersecting);
-      }, { threshold: 0 });
-      heroObs.observe(heroSection);
-    }
-
     // ConvertKit email signup — stay on page
     const ckForm = document.getElementById('ck-form');
     if (ckForm) {
