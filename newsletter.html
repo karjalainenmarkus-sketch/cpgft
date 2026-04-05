@@ -71,32 +71,50 @@
       font-weight: 600;
       margin-top: 8px;
     }
-    .nl-hero-curator {
+    /* Curator strip */
+    .nl-curator {
+      background: linear-gradient(160deg, #e8e8ff 0%, #CACAFC 100%);
+      padding: 56px 24px;
       display: flex;
       align-items: center;
-      gap: 10px;
-      margin-top: 20px;
-      background: rgba(255,255,255,0.1);
-      border: 1px solid rgba(255,255,255,0.15);
-      border-radius: 40px;
-      padding: 6px 16px 6px 6px;
+      justify-content: center;
+      gap: 36px;
+      flex-wrap: wrap;
     }
-    .nl-hero-curator-img {
-      width: 36px;
-      height: 36px;
+    .nl-curator-photo {
+      width: 140px;
+      height: 140px;
       border-radius: 50%;
       object-fit: cover;
       object-position: top;
       flex-shrink: 0;
+      box-shadow: 0 8px 32px rgba(80,80,180,0.2);
     }
-    .nl-hero-curator-name {
-      font-size: 13px;
-      font-weight: 600;
-      color: #fff;
-    }
-    .nl-hero-curator-role {
+    .nl-curator-text { max-width: 440px; }
+    .nl-curator-label {
       font-size: 11px;
-      color: rgba(255,255,255,0.6);
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #5050a8;
+      margin-bottom: 6px;
+    }
+    .nl-curator-name {
+      font-family: 'Outfit', sans-serif;
+      font-size: 1.7rem;
+      font-weight: 700;
+      color: #1a1a4a;
+      margin-bottom: 4px;
+    }
+    .nl-curator-role {
+      font-size: 13px;
+      color: rgba(30,30,80,0.6);
+      margin-bottom: 12px;
+    }
+    .nl-curator-bio {
+      font-size: 15px;
+      color: rgba(30,30,80,0.8);
+      line-height: 1.65;
     }
 
     /* What you get strip */
@@ -234,15 +252,20 @@
       <input type="email" id="nl-email" name="email_address" placeholder="Your email address" required>
       <button type="submit">Subscribe Free →</button>
     </form>
-    <div class="nl-hero-curator">
-      <img src="assets/jason-feifer.png" alt="Jason Feifer" class="nl-hero-curator-img">
-      <div>
-        <div class="nl-hero-curator-name">Curated by Jason Feifer</div>
-        <div class="nl-hero-curator-role">Editor in Chief, Entrepreneur Magazine</div>
-      </div>
-    </div>
+    <p class="nl-trust">Trusted by 3,000+ CPG founders and operators.</p>
     <p class="nl-success" id="nl-success">Check your inbox — you're in. 🎉</p>
   </section>
+
+  <!-- Curator -->
+  <div class="nl-curator">
+    <img src="assets/jason-feifer.png" alt="Jason Feifer" class="nl-curator-photo">
+    <div class="nl-curator-text">
+      <div class="nl-curator-label">Curated by</div>
+      <div class="nl-curator-name">Jason Feifer</div>
+      <div class="nl-curator-role">Editor in Chief, Entrepreneur Magazine · Author · Podcast Host</div>
+      <p class="nl-curator-bio">Jason has interviewed hundreds of the world's most successful entrepreneurs. Every issue distills what's actually working in CPG — no fluff, no filler, just the signal that moves brands forward.</p>
+    </div>
+  </div>
 
   <!-- Perks -->
   <div class="nl-perks">
