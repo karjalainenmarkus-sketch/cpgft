@@ -2223,7 +2223,8 @@ h3 { font-size: 1.1rem; line-height: 1.3; font-family: 'Poppins', sans-serif; fo
   }
 
   /* What You Get — Sidebar-style mobile layout */
-  .wyg-tabs { display: flex; flex-direction: column; gap: 0; }
+  .wyg-tabs { display: flex; flex-direction: column; gap: 0; align-items: stretch; }
+  .wyg-list { width: 100%; }
   .wyg-visual { display: none; }
 
   /* Active tab = card */
@@ -2234,6 +2235,8 @@ h3 { font-size: 1.1rem; line-height: 1.3; font-family: 'Poppins', sans-serif; fo
     border-radius: 20px;
     padding: 24px;
     margin-bottom: 8px;
+    width: 100%;
+    overflow: hidden;
   }
   .wyg-tab.active .wyg-tab-title {
     font-size: 1.25rem;
@@ -2247,10 +2250,13 @@ h3 { font-size: 1.1rem; line-height: 1.3; font-family: 'Poppins', sans-serif; fo
     margin-top: 20px;
     overflow: hidden;
     max-height: 280px;
+    width: 100%;
+    max-width: 100%;
   }
   .wyg-tab.active .wyg-tab-visual { display: flex; }
   .wyg-tab-visual.wyg-mock { padding: 16px; }
-  .wyg-tab-visual .wyg-mock-card { max-height: 248px; overflow-y: auto; }
+  .wyg-tab-visual .wyg-mock-card { max-height: 248px; overflow-y: auto; max-width: 100%; }
+  .wyg-tab-visual .wyg-mock-feed { grid-template-columns: 1fr; max-height: 248px; }
   .wyg-tab.active .wyg-progress-bar { display: none; }
 
   /* Inactive tabs: large muted text items */
