@@ -27,7 +27,7 @@
 
 /* ── Reset ─────────────────────────────────────────────────── */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-html { scroll-behavior: smooth; overflow-x: hidden; }
+html { scroll-behavior: smooth; }
 body {
   font-family: 'Poppins', sans-serif;
   font-size: 17px;
