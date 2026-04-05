@@ -1008,7 +1008,7 @@ h3 { font-size: 1.1rem; line-height: 1.3; font-family: 'Poppins', sans-serif; fo
 .wyg-grad.active { opacity: 1; }
 
 /* Tab-embedded visual — hidden on desktop, shown on mobile */
-.wyg-tab-visual { display: none !important; }
+.wyg-tab-visual { display: none; }
 
 /* ============================================================
    WYG UI MOCKUPS
@@ -2246,7 +2246,7 @@ h3 { font-size: 1.1rem; line-height: 1.3; font-family: 'Poppins', sans-serif; fo
     margin-top: 20px;
     overflow: hidden;
   }
-  .wyg-tab.active .wyg-tab-visual { display: flex !important; }
+  .wyg-tab.active .wyg-tab-visual { display: flex; }
   .wyg-tab.active .wyg-progress-bar { display: none; }
 
   /* Inactive tabs: large muted text items */
