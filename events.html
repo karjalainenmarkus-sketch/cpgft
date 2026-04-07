@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Free Events — CPG FastTrack</title>
+  <link rel="icon" href="assets/favicon-cpgft.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@700;800&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/style.css">
+  <style>
+
+    /* ── Hero ── */
+    .ev-hero {
+      background: radial-gradient(120% 80% at 50% 0%, #e8ffc0 0%, #1a7a50 50%, #002a1f 100%);
+      padding: 48px 24px;
+      display: none;
+    }
+    .ev-hero-eyebrow {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #D4FF62;
+      margin-bottom: 20px;
+    }
+    .ev-hero h1 {
+      font-family: 'Outfit', sans-serif;
+      font-size: clamp(2.2rem, 5vw, 3.8rem);
+      color: #fff;
+      line-height: 1.1;
+      max-width: 760px;
+      margin: 0 auto 20px;
+    }
+    .ev-hero-sub {
+      font-size: clamp(1rem, 2vw, 1.15rem);
+      color: rgba(255,255,255,0.75);
+      max-width: 520px;
+      margin: 0 auto 40px;
+      line-height: 1.65;
+    }
+
+    /* ── Featured event card ── */
+    .ev-featured {
+      max-width: 860px;
+      margin: 0 auto;
+    }
+    .ev-live-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: #D4FF62;
+      color: #003a20;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 5px 12px;
+      border-radius: 20px;
+      margin-bottom: 20px;
+    }
+    .ev-live-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #003a20;
+      animation: pulse 1.8s ease infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.4; transform: scale(0.7); }
+    }
+    .ev-featured-title {
+      font-family: 'Outfit', sans-serif;
+      font-size: clamp(1.6rem, 3vw, 2.4rem);
+      color: #004534;
+      line-height: 1.15;
+      margin-bottom: 12px;
+    }
+    .ev-featured-meta {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      flex-wrap: wrap;
+      margin-bottom: 24px;
+    }
+    .ev-meta-item {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 14px;
+      font-weight: 600;
+      color: rgba(0,69,52,0.6);
+    }
+    .ev-meta-item span { font-size: 16px; }
+    .ev-featured-desc {
+      font-size: 16px;
+      color: rgba(0,69,52,0.75);
+      line-height: 1.7;
+      margin-bottom: 28px;
+      max-width: 640px;
+    }
+    .ev-how {
+      background: #F1F7E5;
+      border-radius: 16px;
+      padding: 24px 28px;
+      margin-bottom: 32px;
+    }
+    .ev-how-title {
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #004534;
+      margin-bottom: 14px;
+    }
+    .ev-how-steps {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .ev-how-step {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      font-size: 15px;
+      color: rgba(0,69,52,0.8);
+    }
+    .ev-how-num {
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      background: #004534;
+      color: #D4FF62;
+      font-size: 11px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    /* Speakers */
+    .ev-speakers {
+      margin-bottom: 36px;
+    }
+    .ev-speakers-label {
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(0,69,52,0.45);
+      margin-bottom: 16px;
+    }
+    .ev-speakers-row {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+    .ev-speaker {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      background: #F1F7E5;
+      border-radius: 16px;
+      padding: 16px 20px;
+      flex: 1;
+      min-width: 240px;
+    }
+    .ev-speaker-photo {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      object-fit: cover;
+      object-position: top;
+      flex-shrink: 0;
+    }
+    .ev-speaker-name {
+      font-family: 'Outfit', sans-serif;
+      font-size: 1rem;
+      font-weight: 700;
+      color: #004534;
+      margin-bottom: 2px;
+    }
+    .ev-speaker-role {
+      font-size: 12px;
+      color: rgba(0,69,52,0.6);
+      line-height: 1.4;
+    }
+
+    .ev-featured-cta {
+      padding-bottom: 48px;
+    }
+    .ev-notice {
+      font-size: 13px;
+      color: rgba(0,69,52,0.45);
+      margin-top: 12px;
+    }
+
+    /* ── Upcoming wrapper ── */
+    .ev-upcoming-wrap {
+      background: #fff;
+      padding: 64px 24px;
+    }
+
+    /* ── Past events ── */
+    .ev-past {
+      background: var(--cream);
+      padding: 80px 24px;
+    }
+    .ev-past-inner {
+      max-width: 860px;
+      margin: 0 auto;
+    }
+    .ev-past-header {
+      margin-bottom: 40px;
+    }
+    .ev-past-header h2 {
+      font-family: 'Outfit', sans-serif;
+      font-size: clamp(1.5rem, 3vw, 2rem);
+      color: #004534;
+      margin-bottom: 6px;
+    }
+    .ev-past-header p {
+      font-size: 15px;
+      color: rgba(0,69,52,0.55);
+    }
+    .ev-past-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+    .ev-past-card {
+      background: #CACAFC;
+      border-radius: 20px;
+      padding: 28px 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+    .ev-past-date {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: rgba(30,30,80,0.5);
+    }
+    .ev-past-title {
+      font-family: 'Outfit', sans-serif;
+      font-size: 1.05rem;
+      color: #1a1a4a;
+      line-height: 1.3;
+      flex: 1;
+    }
+    .ev-past-speakers {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .ev-past-avatars {
+      display: flex;
+    }
+    .ev-past-avatars img {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      object-fit: cover;
+      object-position: top;
+      border: 2px solid #fff;
+      margin-left: -8px;
+    }
+    .ev-past-avatars img:first-child { margin-left: 0; }
+    .ev-past-speaker-names {
+      font-size: 12px;
+      color: rgba(30,30,80,0.7);
+      line-height: 1.4;
+    }
+    .ev-past-tag {
+      display: inline-block;
+      font-size: 10px;
+      font-weight: 700;
+      background: #D4FF62;
+      color: #003a20;
+      padding: 3px 10px;
+      border-radius: 20px;
+      align-self: flex-start;
+    }
+
+    @media (max-width: 720px) {
+      .ev-featured { padding: 32px 24px 0; }
+      .ev-past-grid { grid-template-columns: 1fr; }
+      .ev-speakers-row { flex-direction: column; }
+    }
+    @media (max-width: 480px) {
+      .ev-hero { padding-top: 72px; }
+    }
+  </style>
+  <!-- Meta Pixel -->
+  <script>
+  !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+  n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+  n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+  t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+  document,'script','https://connect.facebook.net/en_US/fbevents.js');
+  fbq('init','24452779434354074');
+  fbq('track','PageView');
+  </script>
+  <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=24452779434354074&ev=PageView&noscript=1"/></noscript>
+  <!-- End Meta Pixel -->
+  <!-- GA4 -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-CQ71WHJSFG"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-CQ71WHJSFG');
+  </script>
+  <!-- End GA4 -->
+</head>
+<body>
+
+  <nav class="nav">
+    <div class="container">
+      <a href="index.html" class="nav-logo">
+        <img src="assets/cpgft-logo.svg" alt="CPG FastTrack">
+      </a>
+      <ul class="nav-links" id="nav-links">
+        <li><a href="index.html">For Founders</a></li>
+        <li><a href="cpg-professionals.html">For Professionals <span class="nav-badge">New</span></a></li>
+        <li><a href="newsletter.html">Newsletter</a></li>
+        <li><a href="events.html" class="active">Events</a></li>
+      </ul>
+      <a href="https://riverside.com/webinar/registration/eyJldmVudElkIjoiNjlkMmFmMGNkNGZkNmExOTc4NWU1ZTUxIiwic2x1ZyI6Im1hcmt1cy1rYXJqYWxhaW5lbnMtc3R1ZGlvLUFoRnRZIn0=" class="btn btn-lime nav-cta" target="_blank" rel="noopener">Register Free</a>
+      <button class="nav-toggle" id="nav-toggle" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section class="ev-hero"></section>
+
+  <!-- Upcoming event -->
+  <div class="ev-upcoming-wrap">
+    <div class="ev-featured">
+      <div class="ev-live-badge"><div class="ev-live-dot"></div> Upcoming</div>
+      <div class="ev-featured-title">Live Social Media Reviews for CPG Brands</div>
+      <div class="ev-featured-meta">
+        <div class="ev-meta-item"><span>📅</span> April 23, 2025</div>
+        <div class="ev-meta-item"><span>🕛</span> 12:00 PM ET</div>
+        <div class="ev-meta-item"><span>💻</span> Free · Live Online</div>
+      </div>
+      <p class="ev-featured-desc">Your Social Isn't Working Like It Should. Let's Fix It. We're reviewing real social posts from CPG brands — live. Not theory. Not "post more consistently." Your actual content. Broken down. Improved. We'll show you what's getting ignored, what's actually working, and how to turn posts into something that drives attention and sales.</p>
+
+      <div class="ev-featured-cta">
+        <a href="https://riverside.com/webinar/registration/eyJldmVudElkIjoiNjlkMmFmMGNkNGZkNmExOTc4NWU1ZTUxIiwic2x1ZyI6Im1hcmt1cy1rYXJqYWxhaW5lbnMtc3R1ZGlvLUFoRnRZIn0=" class="btn btn-lime btn-lg" target="_blank" rel="noopener">Register Free →</a>
+        <p class="ev-notice">This is for CPG brands only. If you're not a CPG brand, we won't review your submission.</p>
+      </div>
+
+      <div class="ev-how">
+        <div class="ev-how-title">Here's how it works</div>
+        <div class="ev-how-steps">
+          <div class="ev-how-step"><div class="ev-how-num">1</div><span><a href="https://riverside.com/webinar/registration/eyJldmVudElkIjoiNjlkMmFmMGNkNGZkNmExOTc4NWU1ZTUxIiwic2x1ZyI6Im1hcmt1cy1rYXJqYWxhaW5lbnMtc3R1ZGlvLUFoRnRZIn0=" target="_blank" rel="noopener" style="color:var(--green);font-weight:600;text-decoration:underline">Register for the free session</a></span></div>
+          <div class="ev-how-step"><div class="ev-how-num">2</div><span>Submit your best (or most important) post</span></div>
+          <div class="ev-how-step"><div class="ev-how-num">3</div><span>We review it live on the call</span></div>
+        </div>
+      </div>
+
+      <div class="ev-speakers">
+        <div class="ev-speakers-label">Who's reviewing your posts</div>
+        <div class="ev-speakers-row">
+          <div class="ev-speaker">
+            <img src="assets/jason-feifer.png" alt="Jason Feifer" class="ev-speaker-photo">
+            <div>
+              <div class="ev-speaker-name">Jason Feifer</div>
+              <div class="ev-speaker-role">Editor in Chief, Entrepreneur Magazine · Co-Founder, CPG FastTrack · 250K+ LinkedIn followers</div>
+            </div>
+          </div>
+          <div class="ev-speaker">
+            <img src="assets/Kim-Gamez-transparent.png" alt="Kim Gamez" class="ev-speaker-photo">
+            <div>
+              <div class="ev-speaker-name">Kim Gamez</div>
+              <div class="ev-speaker-role">Founder, Soberish · Built an 8-figure brand off social with millions of views</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Past events -->
+  <section class="ev-past">
+    <div class="ev-past-inner">
+    <div class="ev-past-header">
+      <h2>Past Events</h2>
+      <p>Missed a session? We archive key takeaways for members.</p>
+    </div>
+    <div class="ev-past-grid">
+
+      <div class="ev-past-card">
+        <div class="ev-past-title">Live Packaging Design Breakdowns for CPG Brands</div>
+        <div class="ev-past-tag">Design</div>
+        <div class="ev-past-speakers">
+          <div class="ev-past-avatars">
+            <img src="assets/emily.png" alt="Emily Heyward">
+          </div>
+          <div class="ev-past-speaker-names">Emily Heyward<br>Co-founder, Red Antler</div>
+        </div>
+      </div>
+
+      <div class="ev-past-card">
+        <div class="ev-past-title">Live Website Reviews: What's Working and What's Not</div>
+        <div class="ev-past-tag">Growth</div>
+        <div class="ev-past-speakers">
+          <div class="ev-past-avatars">
+            <img src="assets/coaches/Markus.png" alt="Markus Karjalainen">
+          </div>
+          <div class="ev-past-speaker-names">Markus Karjalainen<br>Co-Founder, CPG FastTrack</div>
+        </div>
+      </div>
+
+      <div class="ev-past-card">
+        <div class="ev-past-title">Ask Us Anything: CPG Growth, Retail & Brand Building</div>
+        <div class="ev-past-tag">Q&amp;A</div>
+        <div class="ev-past-speakers">
+          <div class="ev-past-avatars">
+            <img src="assets/coaches/Lisa.png" alt="Lisa">
+            <img src="assets/coaches/Dave.png" alt="Dave">
+            <img src="assets/coaches/Markus.png" alt="Markus">
+          </div>
+          <div class="ev-past-speaker-names">Lisa, Dave &amp; Markus</div>
+        </div>
+      </div>
+
+    </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-logo">
+          <img src="assets/cpgft-logo.svg" alt="CPG FastTrack">
+        </div>
+        <div class="footer-links">
+          <a href="newsletter.html">Newsletter</a>
+          <a href="terms-of-service.html">Terms of Service</a>
+          <a href="privacy-policy.html">Privacy Policy</a>
+        </div>
+      </div>
+      <div class="footer-bottom">© 2026 CPG FastTrack. All rights reserved.</div>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('nav-toggle').addEventListener('click', () =>
+      document.getElementById('nav-links').classList.toggle('open'));
+  </script>
+
+  <script async data-uid="e57afaa1ac" src="https://cpg-fasttrack.kit.com/e57afaa1ac/index.js"></script>
+</body>
+</html>
