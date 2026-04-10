@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Coaches — CPG FastTrack</title>
+  <link rel="icon" href="assets/favicon-cpgft.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@700;800&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/style.css">
+  <style>
+
+    /* ── Hero ── */
+    .coaches-hero {
+      padding: 100px 24px 80px;
+      max-width: 760px;
+      margin: 0 auto;
+    }
+    .coaches-hero-eyebrow {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(0,69,52,0.45);
+      margin-bottom: 20px;
+    }
+    .coaches-hero h1 {
+      font-family: 'Outfit', sans-serif;
+      font-size: clamp(2.4rem, 5vw, 4rem);
+      color: #004534;
+      line-height: 1.05;
+      margin-bottom: 24px;
+    }
+    .coaches-hero-sub {
+      font-size: clamp(1rem, 2vw, 1.15rem);
+      color: rgba(0,69,52,0.65);
+      line-height: 1.7;
+      max-width: 600px;
+    }
+
+    /* ── Grid ── */
+    .coaches-grid-section {
+      padding: 0 24px 100px;
+    }
+    .coaches-grid-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .coaches-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    /* ── Card ── */
+    .cp-card {
+      background: #fff;
+      position: relative;
+      overflow: hidden;
+      cursor: default;
+      border-radius: 20px;
+      box-shadow: 0 8px 32px rgba(0,69,52,0.10);
+      transition: transform 0.3s var(--ease), box-shadow 0.3s var(--ease);
+      display: flex;
+      flex-direction: column;
+    }
+    .cp-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 20px 52px rgba(0,69,52,0.15);
+    }
+    .cp-card-photo-wrap {
+      position: relative;
+      aspect-ratio: 4/5;
+      overflow: hidden;
+      border-radius: 20px 20px 0 0;
+    }
+    .cp-card-photo-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: top;
+      display: block;
+      transition: transform 0.5s var(--ease);
+      filter: grayscale(20%);
+    }
+    .cp-card:hover .cp-card-photo-wrap img {
+      transform: scale(1.03);
+      filter: grayscale(0%);
+    }
+    .cp-card-grad {
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+      transition: opacity 0.4s ease;
+    }
+    .cp-card:hover .cp-card-grad { opacity: 0.15; }
+
+    .cp-card-body {
+      padding: 24px 24px 28px;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+    }
+    .cp-card-name {
+      font-family: 'Outfit', sans-serif;
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: #004534;
+      margin-bottom: 4px;
+    }
+    .cp-card-role {
+      font-size: 13px;
+      color: rgba(0,69,52,0.6);
+      line-height: 1.45;
+      margin-bottom: 12px;
+    }
+    .cp-card-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-bottom: 14px;
+    }
+    .cp-tag {
+      font-size: 10px;
+      font-weight: 700;
+      padding: 3px 10px;
+      border-radius: 20px;
+      background: #F1F7E5;
+      color: #004534;
+    }
+    .cp-card-bio {
+      font-size: 13px;
+      color: rgba(0,69,52,0.55);
+      line-height: 1.55;
+      margin-bottom: 16px;
+      flex: 1;
+    }
+    .cp-card-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+      margin-top: auto;
+      flex-shrink: 0;
+      flex-wrap: nowrap;
+    }
+    .cp-card-logo {
+      height: 20px;
+      width: auto;
+      opacity: 0.55;
+      max-width: 100px;
+      object-fit: contain;
+    }
+    .cp-linkedin {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      font-size: 12px;
+      font-weight: 600;
+      color: rgba(0,69,52,0.5);
+      text-decoration: none;
+      transition: color 0.15s;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+    .cp-linkedin:hover { color: #004534; }
+    .cp-linkedin svg { flex-shrink: 0; }
+
+    /* ── Quote strip ── */
+    .coaches-quote {
+      background: linear-gradient(160deg, #d4d4f7 0%, #CACAFC 40%, #e8f5d8 100%);
+      padding: 80px 24px;
+      text-align: center;
+    }
+    .coaches-quote-inner {
+      max-width: 700px;
+      margin: 0 auto;
+    }
+    .coaches-quote-mark {
+      font-family: 'Outfit', sans-serif;
+      font-size: 5rem;
+      line-height: 0.5;
+      color: rgba(0,69,52,0.2);
+      margin-bottom: 24px;
+      display: block;
+    }
+    .coaches-quote-text {
+      font-family: 'Outfit', sans-serif;
+      font-size: clamp(1.3rem, 2.5vw, 1.9rem);
+      color: #004534;
+      line-height: 1.35;
+      font-weight: 700;
+      margin-bottom: 24px;
+    }
+    .coaches-quote-attr {
+      font-size: 14px;
+      color: rgba(0,69,52,0.55);
+      font-weight: 500;
+    }
+
+    /* ── CTA strip ── */
+    .coaches-cta {
+      padding: 80px 24px;
+      text-align: center;
+      background: #004534;
+    }
+    .coaches-cta h2 {
+      font-family: 'Outfit', sans-serif;
+      font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+      color: #fff;
+      margin-bottom: 16px;
+    }
+    .coaches-cta p {
+      font-size: 16px;
+      color: rgba(255,255,255,0.65);
+      max-width: 480px;
+      margin: 0 auto 32px;
+      line-height: 1.65;
+    }
+
+    @media (max-width: 900px) {
+      .coaches-grid { grid-template-columns: repeat(2, 1fr); gap: 20px; }
+    }
+    @media (max-width: 560px) {
+      .coaches-grid { grid-template-columns: 1fr; gap: 16px; }
+      .coaches-hero { padding-top: 72px; }
+    }
+  </style>
+  <!-- Meta Pixel -->
+  <script>
+  !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+  n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+  n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+  t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+  document,'script','https://connect.facebook.net/en_US/fbevents.js');
+  fbq('init','24452779434354074');
+  fbq('track','PageView');
+  </script>
+  <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=24452779434354074&ev=PageView&noscript=1"/></noscript>
+  <!-- End Meta Pixel -->
+  <!-- GA4 -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-CQ71WHJSFG"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-CQ71WHJSFG');
+  </script>
+  <!-- End GA4 -->
+</head>
+<body>
+
+  <nav class="nav">
+    <div class="container">
+      <a href="index.html" class="nav-logo">
+        <img src="assets/cpgft-logo.svg" alt="CPG FastTrack">
+      </a>
+      <ul class="nav-links" id="nav-links">
+        <li><a href="index.html">For Founders</a></li>
+        <li><a href="cpg-professionals.html">For Professionals <span class="nav-badge">New</span></a></li>
+        <li><a href="newsletter.html">Newsletter</a></li>
+        <li><a href="events.html">Events</a></li>
+        <li><a href="coaches.html" style="color:var(--green);opacity:1;font-weight:700">Coaches</a></li>
+      </ul>
+      <a href="https://wsrwt15qmdi.typeform.com/to/vTO91wSu" class="btn btn-lime nav-cta" target="_blank" rel="noopener">Apply Now</a>
+      <button class="nav-toggle" id="nav-toggle" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <div class="coaches-hero">
+    <p class="coaches-hero-eyebrow">Our Coaches</p>
+    <h1>Operators who've actually built brands.</h1>
+    <p class="coaches-hero-sub">People with 30+ years of combined CPG experience, +$100M in funding raised, and 300M+ customers reached — now in your corner.</p>
+  </div>
+
+  <!-- Grid -->
+  <section class="coaches-grid-section">
+    <div class="coaches-grid-inner">
+      <div class="coaches-grid">
+
+        <div class="cp-card">
+          <div class="cp-card-photo-wrap">
+            <img src="assets/coaches/Lisa.png" alt="Lisa Barnett">
+            <div class="cp-card-grad" style="background: linear-gradient(145deg, #CACAFC, #a8f07a)"></div>
+          </div>
+          <div class="cp-card-body">
+            <p class="cp-card-name">Lisa Barnett</p>
+            <p class="cp-card-role">Co-Founder, Former President & CMO, Little Spoon</p>
+            <div class="cp-card-tags">
+              <span class="cp-tag">Strategy</span>
+              <span class="cp-tag">Marketing</span>
+              <span class="cp-tag">Branding</span>
+            </div>
+            <p class="cp-card-bio">Lisa co-founded Little Spoon in 2017 and scaled it into the leading direct-to-consumer children's food and nutrition brand. Before that she spent 7 years as an operator and investor at top consumer brands, including as a Partner at Sherpa Foundry and running multichannel growth at Estee Lauder. Forbes 30 Under 30 · Inc 5000 · Time's Best Invention of the Year.</p>
+            <div class="cp-card-footer">
+              <img src="assets/logo-littlespoon.svg" alt="Little Spoon" class="cp-card-logo">
+              <a href="https://www.linkedin.com/in/lisadbarnett/" target="_blank" rel="noopener" class="cp-linkedin">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+                LinkedIn
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="cp-card">
+          <div class="cp-card-photo-wrap">
+            <img src="assets/coaches/Dave.png" alt="Dave Colina">
+            <div class="cp-card-grad" style="background: linear-gradient(145deg, #004534, #CACAFC)"></div>
+          </div>
+          <div class="cp-card-body">
+            <p class="cp-card-name">Dave Colina</p>
+            <p class="cp-card-role">Founder & CEO, O2 Hydration</p>
+            <div class="cp-card-tags">
+              <span class="cp-tag">Leadership</span>
+              <span class="cp-tag">Partnerships</span>
+              <span class="cp-tag">Growth</span>
+            </div>
+            <p class="cp-card-bio">Dave started O2 Hydration selling out of the trunk of his Prius and built it into an Inc. 5000 brand and the Official Sports Drink of The CrossFit Games. He's also a certified CrossFit coach, Krav Maga black belt, Adjunct Professor of Entrepreneurship at CU Boulder, and Co-Founder of CPG FastTrack. Inc 5000 · 2020 Best Beverage Marketing Campaign of the Year.</p>
+            <div class="cp-card-footer">
+              <img src="assets/logo-02hydration.svg" alt="O2 Hydration" class="cp-card-logo">
+              <a href="https://www.linkedin.com/in/dtcolina/" target="_blank" rel="noopener" class="cp-linkedin">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+                LinkedIn
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="cp-card">
+          <div class="cp-card-photo-wrap">
+            <img src="assets/coaches/Markus.png" alt="Markus Karjalainen">
+            <div class="cp-card-grad" style="background: linear-gradient(145deg, #1a5c45, #D4FF62)"></div>
+          </div>
+          <div class="cp-card-body">
+            <p class="cp-card-name">Markus Karjalainen</p>
+            <p class="cp-card-role">Former CMO, Founding Team, Four Sigmatic</p>
+            <div class="cp-card-tags">
+              <span class="cp-tag">Ecommerce</span>
+              <span class="cp-tag">Brand Marketing</span>
+            </div>
+            <p class="cp-card-bio">Markus was part of the founding team at Four Sigmatic, where he served as CMO and helped pioneer adaptogens in the US market, building top-selling coffee products on Amazon. A DTC-focused operator with deep expertise in brand and performance marketing, he now co-founded CPG FastTrack to bring that playbook to more founders.</p>
+            <div class="cp-card-footer">
+              <img src="assets/logo-foursigmatic.svg" alt="Four Sigmatic" class="cp-card-logo">
+              <a href="https://www.linkedin.com/in/karjalainenmarkus/" target="_blank" rel="noopener" class="cp-linkedin">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+                LinkedIn
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="cp-card">
+          <div class="cp-card-photo-wrap">
+            <img src="assets/coaches/Jason.png" alt="Jason Feifer">
+            <div class="cp-card-grad" style="background: linear-gradient(145deg, #e8e8fb, #b8f5c8)"></div>
+          </div>
+          <div class="cp-card-body">
+            <p class="cp-card-name">Jason Feifer</p>
+            <p class="cp-card-role">Editor in Chief, Entrepreneur Magazine</p>
+            <div class="cp-card-tags">
+              <span class="cp-tag">Media</span>
+              <span class="cp-tag">Storytelling</span>
+              <span class="cp-tag">Brand</span>
+            </div>
+            <p class="cp-card-bio">Jason has spent nearly a decade at Entrepreneur studying and writing about the world's most successful founders. He's a keynote speaker, author of Build For Tomorrow, and host of the podcasts Help Wanted and Problem Solvers. He has worked with Google, Microsoft, Pfizer, and Alibaba, and reaches 250K+ followers on LinkedIn. Co-Founder of CPG FastTrack.</p>
+            <div class="cp-card-footer">
+              <img src="assets/logo-entrepreneur.svg" alt="Entrepreneur Magazine" class="cp-card-logo">
+              <a href="https://www.linkedin.com/in/jasonfeifer/" target="_blank" rel="noopener" class="cp-linkedin">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+                LinkedIn
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="cp-card">
+          <div class="cp-card-photo-wrap">
+            <img src="assets/coaches/matt-g.png" alt="Matt Gartland">
+            <div class="cp-card-grad" style="background: linear-gradient(145deg, #004534, #D4FF62)"></div>
+          </div>
+          <div class="cp-card-body">
+            <p class="cp-card-name">Matt Gartland</p>
+            <p class="cp-card-role">Co-Founder & CEO, SPI Media</p>
+            <div class="cp-card-tags">
+              <span class="cp-tag">Leadership</span>
+              <span class="cp-tag">Strategy</span>
+              <span class="cp-tag">Community</span>
+            </div>
+            <p class="cp-card-bio">Matt co-founded SPI Media (Smart Passive Income) with Pat Flynn and led its transformation into a community-powered education model. A 5x startup founder with 3 exits, he started his career in a Fortune 50 leadership program before building experience across DTC e-commerce, SaaS, and the Creator Economy. Expert in operations, pricing, and product development.</p>
+            <div class="cp-card-footer">
+              <img src="assets/Logo-spi.svg" alt="SPI Media" class="cp-card-logo">
+              <a href="https://www.linkedin.com/in/mattgartland/" target="_blank" rel="noopener" class="cp-linkedin">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+                LinkedIn
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="cp-card">
+          <div class="cp-card-photo-wrap">
+            <img src="assets/coaches/Kim.png" alt="Kim Gamez">
+            <div class="cp-card-grad" style="background: linear-gradient(145deg, #CACAFC, #F1F7E5)"></div>
+          </div>
+          <div class="cp-card-body">
+            <p class="cp-card-name">Kim Gamez</p>
+            <p class="cp-card-role">Founder & CEO, Soberish · Investor, Speaker</p>
+            <div class="cp-card-tags">
+              <span class="cp-tag">Social Media</span>
+              <span class="cp-tag">Ecommerce</span>
+            </div>
+            <p class="cp-card-bio">Kim grew Soberish from a viral TikTok experiment to an 8-figure brand in under 3 years — without spending a dollar on paid ads. Before that she built and sold Mi Padrino, an event planning app for the Hispanic community that grew to 3 million users. She's a serial entrepreneur, investor, keynote speaker, and mother of five.</p>
+            <div class="cp-card-footer">
+              <img src="assets/logo-soberish.svg" alt="Soberish" class="cp-card-logo">
+              <a href="https://www.linkedin.com/in/kim-gamez-34914bbb/" target="_blank" rel="noopener" class="cp-linkedin">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+                LinkedIn
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="cp-card">
+          <div class="cp-card-photo-wrap">
+            <img src="assets/coaches/Matt-A.png" alt="Matt Adelmann">
+            <div class="cp-card-grad" style="background: linear-gradient(145deg, #003828, #8de0a0)"></div>
+          </div>
+          <div class="cp-card-body">
+            <p class="cp-card-name">Matt Adelmann</p>
+            <p class="cp-card-role">Former VP, The Genesis Company</p>
+            <div class="cp-card-tags">
+              <span class="cp-tag">Retail</span>
+              <span class="cp-tag">$500M at Target</span>
+            </div>
+            <p class="cp-card-bio">Matt is the guy you want in your corner when you're going into retail. He spent years at Target managing $500M in food & beverage, then led Midwest sales at Golden West Food Group. With 20+ years in the industry, he's helped scale brands across Target, Walmart, and Amazon — and knows exactly what buyers want to see.</p>
+            <div class="cp-card-footer">
+              <img src="assets/logo-genesis.webp" alt="The Genesis Company" class="cp-card-logo">
+              <a href="https://www.linkedin.com/in/matt-adelmann/" target="_blank" rel="noopener" class="cp-linkedin">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+                LinkedIn
+              </a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Quote -->
+  <section class="coaches-quote">
+    <div class="coaches-quote-inner">
+      <span class="coaches-quote-mark">"</span>
+      <p class="coaches-quote-text">It's not just about learning — it's about sharing the journey with people who understand the grind and what it takes to succeed. With CPG Fast Track, you're scaling and thriving with a team that truly has your back.</p>
+      <p class="coaches-quote-attr">— CPG FastTrack Member</p>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="coaches-cta">
+    <h2>Work with people who get it.</h2>
+    <p>Apply to CPG FastTrack and get matched with a coach who's built what you're building.</p>
+    <a href="https://wsrwt15qmdi.typeform.com/to/vTO91wSu" class="btn btn-lime btn-lg" target="_blank" rel="noopener">Apply Now →</a>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-logo">
+          <img src="assets/cpgft-logo.svg" alt="CPG FastTrack">
+        </div>
+        <div class="footer-links">
+          <a href="newsletter.html">Newsletter</a>
+          <a href="terms-of-service.html">Terms of Service</a>
+          <a href="privacy-policy.html">Privacy Policy</a>
+        </div>
+      </div>
+      <div class="footer-bottom">© 2026 CPG FastTrack. All rights reserved.</div>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('nav-toggle').addEventListener('click', () =>
+      document.getElementById('nav-links').classList.toggle('open'));
+  </script>
+  <script async data-uid="e57afaa1ac" src="https://cpg-fasttrack.kit.com/e57afaa1ac/index.js"></script>
+</body>
+</html>
