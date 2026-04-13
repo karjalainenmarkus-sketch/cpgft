@@ -1,0 +1,703 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="canonical" href="https://cpgfasttrack.com/nyc-dinners">
+  <meta name="description" content="CPG FastTrack NYC Dinner Series — a curated dinner for CPG founders, moderated by Jason Feifer and Lisa Barnett. Apply for a seat at the table.">
+  <meta property="og:title" content="NYC Dinner Series — CPG FastTrack">
+  <meta property="og:description" content="A highly curated dinner series for CPG founders in New York City, moderated by Jason Feifer and Lisa Barnett. Small group. Real conversations. Apply for a seat.">
+  <meta property="og:url" content="https://cpgfasttrack.com/nyc-dinners">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://cpgfasttrack.com/assets/og-image.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="NYC Dinner Series — CPG FastTrack">
+  <meta name="twitter:description" content="A highly curated dinner series for CPG founders in New York City. Apply for a seat.">
+  <meta name="twitter:image" content="https://cpgfasttrack.com/assets/og-image.png">
+  <title>NYC Dinner Series — CPG FastTrack</title>
+  <link rel="icon" href="assets/favicon-cpgft.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@700;800&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/style.css">
+  <style>
+
+    /* ── Hero ── */
+    .din-hero {
+      background: #004534;
+      padding: 96px 24px 88px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .din-hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 70% 50% at 50% 110%, rgba(212,255,98,0.13) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .din-hero-inner { position: relative; max-width: 780px; margin: 0 auto; }
+    .din-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--lime);
+      background: rgba(212,255,98,0.1);
+      border: 1px solid rgba(212,255,98,0.22);
+      padding: 6px 16px;
+      border-radius: 100px;
+      margin-bottom: 28px;
+    }
+    .din-eyebrow-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--lime);
+      animation: pulse 1.8s ease-in-out infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); opacity: 1; }
+      50% { transform: scale(1.4); opacity: 0.6; }
+    }
+    .din-hero h1 {
+      font-family: 'Outfit', sans-serif;
+      font-size: clamp(2.6rem, 5.5vw, 4.8rem);
+      color: #fff;
+      line-height: 1.02;
+      margin-bottom: 24px;
+    }
+    .din-hero h1 em { font-style: normal; color: var(--lime); }
+    .din-hero-sub {
+      font-size: clamp(1rem, 2vw, 1.15rem);
+      color: rgba(255,255,255,0.62);
+      line-height: 1.75;
+      max-width: 580px;
+      margin: 0 auto 48px;
+    }
+
+    /* Host cards in hero */
+    .din-hosts-row {
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+      margin-bottom: 44px;
+      flex-wrap: wrap;
+    }
+    .din-host-card {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 100px;
+      padding: 10px 20px 10px 10px;
+    }
+    .din-host-photo {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      object-fit: cover;
+      object-position: top;
+      flex-shrink: 0;
+      border: 2px solid rgba(212,255,98,0.3);
+    }
+    .din-host-info { text-align: left; }
+    .din-host-name {
+      font-family: 'Outfit', sans-serif;
+      font-size: 14px;
+      font-weight: 700;
+      color: #fff;
+      line-height: 1.2;
+    }
+    .din-host-role {
+      font-size: 11px;
+      color: rgba(255,255,255,0.45);
+      line-height: 1.3;
+    }
+
+    .din-hero-cta { margin-bottom: 16px; }
+    .din-scarcity {
+      font-size: 12px;
+      color: rgba(255,255,255,0.35);
+      letter-spacing: 0.01em;
+    }
+
+    /* ── About ── */
+    .din-about {
+      background: var(--cream);
+      padding: 88px 24px;
+    }
+    .din-about-inner {
+      max-width: 1060px;
+      margin: 0 auto;
+    }
+    .din-about-header {
+      text-align: center;
+      max-width: 640px;
+      margin: 0 auto 64px;
+    }
+    .din-about-header h2 {
+      font-family: 'Outfit', sans-serif;
+      font-size: clamp(1.8rem, 3vw, 2.6rem);
+      color: #004534;
+      margin-bottom: 16px;
+    }
+    .din-about-header p {
+      font-size: 16px;
+      color: rgba(0,69,52,0.65);
+      line-height: 1.75;
+    }
+    .din-pillars {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+    .din-pillar {
+      background: #fff;
+      border-radius: 20px;
+      padding: 36px 32px;
+      box-shadow: 0 4px 20px rgba(0,69,52,0.07);
+    }
+    .din-pillar-icon {
+      font-size: 28px;
+      margin-bottom: 16px;
+      display: block;
+    }
+    .din-pillar h3 {
+      font-family: 'Outfit', sans-serif;
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: #004534;
+      margin-bottom: 10px;
+    }
+    .din-pillar p {
+      font-size: 14px;
+      color: rgba(0,69,52,0.6);
+      line-height: 1.65;
+    }
+
+    /* ── Dates ── */
+    .din-dates {
+      padding: 88px 24px;
+      background: #fff;
+    }
+    .din-dates-inner {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    .din-dates-header {
+      text-align: center;
+      margin-bottom: 48px;
+    }
+    .din-dates-header h2 {
+      font-family: 'Outfit', sans-serif;
+      font-size: clamp(1.8rem, 3vw, 2.6rem);
+      color: #004534;
+      margin-bottom: 10px;
+    }
+    .din-dates-header p {
+      font-size: 15px;
+      color: rgba(0,69,52,0.5);
+    }
+    .din-dates-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+    }
+    .din-date-card {
+      border-radius: 20px;
+      padding: 36px;
+      border: 1px solid rgba(0,69,52,0.1);
+      position: relative;
+      overflow: hidden;
+    }
+    .din-date-card.active {
+      background: #004534;
+      border-color: transparent;
+    }
+    .din-date-card.locked {
+      background: #fff;
+    }
+    .din-date-num {
+      font-family: 'Outfit', sans-serif;
+      font-size: 3.6rem;
+      font-weight: 800;
+      line-height: 1;
+      margin-bottom: 4px;
+    }
+    .din-date-card.active .din-date-num { color: var(--lime); }
+    .din-date-card.locked .din-date-num { color: rgba(0,69,52,0.15); }
+    .din-date-month {
+      font-family: 'Outfit', sans-serif;
+      font-size: 1rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+    }
+    .din-date-card.active .din-date-month { color: rgba(255,255,255,0.6); }
+    .din-date-card.locked .din-date-month { color: rgba(0,69,52,0.3); }
+    .din-date-location {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 13px;
+      font-weight: 600;
+      margin-bottom: 20px;
+    }
+    .din-date-card.active .din-date-location { color: rgba(255,255,255,0.7); }
+    .din-date-card.locked .din-date-location { color: rgba(0,69,52,0.3); }
+    .din-date-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 5px 12px;
+      border-radius: 100px;
+      margin-bottom: 24px;
+    }
+    .din-date-card.active .din-date-badge {
+      background: rgba(212,255,98,0.15);
+      color: var(--lime);
+      border: 1px solid rgba(212,255,98,0.25);
+    }
+    .din-date-card.locked .din-date-badge {
+      background: rgba(0,69,52,0.06);
+      color: rgba(0,69,52,0.35);
+    }
+    .din-date-desc {
+      font-size: 14px;
+      line-height: 1.65;
+      margin-bottom: 28px;
+    }
+    .din-date-card.active .din-date-desc { color: rgba(255,255,255,0.6); }
+    .din-date-card.locked .din-date-desc { color: rgba(0,69,52,0.35); }
+
+    /* ── Hosts ── */
+    .din-hosts {
+      background: #004534;
+      padding: 88px 24px;
+    }
+    .din-hosts-inner {
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+    .din-hosts-header {
+      text-align: center;
+      margin-bottom: 56px;
+    }
+    .din-hosts-header h2 {
+      font-family: 'Outfit', sans-serif;
+      font-size: clamp(1.8rem, 3vw, 2.6rem);
+      color: #fff;
+      margin-bottom: 10px;
+    }
+    .din-hosts-header p {
+      font-size: 15px;
+      color: rgba(255,255,255,0.45);
+    }
+    .din-hosts-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+    }
+    .din-host-full {
+      background: rgba(255,255,255,0.05);
+      border-radius: 20px;
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,0.08);
+      display: flex;
+      flex-direction: column;
+    }
+    .din-host-photo-wrap {
+      aspect-ratio: 4/5;
+      overflow: hidden;
+      position: relative;
+    }
+    .din-host-photo-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: top;
+      display: block;
+      filter: grayscale(15%);
+      transition: transform 0.5s var(--ease), filter 0.4s ease;
+    }
+    .din-host-full:hover .din-host-photo-wrap img {
+      transform: scale(1.03);
+      filter: grayscale(0%);
+    }
+    .din-host-body {
+      padding: 28px 28px 32px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+    .din-host-body-name {
+      font-family: 'Outfit', sans-serif;
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 4px;
+    }
+    .din-host-body-role {
+      font-size: 13px;
+      color: rgba(255,255,255,0.45);
+      margin-bottom: 14px;
+      line-height: 1.4;
+    }
+    .din-host-body-bio {
+      font-size: 14px;
+      color: rgba(255,255,255,0.55);
+      line-height: 1.65;
+      flex: 1;
+      margin-bottom: 20px;
+    }
+    .din-host-linkedin {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 12px;
+      font-weight: 600;
+      color: rgba(255,255,255,0.35);
+      text-decoration: none;
+      transition: color 0.15s;
+      margin-top: auto;
+    }
+    .din-host-linkedin:hover { color: var(--lime); }
+
+    /* ── Partners ── */
+    .din-partners {
+      background: var(--cream);
+      padding: 80px 24px;
+    }
+    .din-partners-inner {
+      max-width: 860px;
+      margin: 0 auto;
+      text-align: center;
+    }
+    .din-partners h2 {
+      font-family: 'Outfit', sans-serif;
+      font-size: clamp(1.6rem, 2.5vw, 2rem);
+      color: #004534;
+      margin-bottom: 10px;
+    }
+    .din-partners-sub {
+      font-size: 14px;
+      color: rgba(0,69,52,0.45);
+      margin-bottom: 40px;
+    }
+    .din-partners-row {
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+    .din-partner-placeholder {
+      width: 160px;
+      height: 64px;
+      border: 2px dashed rgba(0,69,52,0.15);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: rgba(0,69,52,0.25);
+    }
+
+    /* ── CTA ── */
+    .din-cta {
+      background: #004534;
+      padding: 88px 24px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .din-cta::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 60% 50% at 50% 0%, rgba(212,255,98,0.1) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .din-cta-inner { position: relative; max-width: 600px; margin: 0 auto; }
+    .din-cta h2 {
+      font-family: 'Outfit', sans-serif;
+      font-size: clamp(2rem, 4vw, 3rem);
+      color: #fff;
+      margin-bottom: 16px;
+    }
+    .din-cta p {
+      font-size: 16px;
+      color: rgba(255,255,255,0.55);
+      line-height: 1.7;
+      margin-bottom: 36px;
+    }
+    .din-cta-note {
+      margin-top: 16px;
+      font-size: 12px;
+      color: rgba(255,255,255,0.3);
+    }
+
+    /* ── Responsive ── */
+    @media (max-width: 720px) {
+      .din-pillars { grid-template-columns: 1fr; }
+      .din-dates-grid { grid-template-columns: 1fr; }
+      .din-hosts-grid { grid-template-columns: 1fr; }
+      .din-hosts-row { flex-direction: column; align-items: center; }
+    }
+    @media (max-width: 480px) {
+      .din-date-card { padding: 28px 24px; }
+    }
+  </style>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"CPG FastTrack","url":"https://cpgfasttrack.com","logo":"https://cpgfasttrack.com/assets/cpgft-logo.svg","description":"CPG FastTrack is a growth platform and community for CPG founders — with expert coaching, peer accountability, and a network of operators who have built real consumer brands.","sameAs":["https://www.linkedin.com/company/cpg-fasttrack"]}</script>
+  <!-- Meta Pixel -->
+  <script>
+  !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+  n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+  n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+  t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+  document,'script','https://connect.facebook.net/en_US/fbevents.js');
+  fbq('init','24452779434354074');
+  fbq('track','PageView');
+  </script>
+  <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=24452779434354074&ev=PageView&noscript=1"/></noscript>
+  <!-- GA4 -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-CQ71WHJSFG"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-CQ71WHJSFG');
+  </script>
+</head>
+<body>
+
+  <nav class="nav">
+    <div class="container">
+      <a href="index.html" class="nav-logo">
+        <img src="assets/cpgft-logo.svg" alt="CPG FastTrack">
+      </a>
+      <ul class="nav-links" id="nav-links">
+        <li><a href="index.html">For Founders</a></li>
+        <li><a href="cpg-professionals.html">For Professionals <span class="nav-badge">New</span></a></li>
+        <li><a href="newsletter.html">Newsletter</a></li>
+        <li><a href="events.html">Events</a></li>
+        <li><a href="nyc-dinners.html" class="active">NYC Dinners</a></li>
+        <li><a href="coaches.html">Coaches</a></li>
+      </ul>
+      <a href="https://forms.gle/EHRJj2su575oy4qM6" class="btn btn-lime nav-cta" target="_blank" rel="noopener">Apply for a Seat</a>
+      <button class="nav-toggle" id="nav-toggle" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section class="din-hero">
+    <div class="din-hero-inner">
+      <span class="din-eyebrow"><span class="din-eyebrow-dot"></span>NYC Dinner Series</span>
+      <h1>The dinner table where<br><em>CPG gets built.</em></h1>
+      <p class="din-hero-sub">A highly curated dinner series in New York City for CPG founders. Small group. Real conversations. Top-notch bites — and the people worth knowing in the room.</p>
+
+      <div class="din-hosts-row">
+        <div class="din-host-card">
+          <img src="assets/coaches/Jason.png" alt="Jason Feifer" class="din-host-photo">
+          <div class="din-host-info">
+            <div class="din-host-name">Jason Feifer</div>
+            <div class="din-host-role">Editor in Chief, Entrepreneur</div>
+          </div>
+        </div>
+        <div class="din-host-card">
+          <img src="assets/coaches/Lisa.png" alt="Lisa Barnett" class="din-host-photo">
+          <div class="din-host-info">
+            <div class="din-host-name">Lisa Barnett</div>
+            <div class="din-host-role">Co-Founder, Little Spoon</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="din-hero-cta">
+        <a href="https://forms.gle/EHRJj2su575oy4qM6" class="btn btn-lime btn-lg" target="_blank" rel="noopener">Apply for a Seat →</a>
+      </div>
+      <p class="din-scarcity">Seats are limited and curated — we'll confirm your spot individually.</p>
+    </div>
+  </section>
+
+  <!-- About -->
+  <section class="din-about">
+    <div class="din-about-inner">
+      <div class="din-about-header">
+        <h2>Not a networking event. A dinner.</h2>
+        <p>We're intentionally keeping this group small to ensure the right energy, depth of conversation, and quality of connection. Think: meet and bond with fellow CPG founders, have some meaningful conversations, and some top-notch bites.</p>
+      </div>
+      <div class="din-pillars">
+        <div class="din-pillar">
+          <span class="din-pillar-icon">🍽</span>
+          <h3>Curated Guest List</h3>
+          <p>A small, hand-picked group of CPG founders at similar stages. Every seat is confirmed — no open registration, no randoms.</p>
+        </div>
+        <div class="din-pillar">
+          <span class="din-pillar-icon">💬</span>
+          <h3>Real Conversations</h3>
+          <p>Moderated by Jason Feifer and Lisa Barnett. Not a panel. Not a keynote. A real dinner with depth, candor, and people who get it.</p>
+        </div>
+        <div class="din-pillar">
+          <span class="din-pillar-icon">🌆</span>
+          <h3>New York City</h3>
+          <p>Four dates across the city. Marquee venues. The inaugural dinner is May 14 — three more dates coming soon.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Dates -->
+  <section class="din-dates">
+    <div class="din-dates-inner">
+      <div class="din-dates-header">
+        <h2>Upcoming Dinners</h2>
+        <p>Four dinners across New York City in 2026. More dates confirmed soon.</p>
+      </div>
+      <div class="din-dates-grid">
+
+        <!-- Date 1 — active -->
+        <div class="din-date-card active">
+          <div class="din-date-num">14</div>
+          <div class="din-date-month">May 2026</div>
+          <div class="din-date-location">📍 New York City</div>
+          <div class="din-date-badge">
+            <span style="width:6px;height:6px;border-radius:50%;background:var(--lime);display:inline-block;animation:pulse 1.8s ease-in-out infinite"></span>
+            Accepting Applications
+          </div>
+          <p class="din-date-desc">The inaugural CPG FastTrack NYC dinner. Apply now — seats are confirmed individually and we'll be in touch.</p>
+          <a href="https://forms.gle/EHRJj2su575oy4qM6" class="btn btn-lime" target="_blank" rel="noopener">Apply for a Seat →</a>
+        </div>
+
+        <!-- Dates 2–4 — locked -->
+        <div class="din-date-card locked">
+          <div class="din-date-num">TBD</div>
+          <div class="din-date-month">Dinner 2 · 2026</div>
+          <div class="din-date-location">📍 New York City</div>
+          <div class="din-date-badge">Coming Soon</div>
+          <p class="din-date-desc">Date and venue to be announced. Apply now to be considered for all upcoming dinners.</p>
+        </div>
+
+        <div class="din-date-card locked">
+          <div class="din-date-num">TBD</div>
+          <div class="din-date-month">Dinner 3 · 2026</div>
+          <div class="din-date-location">📍 New York City</div>
+          <div class="din-date-badge">Coming Soon</div>
+          <p class="din-date-desc">Date and venue to be announced. Apply now to be considered for all upcoming dinners.</p>
+        </div>
+
+        <div class="din-date-card locked">
+          <div class="din-date-num">TBD</div>
+          <div class="din-date-month">Dinner 4 · 2026</div>
+          <div class="din-date-location">📍 New York City</div>
+          <div class="din-date-badge">Coming Soon</div>
+          <p class="din-date-desc">Date and venue to be announced. Apply now to be considered for all upcoming dinners.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Hosts -->
+  <section class="din-hosts">
+    <div class="din-hosts-inner">
+      <div class="din-hosts-header">
+        <h2>Your hosts</h2>
+        <p>Two CPGFT co-founders who've built, scaled, and reported on the world's best consumer brands.</p>
+      </div>
+      <div class="din-hosts-grid">
+
+        <div class="din-host-full">
+          <div class="din-host-photo-wrap">
+            <img src="assets/coaches/Jason.png" alt="Jason Feifer">
+          </div>
+          <div class="din-host-body">
+            <p class="din-host-body-name">Jason Feifer</p>
+            <p class="din-host-body-role">Editor in Chief, Entrepreneur Magazine · Co-Founder, CPG FastTrack</p>
+            <p class="din-host-body-bio">Jason has spent nearly a decade at Entrepreneur studying and writing about the world's most successful founders. He's a keynote speaker, author of Build For Tomorrow, and host of the podcasts Help Wanted and Problem Solvers. He reaches 250K+ followers on LinkedIn and has worked with Google, Microsoft, Pfizer, and Alibaba.</p>
+            <a href="https://www.linkedin.com/in/jasonfeifer/" target="_blank" rel="noopener" class="din-host-linkedin">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+              LinkedIn
+            </a>
+          </div>
+        </div>
+
+        <div class="din-host-full">
+          <div class="din-host-photo-wrap">
+            <img src="assets/coaches/Lisa.png" alt="Lisa Barnett">
+          </div>
+          <div class="din-host-body">
+            <p class="din-host-body-name">Lisa Barnett</p>
+            <p class="din-host-body-role">Co-Founder, Little Spoon · Co-Founder, CPG FastTrack</p>
+            <p class="din-host-body-bio">Lisa co-founded Little Spoon in 2017 and scaled it into the leading direct-to-consumer children's food and nutrition brand. Before that she spent 7 years as an operator and investor at top consumer brands, including as a Partner at Sherpa Foundry and running multichannel growth at Estee Lauder. Forbes 30 Under 30 · Inc 5000 · Time's Best Invention of the Year.</p>
+            <a href="https://www.linkedin.com/in/lisadbarnett/" target="_blank" rel="noopener" class="din-host-linkedin">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+              LinkedIn
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Partners -->
+  <section class="din-partners">
+    <div class="din-partners-inner">
+      <h2>Event Partners</h2>
+      <p class="din-partners-sub">Partners to be announced soon.</p>
+      <div class="din-partners-row">
+        <div class="din-partner-placeholder">Coming Soon</div>
+        <div class="din-partner-placeholder">Coming Soon</div>
+        <div class="din-partner-placeholder">Coming Soon</div>
+        <div class="din-partner-placeholder">Coming Soon</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="din-cta">
+    <div class="din-cta-inner">
+      <h2>Apply for a seat at the table.</h2>
+      <p>The inaugural dinner is May 14 in New York City. Fill out the form and we'll reach back out if your seat is confirmed.</p>
+      <a href="https://forms.gle/EHRJj2su575oy4qM6" class="btn btn-lime btn-lg" target="_blank" rel="noopener">Apply Now →</a>
+      <p class="din-cta-note">Seats are limited. Applications reviewed on a rolling basis.</p>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-logo">
+          <img src="assets/cpgft-logo.svg" alt="CPG FastTrack">
+        </div>
+        <div class="footer-links">
+          <a href="newsletter.html">Newsletter</a>
+          <a href="terms-of-service.html">Terms of Service</a>
+          <a href="privacy-policy.html">Privacy Policy</a>
+        </div>
+      </div>
+      <div class="footer-bottom">© 2026 CPG FastTrack. All rights reserved.</div>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('nav-toggle').addEventListener('click', () =>
+      document.getElementById('nav-links').classList.toggle('open'));
+  </script>
+  <script async data-uid="e57afaa1ac" src="https://cpg-fasttrack.kit.com/e57afaa1ac/index.js"></script>
+</body>
+</html>
