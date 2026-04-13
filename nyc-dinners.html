@@ -120,6 +120,52 @@
       line-height: 1.3;
     }
 
+    .din-hosts-divider {
+      width: 1px;
+      height: 44px;
+      background: rgba(255,255,255,0.15);
+      align-self: center;
+      flex-shrink: 0;
+    }
+    .din-sponsor-card {
+      border-color: rgba(212,255,98,0.2);
+      background: rgba(212,255,98,0.06);
+      text-decoration: none;
+      transition: background 0.2s;
+    }
+    .din-sponsor-card:hover { background: rgba(212,255,98,0.12); }
+    .din-sponsor-avatar {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.15);
+      color: rgba(255,255,255,0.6);
+      font-family: 'Outfit', sans-serif;
+      font-size: 14px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      border: 2px solid rgba(212,255,98,0.3);
+    }
+    .din-sponsor-label {
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--lime);
+      margin-bottom: 2px;
+    }
+    .din-sponsor-logo {
+      height: 14px;
+      width: auto;
+      opacity: 0.55;
+      margin-top: 5px;
+      display: block;
+      filter: brightness(0) invert(1);
+    }
+
     .din-hero-cta { margin-bottom: 16px; }
     .din-scarcity {
       font-size: 12px;
@@ -523,6 +569,16 @@
             <div class="din-host-role">Co-Founder, Little Spoon</div>
           </div>
         </div>
+        <div class="din-hosts-divider"></div>
+        <a href="https://www.linkedin.com/in/sarahfchambless/" target="_blank" rel="noopener" class="din-host-card din-sponsor-card">
+          <div class="din-sponsor-avatar">SC</div>
+          <div class="din-host-info">
+            <div class="din-sponsor-label">Presenting Partner</div>
+            <div class="din-host-name">Sarah Fergusson Chambless</div>
+            <div class="din-host-role">Partner, DLA Piper</div>
+            <img src="assets/DLA_Piper_logo.svg" alt="DLA Piper" class="din-sponsor-logo">
+          </div>
+        </a>
       </div>
 
       <div class="din-hero-cta">
