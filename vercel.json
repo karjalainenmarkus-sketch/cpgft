@@ -14,6 +14,8 @@
     { "source": "/author/(.*)", "destination": "/", "permanent": true },
     { "source": "/category/(.*)", "destination": "/", "permanent": true },
     { "source": "/tag/(.*)", "destination": "/", "permanent": true },
-    { "source": "/page/(.*)", "destination": "/", "permanent": true }
+    { "source": "/page/(.*)", "destination": "/", "permanent": true },
+    { "source": "/partners", "destination": "/", "permanent": true },
+    { "source": "/partners/(.*)", "destination": "/", "permanent": true }
   ]
 }
