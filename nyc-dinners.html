@@ -484,36 +484,30 @@
 
     /* ── CTA ── */
     .din-cta {
-      background: #004534;
+      background: var(--cream);
       padding: 88px 24px;
       text-align: center;
       position: relative;
       overflow: hidden;
     }
-    .din-cta::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: radial-gradient(ellipse 60% 50% at 50% 0%, rgba(212,255,98,0.1) 0%, transparent 70%);
-      pointer-events: none;
-    }
+    .din-cta::before { display: none; }
     .din-cta-inner { position: relative; max-width: 600px; margin: 0 auto; }
     .din-cta h2 {
       font-family: 'Outfit', sans-serif;
       font-size: clamp(2rem, 4vw, 3rem);
-      color: #fff;
+      color: #004534;
       margin-bottom: 16px;
     }
     .din-cta p {
       font-size: 16px;
-      color: rgba(255,255,255,0.55);
+      color: rgba(0,69,52,0.6);
       line-height: 1.7;
       margin-bottom: 36px;
     }
     .din-cta-note {
       margin-top: 16px;
       font-size: 12px;
-      color: rgba(255,255,255,0.3);
+      color: rgba(0,69,52,0.35);
     }
 
     /* ── Presenting partner horizontal card ── */
@@ -654,7 +648,7 @@
         <div class="din-hosts-divider"></div>
         <div class="din-partner-pill-card">
           <img src="assets/DLA_Piper_logo.svg" alt="DLA Piper" class="din-partner-pill-logo">
-          <div class="din-sponsor-label">Presenting Partner</div>
+          <div class="din-sponsor-label">Partner</div>
         </div>
       </div>
 
@@ -761,7 +755,7 @@
 
       </div>
 
-      <!-- Presenting Partner -->
+      <!-- Partner -->
       <div class="din-partner-host">
         <div class="din-partner-host-photo-wrap">
           <img src="assets/coaches/Sarah.png" alt="Sarah Fergusson Chambless">
@@ -769,7 +763,7 @@
         <div class="din-partner-host-body">
           <div class="din-partner-host-badge">
             <img src="assets/DLA_Piper_logo.svg" alt="DLA Piper" class="din-partner-host-logo">
-            <span>Presenting Partner</span>
+            <span>Partner</span>
           </div>
           <p class="din-host-body-name" style="color:#fff; margin-top: 12px;">Sarah Fergusson Chambless</p>
           <p class="din-host-body-role">Partner, DLA Piper</p>
