@@ -16,6 +16,13 @@
     { "source": "/tag/(.*)", "destination": "/", "permanent": true },
     { "source": "/page/(.*)", "destination": "/", "permanent": true },
     { "source": "/partners", "destination": "/", "permanent": true },
-    { "source": "/partners/(.*)", "destination": "/", "permanent": true }
+    { "source": "/partners/(.*)", "destination": "/", "permanent": true },
+    { "source": "/membership", "destination": "/cpg-professionals", "permanent": true },
+    { "source": "/membership/(.*)", "destination": "/cpg-professionals", "permanent": true },
+    { "source": "/pricing", "destination": "/cpg-professionals", "permanent": true },
+    { "source": "/pricing/(.*)", "destination": "/cpg-professionals", "permanent": true },
+    { "source": "/thank-you", "destination": "/", "permanent": true },
+    { "source": "/thank-you/(.*)", "destination": "/", "permanent": true },
+    { "source": "/reset-password", "destination": "/", "permanent": true }
   ]
 }
