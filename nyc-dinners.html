@@ -77,7 +77,7 @@
       color: rgba(255,255,255,0.62);
       line-height: 1.75;
       max-width: 580px;
-      margin: 0 auto 48px;
+      margin: 0 auto 20px;
     }
 
     /* Host cards in hero */
@@ -85,7 +85,7 @@
       display: flex;
       justify-content: center;
       gap: 16px;
-      margin-bottom: 44px;
+      margin-top: 44px;
       flex-wrap: wrap;
     }
     .din-host-card {
@@ -166,6 +166,11 @@
       filter: brightness(0) invert(1);
     }
 
+    .din-partners-group {
+      display: flex;
+      gap: 16px;
+      align-items: center;
+    }
     .din-partner-pill-card {
       display: flex;
       flex-direction: column;
@@ -190,6 +195,82 @@
       font-size: 12px;
       color: rgba(255,255,255,0.35);
       letter-spacing: 0.01em;
+    }
+
+    /* ── Next event nudge ── */
+    .din-next-event {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 0;
+      margin-bottom: 36px;
+      font-size: 13px;
+      color: rgba(255,255,255,0.45);
+    }
+    .din-next-event strong { color: rgba(255,255,255,0.8); font-weight: 600; }
+    .din-next-event-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--lime);
+      flex-shrink: 0;
+      animation: pulse 1.8s ease-in-out infinite;
+    }
+
+    /* ── Recap photo strip (full-bleed, below hero content) ── */
+    .din-recap {
+      margin-top: 56px;
+    }
+    .din-recap-label {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.28);
+      margin-bottom: 16px;
+      text-align: center;
+    }
+    .din-recap-strip {
+      display: flex;
+      gap: 4px;
+      /* break out of the padded inner container to go full-bleed */
+      margin-left: calc(-50vw + 50%);
+      margin-right: calc(-50vw + 50%);
+      width: 100vw;
+    }
+    .din-recap-photo {
+      flex: 1;
+      height: 220px;
+      overflow: hidden;
+      position: relative;
+      background: rgba(255,255,255,0.06);
+    }
+    .din-recap-photo:first-child { border-radius: 0; }
+    .din-recap-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.5s ease;
+    }
+    .din-recap-photo:hover img { transform: scale(1.05); }
+    .din-recap-photo-placeholder {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.15);
+    }
+    @media (max-width: 600px) {
+      .din-recap-strip { height: auto; gap: 3px; }
+      .din-recap-photo { height: 110px; }
     }
 
     /* ── About ── */
@@ -248,16 +329,11 @@
 
     /* ── Dates ── */
     .din-dates {
-      padding: 88px 24px;
       background: #fff;
-    }
-    .din-dates-inner {
-      max-width: 900px;
-      margin: 0 auto;
     }
     .din-dates-header {
       text-align: center;
-      margin-bottom: 48px;
+      padding: 80px 24px 56px;
     }
     .din-dates-header h2 {
       font-family: 'Outfit', sans-serif;
@@ -269,55 +345,53 @@
       font-size: 15px;
       color: rgba(0,69,52,0.5);
     }
-    .din-dates-grid {
+
+    /* Event cards — ShelfMade-style horizontal stack */
+    .din-event-card {
       display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 20px;
-    }
-    .din-date-card {
-      border-radius: 20px;
-      padding: 36px;
-      border: 1px solid rgba(0,69,52,0.1);
-      position: relative;
+      grid-template-columns: 1fr 400px;
+      min-height: 300px;
+      border-top: 1px solid rgba(0,69,52,0.08);
       overflow: hidden;
+      transition: opacity 0.2s;
     }
-    .din-date-card.active {
-      background: #004534;
-      border-color: transparent;
+    .din-event-card:last-child { border-bottom: 1px solid rgba(0,69,52,0.08); }
+    .din-event-left {
+      padding: 52px 56px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
     }
-    .din-date-card.locked {
-      background: #fff;
+    .din-event-date-row {
+      display: flex;
+      align-items: baseline;
+      gap: 14px;
+      margin-bottom: 20px;
     }
-    .din-date-num {
+    .din-event-day {
       font-family: 'Outfit', sans-serif;
-      font-size: 3.6rem;
+      font-size: clamp(3.5rem, 6vw, 5rem);
       font-weight: 800;
       line-height: 1;
-      margin-bottom: 4px;
     }
-    .din-date-card.active .din-date-num { color: var(--lime); }
-    .din-date-card.locked .din-date-num { color: rgba(0,69,52,0.15); }
-    .din-date-month {
-      font-family: 'Outfit', sans-serif;
-      font-size: 1rem;
-      font-weight: 700;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      margin-bottom: 20px;
-    }
-    .din-date-card.active .din-date-month { color: rgba(255,255,255,0.6); }
-    .din-date-card.locked .din-date-month { color: rgba(0,69,52,0.3); }
-    .din-date-location {
-      display: flex;
-      align-items: center;
-      gap: 6px;
+    .din-event-monthyear {
       font-size: 13px;
-      font-weight: 600;
-      margin-bottom: 20px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
     }
-    .din-date-card.active .din-date-location { color: rgba(255,255,255,0.7); }
-    .din-date-card.locked .din-date-location { color: rgba(0,69,52,0.3); }
-    .din-date-badge {
+    .din-event-city {
+      font-family: 'Outfit', sans-serif;
+      font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+      font-weight: 800;
+      line-height: 1.05;
+      margin-bottom: 8px;
+    }
+    .din-event-subtitle {
+      font-size: 15px;
+      margin-bottom: 28px;
+    }
+    .din-event-badge {
       display: inline-flex;
       align-items: center;
       gap: 6px;
@@ -327,24 +401,88 @@
       text-transform: uppercase;
       padding: 5px 12px;
       border-radius: 100px;
-      margin-bottom: 24px;
+      margin-bottom: 28px;
+      width: fit-content;
     }
-    .din-date-card.active .din-date-badge {
-      background: rgba(212,255,98,0.15);
+    .din-event-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 14px;
+      font-weight: 700;
+      text-decoration: none;
+      transition: gap 0.2s;
+    }
+    .din-event-cta:hover { gap: 10px; }
+
+    /* Photo side */
+    .din-event-photo {
+      overflow: hidden;
+      position: relative;
+    }
+    .din-event-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.5s ease;
+    }
+    .din-event-card:hover .din-event-photo img { transform: scale(1.04); }
+    .din-event-photo-placeholder {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    /* — Past (completed) */
+    .din-event-card--past { background: var(--cream); }
+    .din-event-card--past .din-event-day    { color: rgba(0,69,52,0.18); }
+    .din-event-card--past .din-event-monthyear { color: rgba(0,69,52,0.3); }
+    .din-event-card--past .din-event-city   { color: rgba(0,69,52,0.35); }
+    .din-event-card--past .din-event-subtitle { color: rgba(0,69,52,0.35); }
+    .din-event-card--past .din-event-badge  {
+      background: rgba(0,69,52,0.07);
+      color: rgba(0,69,52,0.45);
+    }
+    .din-event-card--past .din-event-photo-placeholder { color: rgba(0,69,52,0.15); background: rgba(0,69,52,0.04); }
+
+    /* — Active (open) */
+    .din-event-card--active { background: #004534; }
+    .din-event-card--active .din-event-day    { color: var(--lime); }
+    .din-event-card--active .din-event-monthyear { color: rgba(255,255,255,0.45); }
+    .din-event-card--active .din-event-city   { color: #fff; }
+    .din-event-card--active .din-event-subtitle { color: rgba(255,255,255,0.5); }
+    .din-event-card--active .din-event-badge  {
+      background: rgba(212,255,98,0.12);
       color: var(--lime);
       border: 1px solid rgba(212,255,98,0.25);
     }
-    .din-date-card.locked .din-date-badge {
-      background: rgba(0,69,52,0.06);
-      color: rgba(0,69,52,0.35);
+    .din-event-card--active .din-event-cta   { color: var(--lime); }
+    .din-event-card--active .din-event-photo-placeholder { color: rgba(255,255,255,0.15); background: rgba(255,255,255,0.04); }
+
+    /* — Locked (TBD) */
+    .din-event-card--locked { background: #fff; }
+    .din-event-card--locked .din-event-day    { color: rgba(0,69,52,0.1); }
+    .din-event-card--locked .din-event-monthyear { color: rgba(0,69,52,0.25); }
+    .din-event-card--locked .din-event-city   { color: rgba(0,69,52,0.25); }
+    .din-event-card--locked .din-event-subtitle { color: rgba(0,69,52,0.2); }
+    .din-event-card--locked .din-event-badge  {
+      background: rgba(0,69,52,0.05);
+      color: rgba(0,69,52,0.3);
     }
-    .din-date-desc {
-      font-size: 14px;
-      line-height: 1.65;
-      margin-bottom: 28px;
+    .din-event-card--locked .din-event-photo-placeholder { color: rgba(0,69,52,0.12); background: rgba(0,69,52,0.03); }
+
+    @media (max-width: 760px) {
+      .din-event-card { grid-template-columns: 1fr; }
+      .din-event-photo { height: 220px; }
+      .din-event-left { padding: 36px 28px; }
     }
-    .din-date-card.active .din-date-desc { color: rgba(255,255,255,0.6); }
-    .din-date-card.locked .din-date-desc { color: rgba(0,69,52,0.35); }
 
     /* ── Hosts ── */
     .din-hosts {
@@ -565,7 +703,13 @@
       .din-pillars { grid-template-columns: 1fr; }
       .din-dates-grid { grid-template-columns: 1fr; }
       .din-hosts-grid { grid-template-columns: 1fr; }
-      .din-hosts-row { flex-direction: column; align-items: center; }
+      .din-hosts-row { flex-direction: row; flex-wrap: wrap; align-items: stretch; justify-content: center; }
+      .din-hosts-divider { display: none; }
+      .din-host-card { flex: 1; min-width: 0; padding: 10px 12px 10px 10px; }
+      .din-host-name { font-size: 13px; }
+      .din-host-role { font-size: 10px; }
+      .din-partners-group { width: 100%; justify-content: center; }
+      .din-partner-pill-card { flex: 1; min-width: 0; }
       .din-partner-host { grid-template-columns: 1fr; }
       .din-partner-host-photo-wrap { min-height: 260px; }
       .din-partner-host-body { padding: 0 24px 28px; }
@@ -604,9 +748,9 @@
       </a>
       <ul class="nav-links" id="nav-links">
         <li><a href="/">For Founders</a></li>
-        <li><a href="/cpg-professionals.html">For Professionals <span class="nav-badge">New</span></a></li>
+        <li><a href="/cpg-professionals.html">For Professionals</a></li>
         <li><a href="/newsletter.html">Newsletter</a></li>
-        <li><a href="/events.html">Events</a></li>
+        <li><a href="/nyc-dinners.html">Dinner Series</a></li>
         <li><a href="/coaches.html">Coaches</a></li>
       </ul>
       <a href="https://forms.gle/EHRJj2su575oy4qM6" class="btn btn-lime nav-cta" target="_blank" rel="noopener">Apply for a Seat</a>
@@ -620,6 +764,16 @@
       <span class="din-eyebrow"><span class="din-eyebrow-dot"></span>NYC Dinner Series</span>
       <h1>The dinner table where<br><em>CPG gets built.</em></h1>
       <p class="din-hero-sub">A highly curated dinner series in New York City for CPG founders. Small group. Real conversations. Top-notch bites — and the people worth knowing in the room.</p>
+
+      <div class="din-next-event">
+        <span class="din-next-event-dot"></span>
+        Next dinner · <strong>June 30, New York City</strong> · Fancy Foods Special
+      </div>
+
+      <div class="din-hero-cta">
+        <a href="https://forms.gle/EHRJj2su575oy4qM6" class="btn btn-lime btn-lg" target="_blank" rel="noopener">Apply for a Seat →</a>
+      </div>
+      <p class="din-scarcity">Seats are limited and curated — we'll confirm your spot individually.</p>
 
       <div class="din-hosts-row">
         <div class="din-host-card">
@@ -637,72 +791,110 @@
           </div>
         </div>
         <div class="din-hosts-divider"></div>
-        <div class="din-partner-pill-card">
-          <span class="din-dla-wordmark">DLA Piper</span>
-          <div class="din-sponsor-label">Partner</div>
+        <div class="din-partners-group">
+          <div class="din-partner-pill-card">
+            <span class="din-dla-wordmark">DLA Piper</span>
+            <div class="din-sponsor-label">Partner</div>
+          </div>
+          <div class="din-partner-pill-card">
+            <span class="din-dla-wordmark">Punch Financial</span>
+            <div class="din-sponsor-label">Partner</div>
+          </div>
         </div>
       </div>
 
-      <div class="din-hero-cta">
-        <a href="https://forms.gle/EHRJj2su575oy4qM6" class="btn btn-lime btn-lg" target="_blank" rel="noopener">Apply for a Seat →</a>
-      </div>
-      <p class="din-scarcity">Seats are limited and curated — we'll confirm your spot individually.</p>
     </div>
+
+    <!-- Full-bleed photo strip from Dinner #1 -->
+    <div class="din-recap">
+      <div class="din-recap-strip">
+        <div class="din-recap-photo">
+          <img src="assets/event images/IMG_4227.jpg" alt="NYC Dinner May 2026">
+        </div>
+        <div class="din-recap-photo" style="flex:2">
+          <img src="assets/event images/IMG_4237.jpg" alt="NYC Dinner May 2026">
+        </div>
+        <div class="din-recap-photo">
+          <img src="assets/event images/IMG_4238.jpg" alt="NYC Dinner May 2026">
+        </div>
+        <div class="din-recap-photo">
+          <img src="assets/event images/IMG_9350.jpg" alt="NYC Dinner May 2026">
+        </div>
+      </div>
+    </div>
+
   </section>
 
   <!-- Dates -->
   <section class="din-dates">
-    <div class="din-dates-inner">
-      <div class="din-dates-header">
-        <h2>Upcoming Dinners</h2>
-        <p>Four dinners across New York City in 2026. More dates confirmed soon.</p>
-      </div>
-      <div class="din-dates-grid">
+    <div class="din-dates-header">
+      <h2>Upcoming Events</h2>
+    </div>
 
-        <!-- Date 1 — active -->
-        <div class="din-date-card active">
-          <div class="din-date-num">14</div>
-          <div class="din-date-month">May 2026</div>
-          <div class="din-date-location">📍 New York City</div>
-          <div class="din-date-location">🪑 10–15 seats only</div>
-          <div class="din-date-badge">
+    <!-- Dinner 1 — Completed -->
+    <div class="din-event-card din-event-card--past">
+      <div class="din-event-left">
+        <div>
+          <div class="din-event-date-row">
+            <span class="din-event-day">14</span>
+            <span class="din-event-monthyear">May 2026</span>
+          </div>
+          <div class="din-event-city">New York City</div>
+          <div class="din-event-subtitle">The Inaugural Dinner</div>
+        </div>
+        <div>
+          <div class="din-event-badge">✓ Completed</div>
+        </div>
+      </div>
+      <div class="din-event-photo">
+        <img src="assets/event images/May14.jpg" alt="NYC Dinner May 2026">
+      </div>
+    </div>
+
+    <!-- Dinner 2 — Active -->
+    <div class="din-event-card din-event-card--active">
+      <div class="din-event-left">
+        <div>
+          <div class="din-event-date-row">
+            <span class="din-event-day">30</span>
+            <span class="din-event-monthyear">June 2026</span>
+          </div>
+          <div class="din-event-city">New York City</div>
+          <div class="din-event-subtitle">Fancy Foods Special</div>
+        </div>
+        <div>
+          <div class="din-event-badge" style="display:flex; margin-bottom:20px;">
             <span style="width:6px;height:6px;border-radius:50%;background:var(--lime);display:inline-block;animation:pulse 1.8s ease-in-out infinite"></span>
             Accepting Applications
           </div>
-          <p class="din-date-desc">The inaugural CPG FastTrack NYC dinner. Apply now — seats are confirmed individually and we'll be in touch.</p>
           <a href="https://forms.gle/EHRJj2su575oy4qM6" class="btn btn-lime" target="_blank" rel="noopener">Apply for a Seat →</a>
         </div>
-
-        <!-- Dates 2–4 — locked -->
-        <div class="din-date-card locked">
-          <div class="din-date-num">TBD</div>
-          <div class="din-date-month">Dinner 2 · 2026</div>
-          <div class="din-date-location">📍 New York City</div>
-          <div class="din-date-location">🪑 10–15 seats only</div>
-          <div class="din-date-badge">Coming Soon</div>
-          <p class="din-date-desc">Date and venue to be announced. Apply now to be considered for all upcoming dinners.</p>
-        </div>
-
-        <div class="din-date-card locked">
-          <div class="din-date-num">TBD</div>
-          <div class="din-date-month">Dinner 3 · 2026</div>
-          <div class="din-date-location">📍 New York City</div>
-          <div class="din-date-location">🪑 10–15 seats only</div>
-          <div class="din-date-badge">Coming Soon</div>
-          <p class="din-date-desc">Date and venue to be announced. Apply now to be considered for all upcoming dinners.</p>
-        </div>
-
-        <div class="din-date-card locked">
-          <div class="din-date-num">TBD</div>
-          <div class="din-date-month">Dinner 4 · 2026</div>
-          <div class="din-date-location">📍 New York City</div>
-          <div class="din-date-location">🪑 10–15 seats only</div>
-          <div class="din-date-badge">Coming Soon</div>
-          <p class="din-date-desc">Date and venue to be announced. Apply now to be considered for all upcoming dinners.</p>
-        </div>
-
+      </div>
+      <div class="din-event-photo">
+        <img src="assets/event images/June30.jpg" alt="NYC Dinner June 2026">
       </div>
     </div>
+
+    <!-- Dinner 3 — Locked -->
+    <div class="din-event-card din-event-card--locked">
+      <div class="din-event-left">
+        <div>
+          <div class="din-event-date-row">
+            <span class="din-event-day">TBD</span>
+            <span class="din-event-monthyear">2026</span>
+          </div>
+          <div class="din-event-city">New York City</div>
+          <div class="din-event-subtitle">Dinner #3</div>
+        </div>
+        <div>
+          <div class="din-event-badge">Coming Soon</div>
+        </div>
+      </div>
+      <div class="din-event-photo">
+        <div class="din-event-photo-placeholder">Coming soon</div>
+      </div>
+    </div>
+
   </section>
 
   <!-- Hosts -->
@@ -773,7 +965,7 @@
   <section class="din-cta">
     <div class="din-cta-inner">
       <h2>Apply for a seat at the table.</h2>
-      <p>The inaugural dinner is May 14 in New York City. Fill out the form and we'll reach back out if your seat is confirmed.</p>
+      <p>Next up: June 30 in New York City — the Fancy Foods Special. Fill out the form and we'll reach back out if your seat is confirmed.</p>
       <a href="https://forms.gle/EHRJj2su575oy4qM6" class="btn btn-lime btn-lg" target="_blank" rel="noopener">Apply Now →</a>
       <p class="din-cta-note">Seats are limited. Applications reviewed on a rolling basis.</p>
     </div>
