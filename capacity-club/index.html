@@ -1,0 +1,1205 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Capacity Club — Build more capacity for the life you actually want.</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700;9..40,800;9..40,900&family=Caveat:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+<style>
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+html, body { margin: 0; padding: 0; }
+body {
+  background: #F5EEDF;
+  color: #1B1714;
+  font-family: 'DM Sans', system-ui, sans-serif;
+  font-size: 17px;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+#root { width: 100%; }
+.cc-v2 a { color: inherit; text-decoration: none; }
+.cc-v2 button { font-family: inherit; cursor: pointer; }
+
+/* ── Buttons ─────────────────────────────────────────────── */
+.v2-btn-primary {
+  display: inline-block;
+  transition: transform 0.22s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.2s ease !important;
+}
+.v2-btn-primary:hover {
+  transform: translateY(-3px) scale(1.02) !important;
+  box-shadow: 0 10px 28px rgba(27,23,20,0.22) !important;
+}
+.v2-btn-primary:active {
+  transform: translateY(-1px) scale(0.99) !important;
+  transition-duration: 0.08s !important;
+}
+
+.v2-btn-light {
+  display: inline-block;
+  transition: transform 0.22s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.2s ease, background-color 0.18s ease !important;
+}
+.v2-btn-light:hover {
+  transform: translateY(-3px) scale(1.02) !important;
+  box-shadow: 0 12px 36px rgba(245,238,223,0.35) !important;
+  background-color: #fffdf8 !important;
+}
+.v2-btn-light:active {
+  transform: translateY(-1px) scale(0.99) !important;
+  transition-duration: 0.08s !important;
+}
+
+.v2-btn-ghost {
+  position: relative;
+  overflow: hidden;
+}
+.v2-btn-ghost::after {
+  content: '';
+  position: absolute;
+  bottom: -1px; left: 0;
+  width: 0; height: 1.5px;
+  background: currentColor;
+  border-radius: 2px;
+  transition: width 0.26s cubic-bezier(0.4,0,0.2,1);
+}
+.v2-btn-ghost:hover::after { width: 100%; }
+.v2-btn-ghost .v2-arrow {
+  display: inline-block;
+  transition: transform 0.22s cubic-bezier(0.34,1.56,0.64,1);
+}
+.v2-btn-ghost:hover .v2-arrow { transform: translateX(4px); }
+
+/* ── Nav links ───────────────────────────────────────────── */
+.v2-nav-link {
+  position: relative;
+  transition: opacity 0.15s ease;
+}
+.v2-nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: -4px; left: 0;
+  width: 0; height: 1.5px;
+  background: currentColor;
+  border-radius: 2px;
+  transition: width 0.22s cubic-bezier(0.4,0,0.2,1);
+}
+.v2-nav-link:hover::after { width: 100%; }
+
+/* ── Outcome cards ───────────────────────────────────────── */
+.v2-outcome-card {
+  transition: transform 0.3s cubic-bezier(0.34,1.56,0.64,1);
+  cursor: default;
+}
+.v2-outcome-card:hover { transform: translateY(-8px); }
+.v2-outcome-card .v2-card-img {
+  transition: transform 0.45s cubic-bezier(0.4,0,0.2,1);
+}
+.v2-outcome-card:hover .v2-card-img { transform: scale(1.05); }
+
+/* ── Testimonial cards ───────────────────────────────────── */
+.v2-testi-card {
+  transition: transform 0.28s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.28s ease !important;
+}
+.v2-testi-card:hover {
+  transform: translateY(-5px) !important;
+  box-shadow: 0 1px 0 rgba(27,23,20,.06), 0 20px 48px rgba(27,23,20,.3) !important;
+}
+
+/* ── Step items ──────────────────────────────────────────── */
+.v2-step-item {
+  transition: transform 0.28s cubic-bezier(0.34,1.56,0.64,1);
+  cursor: default;
+}
+.v2-step-item:hover { transform: translateY(-5px); }
+.v2-step-item:hover .v2-step-dot {
+  transform: scale(1.15);
+  box-shadow: 0 4px 16px rgba(0,0,0,0.18);
+}
+.v2-step-dot {
+  transition: transform 0.28s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.28s ease;
+}
+
+/* ── Feature pills ───────────────────────────────────────── */
+.v2-feature-pill {
+  border-radius: 12px;
+  padding: 10px 8px;
+  transition: transform 0.22s cubic-bezier(0.34,1.56,0.64,1), background 0.18s ease;
+}
+.v2-feature-pill:hover {
+  transform: translateY(-3px);
+  background: rgba(27,23,20,0.05);
+}
+
+/* ── Sticker spin ────────────────────────────────────────── */
+@keyframes v2-spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+.v2-sticker-spin {
+  animation: v2-spin 22s linear infinite;
+  transform-origin: center;
+}
+.v2-sticker-spin:hover { animation-duration: 5s; }
+
+/* ── Logo dot pulse ──────────────────────────────────────── */
+@keyframes v2-pulse { 0%,100% { transform: scale(1); opacity:1; } 50% { transform: scale(1.55); opacity:0.7; } }
+.v2-logo-dot { animation: v2-pulse 2.8s ease-in-out infinite; }
+
+/* ── Scroll reveal ───────────────────────────────────────── */
+.v2-scroll-reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.7s cubic-bezier(0.4,0,0.2,1), transform 0.7s cubic-bezier(0.4,0,0.2,1);
+}
+.v2-scroll-reveal.v2-visible { opacity: 1; transform: translateY(0); }
+
+/* ── Stagger grid ────────────────────────────────────────── */
+.v2-stagger > * {
+  opacity: 0;
+  transform: translateY(22px);
+  transition: opacity 0.55s cubic-bezier(0.4,0,0.2,1), transform 0.55s cubic-bezier(0.4,0,0.2,1);
+}
+.v2-stagger.v2-visible > *:nth-child(1) { opacity:1; transform:translateY(0); transition-delay:0.04s; }
+.v2-stagger.v2-visible > *:nth-child(2) { opacity:1; transform:translateY(0); transition-delay:0.12s; }
+.v2-stagger.v2-visible > *:nth-child(3) { opacity:1; transform:translateY(0); transition-delay:0.20s; }
+.v2-stagger.v2-visible > *:nth-child(4) { opacity:1; transform:translateY(0); transition-delay:0.28s; }
+
+/* ── Hero parallax img ───────────────────────────────────── */
+.v2-hero-parallax { will-change: transform; }
+
+/* ── Who-for list item hover ─────────────────────────────── */
+.v2-reason-item {
+  transition: transform 0.2s cubic-bezier(0.34,1.56,0.64,1);
+}
+.v2-reason-item:hover { transform: translateX(4px); }
+.v2-reason-item:hover .v2-check-dot { transform: scale(1.2); }
+.v2-check-dot { transition: transform 0.2s cubic-bezier(0.34,1.56,0.64,1); }
+
+/* ── Hamburger ───────────────────────────────────────────── */
+.v2-hamburger { display: none !important; }
+
+/* ── 960px tablet ────────────────────────────────────────── */
+@media (max-width: 960px) {
+  .v2-hero-img      { display: none !important; }
+  .v2-problem-grid  { grid-template-columns: 1fr 1fr !important; }
+  .v2-problem-col3  { display: none !important; }
+  .v2-outcomes-grid { grid-template-columns: 1fr !important; }
+  .v2-outcomes-cards { grid-template-columns: repeat(2, 1fr) !important; }
+  .v2-testi-badge   { display: none !important; }
+  .v2-testi-cards   { grid-template-columns: repeat(2, 1fr) !important; }
+  .v2-whofor-plant  { display: none !important; }
+  .v2-cta-grid      { grid-template-columns: 1fr !important; }
+  .v2-nav-links     { display: none !important; }
+  .v2-nav-cta       { display: none !important; }
+  .v2-hamburger     { display: flex !important; }
+  .v2-tracks-grid   { grid-template-columns: repeat(2, 1fr) !important; }
+  .v2-next-grid     { grid-template-columns: 1fr !important; }
+  .v2-indent        { margin-left: 0 !important; }
+  .v2-reasons-grid  { grid-template-columns: repeat(3, 1fr) !important; }
+}
+
+/* ── 600px mobile ─────────────────────────────────────────── */
+@media (max-width: 600px) {
+  /* Layout */
+  .v2-outcomes-cards { grid-template-columns: 1fr !important; }
+  .v2-testi-cards    { grid-template-columns: 1fr !important; }
+  .v2-tracks-grid    { grid-template-columns: 1fr !important; }
+  .v2-reasons-grid   { grid-template-columns: 1fr !important; }
+  .v2-next-grid      { grid-template-columns: 1fr !important; }
+  /* Spacing */
+  .v2-wrap-mobile    { padding-left: 24px !important; padding-right: 24px !important; }
+  .v2-section-mobile { padding-top: 64px !important; padding-bottom: 64px !important; }
+  /* Hero — fix bleed padding */
+  .v2-hero-section   { min-height: auto !important; }
+  .v2-hero-inner     { padding: 60px 24px 72px !important; }
+  .v2-hero-h1        { font-size: clamp(44px, 12vw, 64px) !important; line-height: 0.98 !important; }
+  .v2-hero-pills     { display: none !important; }
+  /* Results */
+  .v2-stat-num       { font-size: 60px !important; }
+  .v2-stat-row       { grid-template-columns: 110px 1fr 18px !important; gap: 0 14px !important; }
+  /* Testimonials */
+  .v2-testi-card     { padding: 28px 24px 24px !important; }
+  .v2-testi-quote    { font-size: 18px !important; line-height: 1.45 !important; }
+  /* CTA full-width */
+  .v2-cta-btn-full   { width: 100% !important; min-width: 0 !important; }
+  /* No hover lifts on touch */
+  .v2-step-item:hover, .v2-outcome-card:hover, .v2-testi-card:hover { transform: none !important; box-shadow: none !important; }
+  /* Reasons grid — remove border top on first row jitter */
+  .v2-reasons-grid > div { padding-top: 14px !important; }
+}
+</style>
+</head>
+<body>
+<div id="root"></div>
+
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+
+<!-- ── Tweaks Panel ───────────────────────────────────────────────── -->
+<script type="text/babel">
+const __TWEAKS_STYLE = `
+  .twk-panel{position:fixed;right:16px;bottom:16px;z-index:2147483646;width:280px;
+    max-height:calc(100vh - 32px);display:flex;flex-direction:column;
+    background:rgba(250,249,247,.88);color:#29261b;
+    -webkit-backdrop-filter:blur(24px) saturate(160%);backdrop-filter:blur(24px) saturate(160%);
+    border:.5px solid rgba(255,255,255,.6);border-radius:14px;
+    box-shadow:0 1px 0 rgba(255,255,255,.5) inset,0 12px 40px rgba(0,0,0,.18);
+    font:11.5px/1.4 ui-sans-serif,system-ui,-apple-system,sans-serif;overflow:hidden}
+  .twk-hd{display:flex;align-items:center;justify-content:space-between;
+    padding:10px 8px 10px 14px;cursor:move;user-select:none}
+  .twk-hd b{font-size:12px;font-weight:600;letter-spacing:.01em}
+  .twk-x{appearance:none;border:0;background:transparent;color:rgba(41,38,27,.55);
+    width:22px;height:22px;border-radius:6px;cursor:default;font-size:13px;line-height:1}
+  .twk-x:hover{background:rgba(0,0,0,.06);color:#29261b}
+  .twk-body{padding:2px 14px 14px;display:flex;flex-direction:column;gap:10px;overflow-y:auto;min-height:0}
+  .twk-row{display:flex;flex-direction:column;gap:5px}
+  .twk-lbl{display:flex;justify-content:space-between;align-items:baseline;color:rgba(41,38,27,.72)}
+  .twk-lbl>span:first-child{font-weight:500}
+  .twk-sect{font-size:10px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;
+    color:rgba(41,38,27,.45);padding:10px 0 0}
+  .twk-sect:first-child{padding-top:0}
+  .twk-seg{position:relative;display:flex;padding:2px;border-radius:8px;
+    background:rgba(0,0,0,.06);user-select:none}
+  .twk-seg-thumb{position:absolute;top:2px;bottom:2px;border-radius:6px;
+    background:rgba(255,255,255,.9);box-shadow:0 1px 2px rgba(0,0,0,.12);
+    transition:left .15s cubic-bezier(.3,.7,.4,1),width .15s}
+  .twk-seg button{appearance:none;position:relative;z-index:1;flex:1;border:0;
+    background:transparent;color:inherit;font:inherit;font-weight:500;min-height:22px;
+    border-radius:6px;cursor:default;padding:4px 6px;line-height:1.2}
+`;
+
+function useTweaks(defaults) {
+  const [values, setValues] = React.useState(defaults);
+  const setTweak = React.useCallback((keyOrEdits, val) => {
+    const edits = typeof keyOrEdits === 'object' && keyOrEdits !== null ? keyOrEdits : { [keyOrEdits]: val };
+    setValues((prev) => ({ ...prev, ...edits }));
+  }, []);
+  return [values, setTweak];
+}
+
+function TweaksPanel({ title = 'Tweaks', children }) {
+  const [open, setOpen] = React.useState(false);
+  React.useEffect(() => {
+    const onMsg = (e) => {
+      const t = e?.data?.type;
+      if (t === '__activate_edit_mode') setOpen(true);
+      else if (t === '__deactivate_edit_mode') setOpen(false);
+    };
+    window.addEventListener('message', onMsg);
+    window.parent.postMessage({ type: '__edit_mode_available' }, '*');
+    return () => window.removeEventListener('message', onMsg);
+  }, []);
+  if (!open) return null;
+  return (
+    <>
+      <style>{__TWEAKS_STYLE}</style>
+      <div className="twk-panel" style={{ right: 16, bottom: 16 }}>
+        <div className="twk-hd"><b>{title}</b><button className="twk-x" onClick={() => setOpen(false)}>✕</button></div>
+        <div className="twk-body">{children}</div>
+      </div>
+    </>
+  );
+}
+
+function TweakSection({ label, children }) {
+  return <><div className="twk-sect">{label}</div>{children}</>;
+}
+
+function TweakRow({ label, children }) {
+  return <div className="twk-row"><div className="twk-lbl"><span>{label}</span></div>{children}</div>;
+}
+
+function TweakRadio({ label, value, options, onChange }) {
+  const opts = options.map((o) => (typeof o === 'object' ? o : { value: o, label: o }));
+  const idx = Math.max(0, opts.findIndex((o) => o.value === value));
+  const n = opts.length;
+  const trackRef = React.useRef(null);
+  const valueRef = React.useRef(value);
+  valueRef.current = value;
+  const segAt = (clientX) => {
+    const r = trackRef.current.getBoundingClientRect();
+    const i = Math.floor(((clientX - r.left - 2) / (r.width - 4)) * n);
+    return opts[Math.max(0, Math.min(n - 1, i))].value;
+  };
+  const onPointerDown = (e) => {
+    const v0 = segAt(e.clientX); if (v0 !== valueRef.current) onChange(v0);
+    const move = (ev) => { if (trackRef.current) { const v = segAt(ev.clientX); if (v !== valueRef.current) onChange(v); } };
+    const up = () => { window.removeEventListener('pointermove', move); window.removeEventListener('pointerup', up); };
+    window.addEventListener('pointermove', move); window.addEventListener('pointerup', up);
+  };
+  return (
+    <TweakRow label={label}>
+      <div ref={trackRef} role="radiogroup" onPointerDown={onPointerDown} className="twk-seg">
+        <div className="twk-seg-thumb" style={{ left: `calc(2px + ${idx} * (100% - 4px) / ${n})`, width: `calc((100% - 4px) / ${n})` }} />
+        {opts.map((o) => <button key={o.value} type="button" role="radio" aria-checked={o.value === value}>{o.label}</button>)}
+      </div>
+    </TweakRow>
+  );
+}
+
+const WAITLIST_HREF = 'https://o2714115.typeform.com/to/nODjX1wu';
+Object.assign(window, { useTweaks, TweaksPanel, TweakSection, TweakRow, TweakRadio, WAITLIST_HREF });
+</script>
+
+<!-- ── V2 Palette + Illustrations ────────────────────────────────── -->
+<script type="text/babel">
+const V2 = {
+  ink:        '#1B1714',
+  paper:      '#F5EEDF',
+  cream:      '#EFE7D2',
+  pink:       '#F0C2A8',
+  pinkSoft:   '#F7DDCC',
+  forest:     '#1F2F1F',
+  forestSoft: '#3A4F38',
+  sage:       '#4F6042',
+  hydrate:    '#1E3A5F',
+  fuel:       '#E2A434',
+  terracotta: '#D85E27',
+};
+
+function HandUnderline({ width = 220, color = V2.terracotta, style }) {
+  return (
+    <svg viewBox="0 0 220 16" width={width} height={Math.round(16 * width / 220)}
+         style={{ display: 'block', ...style }} aria-hidden="true">
+      <path d="M 4 10 C 30 4 60 12 100 7 C 140 3 180 11 216 6"
+            fill="none" stroke={color} strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
+  );
+}
+
+function HandSquiggle({ size = 80, color = V2.ink, style }) {
+  return (
+    <svg viewBox="0 0 80 100" width={size} height={Math.round(size * 100 / 80)}
+         style={{ display: 'block', ...style }} aria-hidden="true">
+      <path d="M 12 14 C 28 6 50 22 42 38 C 36 50 18 48 16 60 C 14 72 36 76 50 70 C 64 64 70 82 58 90"
+            fill="none" stroke={color} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" opacity="0.55" />
+    </svg>
+  );
+}
+
+function IconSunRays({ size = 28, color = V2.ink, style }) {
+  return (
+    <svg viewBox="0 0 32 32" width={size} height={size} style={style} aria-hidden="true">
+      <circle cx="16" cy="16" r="5" fill="none" stroke={color} strokeWidth="1.5" />
+      {Array.from({length: 8}).map((_, i) => {
+        const a = (i * Math.PI * 2) / 8;
+        return <line key={i} x1={16 + Math.cos(a)*9} y1={16 + Math.sin(a)*9} x2={16 + Math.cos(a)*14} y2={16 + Math.sin(a)*14} stroke={color} strokeWidth="1.5" strokeLinecap="round" />;
+      })}
+    </svg>
+  );
+}
+
+function IconScribble({ size = 28, color = V2.ink, style }) {
+  return (
+    <svg viewBox="0 0 32 32" width={size} height={size} style={style} aria-hidden="true">
+      <path d="M 6 16 C 10 8 14 24 18 16 C 22 8 26 24 22 18 C 18 12 8 22 14 24 C 20 26 26 18 24 14"
+            fill="none" stroke={color} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
+  );
+}
+
+function IconWaves({ size = 28, color = V2.ink, style }) {
+  return (
+    <svg viewBox="0 0 36 32" width={size} height={Math.round(size * 32 / 36)} style={style} aria-hidden="true">
+      <path d="M 4 12 C 8 8 12 16 16 12 C 20 8 24 16 28 12 C 30 10 32 11 34 12" fill="none" stroke={color} strokeWidth="1.5" strokeLinecap="round" />
+      <path d="M 4 20 C 8 16 12 24 16 20 C 20 16 24 24 28 20 C 30 18 32 19 34 20" fill="none" stroke={color} strokeWidth="1.5" strokeLinecap="round" />
+    </svg>
+  );
+}
+
+function IconSquare({ size = 28, color = V2.ink, style }) {
+  return (
+    <svg viewBox="0 0 32 32" width={size} height={size} style={style} aria-hidden="true">
+      <path d="M 7 8 L 24 7 L 25 24 L 8 25 Z" fill="none" stroke={color} strokeWidth="1.5" strokeLinejoin="round" />
+    </svg>
+  );
+}
+
+function FeaturePill({ kind, size = 22, color = V2.ink }) {
+  if (kind === 'group') return (
+    <svg viewBox="0 0 28 24" width={size + 4} height={size} aria-hidden="true">
+      <circle cx="10" cy="9" r="4" fill="none" stroke={color} strokeWidth="1.5"/>
+      <circle cx="20" cy="9" r="4" fill="none" stroke={color} strokeWidth="1.5"/>
+      <path d="M 3 22 C 5 16 15 16 17 22" fill="none" stroke={color} strokeWidth="1.5" strokeLinecap="round"/>
+      <path d="M 13 22 C 15 16 25 16 27 22" fill="none" stroke={color} strokeWidth="1.5" strokeLinecap="round"/>
+    </svg>
+  );
+  if (kind === 'calendar') return (
+    <svg viewBox="0 0 24 24" width={size} height={size} aria-hidden="true">
+      <rect x="3" y="5" width="18" height="16" rx="2" fill="none" stroke={color} strokeWidth="1.5"/>
+      <line x1="3" y1="10" x2="21" y2="10" stroke={color} strokeWidth="1.5"/>
+      <line x1="8" y1="3" x2="8" y2="7" stroke={color} strokeWidth="1.5" strokeLinecap="round"/>
+      <line x1="16" y1="3" x2="16" y2="7" stroke={color} strokeWidth="1.5" strokeLinecap="round"/>
+    </svg>
+  );
+  if (kind === 'check') return (
+    <svg viewBox="0 0 24 24" width={size} height={size} aria-hidden="true">
+      <circle cx="12" cy="12" r="9" fill="none" stroke={color} strokeWidth="1.5"/>
+      <path d="M 8 12.5 L 11 15.5 L 16.5 9.5" fill="none" stroke={color} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+    </svg>
+  );
+  if (kind === 'heart') return (
+    <svg viewBox="0 0 24 24" width={size} height={size} aria-hidden="true">
+      <path d="M 12 20 C 4 14 4 8 7 6 C 9.5 4.4 12 6 12 9 C 12 6 14.5 4.4 17 6 C 20 8 20 14 12 20 Z"
+            fill="none" stroke={color} strokeWidth="1.5" strokeLinejoin="round"/>
+    </svg>
+  );
+  return null;
+}
+
+function JourneyArt({ kind, size = 88, color = V2.ink, style }) {
+  if (kind === 'baseline') return (
+    <svg viewBox="0 0 96 88" width={size} height={Math.round(size * 88 / 96)} style={style} aria-hidden="true">
+      <circle cx="48" cy="56" r="14" fill="none" stroke={color} strokeWidth="1.8"/>
+      <line x1="48" y1="36" x2="48" y2="28" stroke={color} strokeWidth="1.8" strokeLinecap="round"/>
+      <line x1="30" y1="56" x2="22" y2="56" stroke={color} strokeWidth="1.8" strokeLinecap="round"/>
+      <line x1="66" y1="56" x2="74" y2="56" stroke={color} strokeWidth="1.8" strokeLinecap="round"/>
+      <line x1="33" y1="42" x2="27" y2="36" stroke={color} strokeWidth="1.8" strokeLinecap="round"/>
+      <line x1="63" y1="42" x2="69" y2="36" stroke={color} strokeWidth="1.8" strokeLinecap="round"/>
+      <path d="M 6 70 C 24 60 36 78 48 70 C 60 62 70 76 90 70" fill="none" stroke={color} strokeWidth="1.8" strokeLinecap="round"/>
+    </svg>
+  );
+  if (kind === 'plant') return (
+    <svg viewBox="0 0 96 88" width={size} height={Math.round(size * 88 / 96)} style={style} aria-hidden="true">
+      <path d="M 48 78 L 48 32" stroke={color} strokeWidth="1.8" strokeLinecap="round"/>
+      <circle cx="48" cy="26" r="6" fill="none" stroke={color} strokeWidth="1.8"/>
+      <path d="M 48 48 C 36 44 32 52 36 56 C 40 58 46 54 48 50" fill="none" stroke={color} strokeWidth="1.8" strokeLinejoin="round"/>
+      <path d="M 48 60 C 60 56 64 64 60 68 C 56 70 50 66 48 62" fill="none" stroke={color} strokeWidth="1.8" strokeLinejoin="round"/>
+      <path d="M 32 78 C 40 76 56 76 64 78" fill="none" stroke={color} strokeWidth="1.8" strokeLinecap="round"/>
+    </svg>
+  );
+  if (kind === 'waves') return (
+    <svg viewBox="0 0 96 88" width={size} height={Math.round(size * 88 / 96)} style={style} aria-hidden="true">
+      <path d="M 8 30 C 20 22 32 38 48 30 C 64 22 76 38 88 30" fill="none" stroke={color} strokeWidth="1.8" strokeLinecap="round"/>
+      <path d="M 8 48 C 20 40 32 56 48 48 C 64 40 76 56 88 48" fill="none" stroke={color} strokeWidth="1.8" strokeLinecap="round"/>
+      <path d="M 8 66 C 20 58 32 74 48 66 C 64 58 76 74 88 66" fill="none" stroke={color} strokeWidth="1.8" strokeLinecap="round"/>
+    </svg>
+  );
+  if (kind === 'mountain') return (
+    <svg viewBox="0 0 96 88" width={size} height={Math.round(size * 88 / 96)} style={style} aria-hidden="true">
+      <path d="M 10 76 L 38 36 L 50 52 L 64 28 L 88 76 Z" fill="none" stroke={color} strokeWidth="1.8" strokeLinejoin="round"/>
+      <line x1="64" y1="28" x2="64" y2="14" stroke={color} strokeWidth="1.8" strokeLinecap="round"/>
+      <path d="M 64 14 L 74 17 L 64 21 Z" fill={color} stroke={color} strokeWidth="1.5" strokeLinejoin="round"/>
+    </svg>
+  );
+  return null;
+}
+
+function StippledPinkBlob({ size = 220, style }) {
+  return (
+    <svg viewBox="0 0 240 280" width={size} height={Math.round(size * 280 / 240)}
+         style={{ display: 'block', ...style }} aria-hidden="true">
+      <path d="M 60 60 C 100 30 180 30 200 80 C 220 130 200 200 150 230 C 100 260 30 230 30 170 C 30 130 30 80 60 60 Z" fill={V2.pink} />
+      {Array.from({length: 60}).map((_, i) => {
+        const x = 50 + (i * 41) % 140 + (i % 3) * 6;
+        const y = 70 + Math.floor(i / 8) * 22 + (i % 4) * 3;
+        return <circle key={i} cx={x} cy={y} r="1.4" fill={V2.terracotta} opacity="0.4" />;
+      })}
+    </svg>
+  );
+}
+
+function LeafCluster({ size = 160, color = V2.forest, style }) {
+  return (
+    <svg viewBox="0 0 160 200" width={size} height={Math.round(size * 200 / 160)}
+         style={{ display: 'block', ...style }} aria-hidden="true">
+      <path d="M 80 200 L 80 60 C 80 50 86 44 96 36" stroke={color} strokeWidth="2.5" fill="none" strokeLinecap="round"/>
+      <path d="M 80 140 C 60 130 40 130 24 144" stroke={color} strokeWidth="2" fill="none" strokeLinecap="round"/>
+      <path d="M 80 110 C 100 100 120 100 134 110" stroke={color} strokeWidth="2" fill="none" strokeLinecap="round"/>
+      <path d="M 80 80 C 64 70 50 72 40 84" stroke={color} strokeWidth="2" fill="none" strokeLinecap="round"/>
+      <ellipse cx="20" cy="144" rx="14" ry="8" fill={color} transform="rotate(-30 20 144)" />
+      <ellipse cx="138" cy="110" rx="14" ry="8" fill={color} transform="rotate(30 138 110)" />
+      <ellipse cx="36" cy="84" rx="13" ry="8" fill={color} transform="rotate(-40 36 84)" />
+      <ellipse cx="96" cy="36" rx="11" ry="7" fill={color} transform="rotate(-50 96 36)" />
+    </svg>
+  );
+}
+
+function StickerBadge({ size = 180, style }) {
+  return (
+    <svg viewBox="0 0 200 200" width={size} height={size} style={{ display: 'block', ...style }} aria-hidden="true">
+      <defs>
+        <path id="v2-sticker-top" d="M 30 100 A 70 70 0 0 1 170 100" />
+        <path id="v2-sticker-bot" d="M 30 100 A 70 70 0 0 0 170 100" />
+      </defs>
+      <circle cx="100" cy="100" r="86" fill={V2.fuel} />
+      <circle cx="100" cy="100" r="86" fill="none" stroke={V2.ink} strokeWidth="1.5" strokeDasharray="2 4" opacity="0.4" />
+      <text fontFamily="DM Sans, sans-serif" fontSize="13" fontWeight="600" letterSpacing="3" fill={V2.ink}>
+        <textPath href="#v2-sticker-top" startOffset="50%" textAnchor="middle">SUSTAINABLE CHANGE</textPath>
+      </text>
+      <text fontFamily="DM Sans, sans-serif" fontSize="13" fontWeight="600" letterSpacing="3" fill={V2.ink}>
+        <textPath href="#v2-sticker-bot" startOffset="50%" textAnchor="middle">NOT PERFECTION</textPath>
+      </text>
+      <path d="M 100 118 C 88 108 84 100 88 94 C 92 88 100 90 100 96 C 100 90 108 88 112 94 C 116 100 112 108 100 118 Z" fill={V2.ink} />
+    </svg>
+  );
+}
+
+function FinalCtaBlobs() {
+  return (
+    <svg viewBox="0 0 1280 320" preserveAspectRatio="none"
+         style={{ position: 'absolute', inset: 0, width: '100%', height: '100%' }} aria-hidden="true">
+      <path d="M -40 200 C 60 120 180 160 240 240 C 280 300 200 360 100 340 C 0 320 -40 280 -40 200 Z" fill={V2.hydrate} />
+      <path d="M 1320 80 C 1240 -20 1100 20 1080 120 C 1060 200 1140 240 1240 220 C 1320 200 1340 140 1320 80 Z" fill={V2.terracotta} />
+      <path d="M 1320 320 C 1240 280 1180 300 1200 340 L 1320 340 Z" fill={V2.terracotta} opacity="0.85" />
+    </svg>
+  );
+}
+
+function MemberAvatar({ initials, size = 44, color = V2.cream, style }) {
+  return (
+    <div style={{ width: size, height: size, borderRadius: '50%', background: color, color: V2.ink, display: 'grid', placeItems: 'center', fontFamily: 'DM Sans, sans-serif', fontSize: size * 0.36, fontWeight: 600, letterSpacing: '0.02em', flexShrink: 0, border: `2px solid ${V2.paper}`, ...style }}>
+      {initials}
+    </div>
+  );
+}
+
+function PlantPhotoPlaceholder({ style }) {
+  return (
+    <div style={{ width: '100%', aspectRatio: '4 / 5', borderRadius: 14, background: '#E5D9C0', position: 'relative', overflow: 'hidden', ...style }}>
+      <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(135deg, rgba(255,248,232,0.6) 0%, rgba(255,248,232,0) 50%)' }} />
+      <svg viewBox="0 0 320 400" style={{ position: 'absolute', inset: 0, width: '100%', height: '100%' }} aria-hidden="true">
+        <path d="M 100 320 L 110 380 L 220 380 L 230 320 Z" fill="#C7A77E" />
+        <ellipse cx="165" cy="320" rx="65" ry="10" fill="#A0825D" />
+        <path d="M 165 320 C 160 280 130 240 110 200" stroke="#3F5235" strokeWidth="4" fill="none" strokeLinecap="round"/>
+        <path d="M 165 320 C 170 270 195 220 220 180" stroke="#3F5235" strokeWidth="4" fill="none" strokeLinecap="round"/>
+        <path d="M 165 320 C 165 270 165 210 165 160" stroke="#3F5235" strokeWidth="4" fill="none" strokeLinecap="round"/>
+        <path d="M 110 200 C 70 200 60 160 90 140 C 120 120 140 150 130 180 C 124 196 116 202 110 200 Z" fill="#4F6042" />
+        <path d="M 220 180 C 260 180 270 140 240 120 C 210 100 190 130 200 160 C 206 176 214 182 220 180 Z" fill="#4F6042" />
+        <path d="M 165 160 C 180 140 220 130 230 100 C 240 70 200 50 170 70 C 140 90 150 130 165 160 Z" fill="#4F6042" />
+        <path d="M 165 160 C 150 140 110 130 100 100 C 90 70 130 50 160 70 C 190 90 180 130 165 160 Z" fill="#4F6042" />
+        <path d="M 100 168 L 88 180 M 112 174 L 100 184 M 124 166 L 116 178" stroke="#E5D9C0" strokeWidth="2" strokeLinecap="round"/>
+        <path d="M 224 168 L 236 180 M 212 174 L 224 184 M 200 166 L 208 178" stroke="#E5D9C0" strokeWidth="2" strokeLinecap="round"/>
+      </svg>
+      <div style={{ position: 'absolute', top: 40, right: 36, width: 56, height: 70, border: '2px solid #B89E76', borderRadius: 2, background: '#F0E5C8' }}>
+        <svg viewBox="0 0 40 50" width="100%" height="100%">
+          <path d="M 6 38 C 14 30 26 30 34 38" stroke="#8A7B6E" strokeWidth="1.4" fill="none" strokeLinecap="round"/>
+        </svg>
+      </div>
+    </div>
+  );
+}
+
+function HandNoteCard({ children, style }) {
+  return (
+    <div style={{ background: V2.paper, padding: '36px 32px', borderRadius: '24px 8px 28px 6px / 8px 26px 8px 24px', boxShadow: '0 1px 0 rgba(27,23,20,.06), 0 8px 24px rgba(27,23,20,.05)', ...style }}>
+      {children}
+    </div>
+  );
+}
+
+Object.assign(window, { V2, HandUnderline, HandSquiggle, IconSunRays, IconScribble, IconWaves, IconSquare, FeaturePill, JourneyArt, StippledPinkBlob, LeafCluster, StickerBadge, FinalCtaBlobs, MemberAvatar, PlantPhotoPlaceholder, HandNoteCard });
+</script>
+
+<!-- ── V2 Page Sections ────────────────────────────────────────────── -->
+<script type="text/babel">
+const v2Wrap = { maxWidth: 1200, margin: '0 auto', padding: '0 56px' };
+
+const v2Display = {
+  fontFamily: '"DM Sans", system-ui, sans-serif',
+  fontWeight: 800,
+  letterSpacing: '-0.035em',
+  lineHeight: 0.96,
+  color: V2.ink,
+  margin: 0,
+};
+
+const v2Hand = {
+  fontFamily: '"Caveat", "Brush Script MT", cursive',
+  fontWeight: 500,
+  color: V2.terracotta,
+  lineHeight: 0.95,
+  letterSpacing: '-0.005em',
+};
+
+const v2Eyebrow = {
+  fontFamily: '"DM Sans", sans-serif',
+  fontSize: 12, fontWeight: 600,
+  letterSpacing: '0.18em', textTransform: 'uppercase',
+  color: V2.terracotta,
+};
+
+/* ── Nav ── */
+function NavV2() {
+  const [open, setOpen] = React.useState(false);
+  const NAV_H = 68;
+  const links = [
+    { label: 'How it works', href: '#how-it-works' },
+    { label: 'The tracks',   href: '#tracks'       },
+    { label: 'Results',      href: '#results'      },
+  ];
+  const scrollTo = (e, href) => {
+    e.preventDefault(); setOpen(false);
+    const el = document.querySelector(href);
+    if (!el) return;
+    window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - NAV_H, behavior: 'smooth' });
+  };
+  return (
+    <header style={{ position: 'sticky', top: 0, zIndex: 100, background: open ? 'rgba(245,238,223,1)' : 'rgba(245,238,223,0.92)', backdropFilter: 'blur(14px)', WebkitBackdropFilter: 'blur(14px)', borderBottom: '1px solid rgba(27,23,20,0.07)', transition: 'background 0.2s' }}>
+      <div style={{ maxWidth: 1200, margin: '0 auto', padding: '0 40px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', height: NAV_H }}>
+        <a href="#" onClick={(e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }); }} style={{ display: 'flex', alignItems: 'center', gap: 8, flexShrink: 0 }}>
+          <span style={{ fontFamily: 'DM Sans, sans-serif', fontWeight: 700, fontSize: 17, letterSpacing: '-0.01em', color: V2.ink }}>Capacity Club</span>
+          <span className="v2-logo-dot" style={{ width: 7, height: 7, borderRadius: '50%', background: V2.terracotta, flexShrink: 0 }} />
+        </a>
+        <nav className="v2-nav-links" style={{ display: 'flex', alignItems: 'center', gap: 32 }}>
+          {links.map((l) => (
+            <a key={l.label} href={l.href} onClick={(e) => scrollTo(e, l.href)} className="v2-nav-link" style={{ color: V2.ink, fontSize: 14, fontWeight: 500 }}>{l.label}</a>
+          ))}
+        </nav>
+        <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
+          <a href={WAITLIST_HREF} target="_blank" rel="noopener" className="v2-btn-primary v2-nav-cta" style={{ padding: '11px 22px', borderRadius: 999, background: V2.ink, color: V2.paper, fontSize: 14, fontWeight: 600, whiteSpace: 'nowrap' }}>
+            Join the Waitlist
+          </a>
+          <button onClick={() => setOpen(!open)} className="v2-hamburger" aria-label={open ? 'Close menu' : 'Open menu'} style={{ background: 'none', border: 'none', padding: '8px', cursor: 'pointer', width: 44, height: 44, borderRadius: 10, display: 'flex', flexDirection: 'column', gap: 5, alignItems: 'center', justifyContent: 'center' }}>
+            <span style={{ display: 'block', width: 22, height: 2, background: V2.ink, borderRadius: 2, transition: 'transform 0.22s ease, opacity 0.22s ease', transform: open ? 'translateY(7px) rotate(45deg)' : 'none' }} />
+            <span style={{ display: 'block', width: 22, height: 2, background: V2.ink, borderRadius: 2, transition: 'opacity 0.22s ease', opacity: open ? 0 : 1 }} />
+            <span style={{ display: 'block', width: 22, height: 2, background: V2.ink, borderRadius: 2, transition: 'transform 0.22s ease', transform: open ? 'translateY(-7px) rotate(-45deg)' : 'none' }} />
+          </button>
+        </div>
+      </div>
+      {open && (
+        <div style={{ background: 'rgba(245,238,223,0.98)', backdropFilter: 'blur(14px)', borderTop: '1px solid rgba(27,23,20,0.07)', padding: '8px 24px 28px', display: 'flex', flexDirection: 'column' }}>
+          {links.map((l) => (
+            <a key={l.label} href={l.href} onClick={(e) => scrollTo(e, l.href)} style={{ color: V2.ink, fontSize: 17, fontWeight: 600, padding: '15px 0', borderBottom: '1px solid rgba(27,23,20,0.07)', letterSpacing: '-0.01em', display: 'block' }}>{l.label}</a>
+          ))}
+          <a href={WAITLIST_HREF} target="_blank" rel="noopener" onClick={() => setOpen(false)} style={{ marginTop: 20, display: 'block', padding: '17px 24px', borderRadius: 999, background: V2.ink, color: V2.paper, fontSize: 16, fontWeight: 600, textAlign: 'center' }}>
+            Join the Waitlist
+          </a>
+        </div>
+      )}
+    </header>
+  );
+}
+
+/* ── Hero ── */
+function HeroV2() {
+  const features = [
+    { kind: 'group',    label: 'Small groups' },
+    { kind: 'calendar', label: '30-day sprint' },
+    { kind: 'check',    label: 'Daily check-ins' },
+    { kind: 'heart',    label: 'Free to join if selected' },
+  ];
+  return (
+    <section className="v2-hero-section" style={{ background: V2.paper, position: 'relative', overflow: 'hidden', minHeight: 640 }}>
+      <div className="v2-hero-inner" style={{ maxWidth: 1200, margin: '0 auto', padding: '80px 56px 100px', position: 'relative', zIndex: 1 }}>
+        <div className="v2-scroll-reveal" style={{ maxWidth: 540 }}>
+          <h1 className="v2-hero-h1" style={{ ...v2Display, fontSize: 'clamp(52px, 6.5vw, 88px)' }}>
+            Build more<br />capacity in<br />30 days.
+          </h1>
+          <p style={{ marginTop: 28, fontSize: 17, lineHeight: 1.6, color: V2.ink, maxWidth: 420, marginBottom: 0 }}>
+            Capacity Club is a simple 30-day sprint built around four daily habits, group accountability, and a community that helps you follow through while making new friends.
+          </p>
+          <div className="v2-hero-pills" style={{ marginTop: 32, display: 'flex', gap: 20, flexWrap: 'wrap' }}>
+            {features.map((f) => (
+              <div key={f.kind} className="v2-feature-pill" style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start', gap: 10 }}>
+                <div style={{ width: 42, height: 42, borderRadius: '50%', border: `1.5px solid ${V2.ink}`, display: 'grid', placeItems: 'center', flexShrink: 0 }}>
+                  <FeaturePill kind={f.kind} size={20} />
+                </div>
+                <span style={{ fontSize: 12, fontWeight: 500, color: V2.ink, lineHeight: 1.3 }}>{f.label}</span>
+              </div>
+            ))}
+          </div>
+          <div style={{ marginTop: 36 }}>
+            <a href={WAITLIST_HREF} target="_blank" rel="noopener" className="v2-btn-primary" style={{ display: 'inline-block', padding: '18px 32px', borderRadius: 999, background: V2.ink, color: V2.paper, fontSize: 15, fontWeight: 600 }}>
+              Join the Waitlist
+            </a>
+            <div style={{ marginTop: 10, fontSize: 13, color: V2.ink, opacity: 0.55 }}>Upcoming cohorts. Small groups. Limited spots.</div>
+          </div>
+        </div>
+      </div>
+      <div className="v2-hero-img" style={{ position: 'absolute', top: 0, right: 0, bottom: 0, width: '55%' }}>
+        <img
+          className="v2-hero-parallax"
+          src="v2/hero-illustration.png"
+          alt="A small figure walking up a winding cream path toward a large terracotta sun, between organic landforms in ochre, sage green, and deep navy."
+          style={{ display: 'block', width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'left center' }}
+        />
+      </div>
+    </section>
+  );
+}
+
+/* ── Why It Exists ── */
+function WhyItExistsV2() {
+  const items = [
+    { Icon: IconSunRays,  label: 'a simple way to pay attention again' },
+    { Icon: IconScribble, label: 'four daily commitments' },
+    { Icon: IconWaves,    label: 'a small group doing it with them' },
+    { Icon: IconSquare,   label: 'a pressure-free place to check in' },
+  ];
+  return (
+    <section id="why" className="v2-section-mobile" style={{ background: V2.cream, padding: '88px 0' }}>
+      <div style={{ ...v2Wrap, position: 'relative' }}>
+        <HandSquiggle size={80} style={{ position: 'absolute', left: 8, top: 0 }} />
+        <div className="v2-scroll-reveal v2-problem-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: 48, alignItems: 'start', paddingLeft: 96 }}>
+          <div>
+            <h2 style={{ ...v2Display, fontSize: 'clamp(28px, 3.5vw, 44px)' }}>
+              Most people don&rsquo;t need another complicated wellness plan.
+            </h2>
+            <div style={{ marginTop: 24, position: 'relative', display: 'inline-block' }}>
+              <span style={{ ...v2Hand, fontSize: 36 }}>They need:</span>
+              <HandUnderline width={150} style={{ position: 'absolute', left: 0, bottom: -10 }} />
+            </div>
+          </div>
+          <ul style={{ margin: 0, padding: 0, listStyle: 'none', display: 'grid', gap: 18, paddingTop: 4 }}>
+            {items.map(({ Icon, label }) => (
+              <li key={label} style={{ display: 'flex', alignItems: 'center', gap: 14, fontSize: 16, color: V2.ink }}>
+                <Icon size={32} />
+                <span>{label}</span>
+              </li>
+            ))}
+          </ul>
+          <div className="v2-problem-col3" style={{ paddingTop: 6 }}>
+            <p style={{ margin: 0, fontSize: 16, lineHeight: 1.6, color: V2.ink }}>
+              Capacity Club gives you four simple daily commitments, a small group of peers doing it with you, and a pressure-free place to check in. It&rsquo;s not just about health. It&rsquo;s about attention, consistency, and follow-through with your new tribe.
+            </p>
+            <HandUnderline width={180} style={{ marginTop: 14 }} color={V2.ink} />
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ── What You'll Do (Habits) ── */
+function HabitsV2() {
+  const cards = [
+    { kind: 'hydrate', img: 'v2/mornings.svg',  title: 'Hydrate', copy: 'Drink at least half your bodyweight in ounces of water.' },
+    { kind: 'fuel',    img: 'v2/calmer.svg',    title: 'Fuel',    copy: 'Eat two servings of fruits and/or vegetables with each meal.' },
+    { kind: 'move',    img: 'v2/momentum.svg',  title: 'Move',    copy: 'Walk or run at least 3 miles.' },
+    { kind: 'recover', img: 'v2/recover.svg',   title: 'Recover', copy: 'Do at least 4 minutes of breathwork, meditation, mobility, or stretching.' },
+  ];
+  return (
+    <section id="habits" style={{ background: V2.paper, padding: '88px 0 96px', position: 'relative', overflow: 'hidden' }} className="v2-section-mobile">
+      <div style={v2Wrap} className="v2-wrap-mobile">
+        <div className="v2-outcomes-grid" style={{ display: 'grid', gridTemplateColumns: '0.7fr 2.3fr', gap: 32, alignItems: 'start' }}>
+          <div>
+            <div style={{ ...v2Eyebrow, marginBottom: 16 }}>What you&rsquo;ll do</div>
+            <h2 style={{ ...v2Display, fontSize: 'clamp(36px, 4vw, 52px)' }}>
+              Four simple daily non-negotiables.
+            </h2>
+            <p style={{ marginTop: 20, fontSize: 15, lineHeight: 1.6, color: V2.ink, opacity: 0.75, marginBottom: 0 }}>
+              For 30 days, you&rsquo;ll commit to four simple habits designed to build more capacity without overcomplicating your life.
+            </p>
+          </div>
+          <div>
+            <div className="v2-outcomes-cards v2-stagger" style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 20 }}>
+              {cards.map((c) => (
+                <article key={c.kind} className="v2-outcome-card" style={{ display: 'flex', flexDirection: 'column', gap: 18 }}>
+                  <div style={{ width: '100%', aspectRatio: '4 / 5', overflow: 'hidden', borderRadius: 16 }}>
+                    <img
+                      src={c.img}
+                      alt={c.title}
+                      className="v2-card-img"
+                      style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center', display: 'block' }}
+                    />
+                  </div>
+                  <div>
+                    <h3 style={{ fontFamily: 'DM Sans, sans-serif', fontWeight: 700, fontSize: 19, lineHeight: 1.2, margin: '0 0 8px', color: V2.ink, letterSpacing: '-0.01em' }}>{c.title}</h3>
+                    <p style={{ margin: 0, fontSize: 14, lineHeight: 1.5, color: V2.ink, opacity: 0.78 }}>{c.copy}</p>
+                  </div>
+                </article>
+              ))}
+            </div>
+            <p style={{ marginTop: 28, textAlign: 'center', fontSize: 14, lineHeight: 1.6, color: V2.ink, opacity: 0.65 }}>
+              Every day, you&rsquo;ll check in with your group. You don&rsquo;t have to be perfect. You just have to keep showing up for yourself and each other.
+            </p>
+          </div>
+        </div>
+        <StippledPinkBlob size={180} style={{ position: 'absolute', right: -36, bottom: 60 }} />
+      </div>
+    </section>
+  );
+}
+
+/* ── Benefits ── */
+/* ── Results ── */
+function ResultsV2() {
+  const stats = [
+    { pct: '87%', value: 87, color: V2.hydrate, label: 'said their hydration improved' },
+    { pct: '73%', value: 73, color: V2.fuel,    label: 'said their food choices improved' },
+    { pct: '60%', value: 60, color: V2.sage,    label: 'said their sense of belonging, community, and motivation improved' },
+  ];
+  const trackAlpha = '28';
+  return (
+    <section id="results" className="v2-section-mobile" style={{ background: V2.paper, padding: '80px 0 72px' }}>
+      <div style={v2Wrap} className="v2-wrap-mobile">
+        <div className="v2-scroll-reveal">
+          <div style={{ ...v2Eyebrow, marginBottom: 20 }}>Capacity Club works</div>
+          <h2 style={{ ...v2Display, fontSize: 'clamp(48px, 5.5vw, 72px)', margin: '0 0 12px' }}>
+            Capacity Club <span style={{ color: V2.terracotta }}>works.</span>
+          </h2>
+          <HandUnderline width={200} style={{ marginBottom: 52 }} />
+        </div>
+        <div>
+          {stats.map((s) => (
+            <div key={s.pct} className="v2-scroll-reveal" style={{ borderTop: `1px solid rgba(27,23,20,0.1)`, padding: '32px 0' }}>
+              <div className="v2-stat-row" style={{ display: 'grid', gridTemplateColumns: '200px 1fr 24px', gap: '0 32px', alignItems: 'center' }}>
+                <div className="v2-stat-num" style={{ fontFamily: 'DM Sans, sans-serif', fontWeight: 900, fontSize: 88, lineHeight: 0.9, color: s.color, letterSpacing: '-0.04em' }}>{s.pct}</div>
+                <div>
+                  <div style={{ ...v2Eyebrow, marginBottom: 10 }}>Member Reported</div>
+                  <div style={{ fontSize: 18, lineHeight: 1.45, color: V2.ink, marginBottom: 16 }}>{s.label}</div>
+                  <div style={{ height: 5, borderRadius: 3, background: `${s.color}${trackAlpha}`, maxWidth: 580, overflow: 'hidden' }}>
+                    <div style={{ height: '100%', width: `${s.value}%`, background: s.color, borderRadius: 3, transition: 'width 1.2s cubic-bezier(0.4,0,0.2,1)' }} />
+                  </div>
+                </div>
+                <div style={{ width: 12, height: 12, borderRadius: '50%', background: s.color, flexShrink: 0, justifySelf: 'center' }} />
+              </div>
+            </div>
+          ))}
+          <div style={{ borderTop: `1px solid rgba(27,23,20,0.1)`, paddingTop: 20 }}>
+            <div style={{ fontFamily: 'DM Sans, sans-serif', fontSize: 11, fontWeight: 500, letterSpacing: '0.1em', textTransform: 'uppercase', color: V2.ink, opacity: 0.45 }}>
+              Based on past member survey respondents &nbsp;&middot;&nbsp; Cohorts 01&ndash;04 &nbsp;&middot;&nbsp; n = 64
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ── Testimonials ── */
+function TestimonialsV2() {
+  const items = [
+    { quote: "It’s so fun and encouraging.",                                                        attr: 'Cohort 03 Member' },
+    { quote: "I don’t even think of it as a program, it’s a community.",                       attr: 'Cohort 02 Alum' },
+    { quote: "Daily habits with goals geared toward better health and wellness – with no judgement.", attr: 'Cohort 04 Member' },
+    { quote: "You challenge yourself as an individual, but you are never alone.",                         attr: 'Cohort 01 Founding Member' },
+  ];
+  return (
+    <section className="v2-section-mobile" style={{ background: V2.pinkSoft, padding: '80px 0 88px' }}>
+      <div style={v2Wrap} className="v2-wrap-mobile">
+        <div style={{ display: 'flex', alignItems: 'baseline', gap: 24, marginBottom: 40 }}>
+          <div style={{ ...v2Eyebrow }}>What members say</div>
+        </div>
+        <div className="v2-testi-cards v2-stagger" style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: 20 }}>
+          {items.map((t, i) => (
+            <figure key={i} className="v2-testi-card" style={{ background: V2.paper, borderRadius: 18, padding: '36px 36px 32px', margin: 0, display: 'flex', flexDirection: 'column' }}>
+              <div style={{ fontFamily: 'Georgia, serif', fontWeight: 700, fontSize: 52, lineHeight: 0.7, color: V2.terracotta, marginBottom: 20 }}>&ldquo;</div>
+              <blockquote className="v2-testi-quote" style={{ margin: '0 0 auto', fontSize: 22, lineHeight: 1.45, color: V2.ink, fontWeight: 500, fontFamily: 'DM Sans, sans-serif' }}>{t.quote}</blockquote>
+              <div style={{ marginTop: 28, fontFamily: 'DM Sans, sans-serif', fontSize: 12, fontWeight: 600, letterSpacing: '0.12em', textTransform: 'uppercase', color: V2.ink, opacity: 0.55 }}>{t.attr}</div>
+            </figure>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ── Who it's for ── */
+function WhoForV2() {
+  const reasons = [
+    "You want more energy, consistency, and follow-through",
+    "You're tired of complicated health routines",
+    "You do better when you're part of a group",
+    "You want accountability without judgment",
+    "You're ready to invest in yourself",
+  ];
+  const tracks = [
+    { num: '01', status: 'OPEN',     statusColor: V2.terracotta, blob: V2.pink,    title: 'Capacity Club',         copy: 'For active people who want to build better hydration, energy, movement, and recovery habits.' },
+    { num: '02', status: 'CURATED',  statusColor: V2.sage,       blob: '#E8E4DC',  title: 'Founder-Only',          copy: 'For founders building hard things who want to re-prioritize their own health.' },
+    { num: '03', status: 'ALUMNI',   statusColor: V2.fuel,       blob: V2.fuel,    title: 'Capacity Club Plus',    copy: 'For alumni who want to keep going with monthly operating habits and ongoing accountability.' },
+    { num: '04', status: 'GROUPS',   statusColor: V2.hydrate,    blob: V2.sage,    title: 'Capacity Club Teams',   copy: 'For teams, communities, gyms, or groups interested in running a Capacity Club sprint.' },
+  ];
+  return (
+    <section id="tracks" className="v2-section-mobile" style={{ background: V2.paper, padding: '96px 0 88px' }}>
+      <div style={v2Wrap} className="v2-wrap-mobile">
+        <div className="v2-scroll-reveal">
+          <div style={{ ...v2Eyebrow, marginBottom: 16 }}>The Tracks</div>
+          <h2 style={{ ...v2Display, fontSize: 'clamp(36px, 4.2vw, 56px)' }}>
+            For people who could use a{' '}
+            <span style={{ color: V2.terracotta }}>little structure.</span>
+          </h2>
+          <HandUnderline width={160} style={{ marginTop: 12, marginBottom: 0 }} />
+        </div>
+
+        <div style={{ marginTop: 28, maxWidth: 620 }}>
+          <p style={{ margin: 0, fontSize: 17, lineHeight: 1.65, color: V2.ink, opacity: 0.82 }}>
+            For people who know they could feel better, show up better, and live with more intention &mdash; but could use a little structure and a good group of people to help them do it.
+          </p>
+        </div>
+
+        {/* 5-column reasons grid */}
+        <div className="v2-reasons-grid v2-stagger" style={{ display: 'grid', gridTemplateColumns: 'repeat(5, 1fr)', gap: '0 24px', marginTop: 56 }}>
+          {reasons.map((r, i) => (
+            <div key={r} style={{ borderTop: `2px solid ${V2.terracotta}`, paddingTop: 18 }}>
+              <div style={{ fontFamily: 'DM Sans, sans-serif', fontWeight: 700, fontSize: 13, color: V2.terracotta, letterSpacing: '0.04em', marginBottom: 10 }}>
+                + {String(i + 1).padStart(2, '0')}
+              </div>
+              <div style={{ fontSize: 14, lineHeight: 1.55, color: V2.ink, opacity: 0.85 }}>{r}</div>
+            </div>
+          ))}
+        </div>
+
+        {/* 2x2 track cards */}
+        <div className="v2-tracks-grid v2-stagger" style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: 20, marginTop: 52 }}>
+          {tracks.map((t) => (
+            <div key={t.num} style={{ background: V2.cream, borderRadius: 20, padding: '32px 30px', position: 'relative', overflow: 'hidden' }}>
+              {/* Decorative blob top-right */}
+              <div style={{ position: 'absolute', top: -28, right: -28, width: 100, height: 100, borderRadius: '50%', background: t.blob, opacity: 0.45 }} />
+              <div style={{ position: 'relative', zIndex: 1 }}>
+                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 18 }}>
+                  <div style={{ ...v2Eyebrow }}>Track {t.num}</div>
+                  <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase', color: t.statusColor, background: `${t.statusColor}18`, padding: '4px 10px', borderRadius: 999 }}>{t.status}</div>
+                </div>
+                <h3 style={{ fontFamily: 'DM Sans, sans-serif', fontWeight: 800, fontSize: 22, lineHeight: 1.15, margin: '0 0 12px', color: V2.ink, letterSpacing: '-0.02em' }}>{t.title}</h3>
+                <p style={{ margin: 0, fontSize: 14, lineHeight: 1.6, color: V2.ink, opacity: 0.78 }}>{t.copy}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ── What Happens Next ── */
+function WhatHappensNextV2() {
+  const steps = [
+    { num: '01', color: V2.terracotta, title: 'Join the waitlist', copy: "Fill out a quick form telling us who you are and what brought you here." },
+    { num: '02', color: V2.sage,       title: 'We find your fit',  copy: "If there's a match for an upcoming cohort, we'll follow up with timing and next steps." },
+    { num: '03', color: V2.hydrate,    title: 'Get set up',        copy: "You'll join your small group, get access to the daily check-in, and meet your cohort." },
+    { num: '04', color: V2.fuel,       title: '30 days',           copy: "Commit to four daily habits, check in with your group, and build real momentum." },
+  ];
+  const included = [
+    'A private group for daily check-ins and encouragement',
+    'A simple habit tracker and dashboard',
+    'Group calls with peers and leaders',
+    'Four daily habits to anchor the 30 days',
+    'A small community built around accountability, not judgment',
+  ];
+  return (
+    <section id="how-it-works" className="v2-section-mobile" style={{ background: V2.paper, padding: '96px 0' }}>
+      <div style={v2Wrap} className="v2-wrap-mobile">
+        <div className="v2-scroll-reveal v2-next-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 56, alignItems: 'start' }}>
+          <div>
+            <div style={{ ...v2Eyebrow, marginBottom: 16 }}>What happens next</div>
+            <h2 style={{ ...v2Display, fontSize: 'clamp(30px, 3.5vw, 46px)' }}>
+              Simple.<br />No pressure.
+            </h2>
+            <HandUnderline width={140} style={{ marginTop: 12 }} />
+            <div style={{ position: 'relative', marginTop: 40 }}>
+              <div style={{ position: 'absolute', top: 20, left: 19, bottom: 20, width: 1, borderLeft: `1.5px dashed ${V2.ink}`, opacity: 0.2 }} />
+              <div style={{ display: 'grid', gap: 32 }}>
+                {steps.map((s) => (
+                  <div key={s.num} className="v2-step-item" style={{ display: 'flex', gap: 18, alignItems: 'flex-start' }}>
+                    <div className="v2-step-dot" style={{ width: 40, height: 40, borderRadius: '50%', background: s.color, color: V2.paper, display: 'grid', placeItems: 'center', fontFamily: 'DM Sans, sans-serif', fontWeight: 600, fontSize: 13, letterSpacing: '0.04em', flexShrink: 0 }}>{s.num}</div>
+                    <div style={{ paddingTop: 8 }}>
+                      <h3 style={{ margin: '0 0 6px', fontFamily: 'DM Sans, sans-serif', fontWeight: 700, fontSize: 17, lineHeight: 1.2, color: V2.ink, letterSpacing: '-0.005em' }}>{s.title}</h3>
+                      <p style={{ margin: 0, fontSize: 14, lineHeight: 1.5, color: V2.ink, opacity: 0.75 }}>{s.copy}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+          <div style={{ paddingTop: 56 }}>
+            <div style={{ border: '1px solid rgba(27,23,20,0.12)', borderRadius: 20, padding: '32px 28px' }}>
+              <div style={{ ...v2Eyebrow, marginBottom: 20 }}>What&rsquo;s included</div>
+              <ul style={{ margin: 0, padding: 0, listStyle: 'none', display: 'grid', gap: 14 }}>
+                {included.map((item) => (
+                  <li key={item} style={{ display: 'flex', alignItems: 'flex-start', gap: 12, fontSize: 15, color: V2.ink, lineHeight: 1.5 }}>
+                    <span className="v2-check-dot" style={{ width: 18, height: 18, borderRadius: '50%', background: V2.terracotta, display: 'grid', placeItems: 'center', flexShrink: 0, marginTop: 2 }}>
+                      <svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                        <path d="M1 4.5L4 7L9 1.5" stroke={V2.paper} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                      </svg>
+                    </span>
+                    {item}
+                  </li>
+                ))}
+              </ul>
+              <div style={{ marginTop: 28 }}>
+                <a href={WAITLIST_HREF} target="_blank" rel="noopener" className="v2-btn-primary" style={{ display: 'block', padding: '16px 24px', borderRadius: 999, background: V2.ink, color: V2.paper, fontSize: 15, fontWeight: 600, textAlign: 'center' }}>
+                  Join the Waitlist
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ── Why This Exists ── */
+function WhyFoundedV2() {
+  return (
+    <section id="tracks" className="v2-section-mobile" style={{ background: V2.paper, padding: '96px 0 88px' }}>
+      <div style={v2Wrap} className="v2-wrap-mobile">
+        <div className="v2-scroll-reveal">
+          <div style={{ ...v2Eyebrow, marginBottom: 16 }}>From the Founder</div>
+          <h2 style={{ ...v2Display, fontSize: 'clamp(36px, 4.2vw, 56px)' }}>
+            Why this <span style={{ color: V2.terracotta }}>exists.</span>
+          </h2>
+          <HandUnderline width={140} style={{ marginTop: 12 }} />
+        </div>
+
+        <div className="v2-scroll-reveal" style={{ marginTop: 40, maxWidth: 680 }}>
+          <p style={{ margin: '0 0 22px', fontSize: 17, lineHeight: 1.75, color: V2.ink }}>
+            I started Capacity Club as a small experiment. I wanted to see what would happen if a small group of people committed to a few simple daily habits and checked in with each other for 30 days.
+          </p>
+          <p style={{ margin: '0 0 22px', fontSize: 17, lineHeight: 1.75, color: V2.ink }}>
+            What happened was better than I expected. People drank more water. They moved more. They ate better. But the bigger thing was that{' '}
+            <span style={{ color: V2.terracotta, fontWeight: 600 }}>they felt less alone</span>{' '}
+            in trying to improve themselves.
+          </p>
+          <p style={{ margin: '0 0 36px', fontSize: 17, lineHeight: 1.75, color: V2.ink }}>
+            So that&rsquo;s what we&rsquo;re building now. Small communities that help people create more capacity in their lives, with other people doing it alongside them and cheering them on.
+          </p>
+          {/* Dave attribution */}
+          <div style={{ display: 'flex', alignItems: 'center', gap: 16 }}>
+            <div style={{ width: 52, height: 52, borderRadius: '50%', background: V2.cream, border: `2px solid ${V2.terracotta}22`, display: 'grid', placeItems: 'center', fontFamily: 'DM Sans, sans-serif', fontWeight: 700, fontSize: 18, color: V2.terracotta, flexShrink: 0 }}>D</div>
+            <div>
+              <div style={{ fontFamily: 'DM Sans, sans-serif', fontWeight: 700, fontSize: 15, color: V2.ink, letterSpacing: '-0.01em' }}>Dave</div>
+              <div style={{ fontSize: 13, color: V2.ink, opacity: 0.6, marginTop: 2 }}>Founder, Capacity Club</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ── Final CTA ── */
+function FinalCtaV2() {
+  return (
+    <section id="waitlist" style={{ background: V2.forest, color: V2.paper, padding: '64px 0 72px', position: 'relative', overflow: 'hidden' }}>
+      <FinalCtaBlobs />
+      <div style={{ ...v2Wrap, position: 'relative', zIndex: 1 }}>
+        <div className="v2-scroll-reveal v2-cta-grid" style={{ display: 'grid', gridTemplateColumns: '1.2fr 1fr', gap: 64, alignItems: 'center' }}>
+          <div>
+            <h2 style={{ ...v2Display, fontSize: 'clamp(36px, 4.5vw, 56px)', color: V2.paper }}>
+              Want to join the<br />next Capacity Club?
+            </h2>
+            <p style={{ marginTop: 20, fontSize: 16, lineHeight: 1.6, color: V2.paper, opacity: 0.82, maxWidth: 440, marginBottom: 0 }}>
+              Join the waitlist and we&rsquo;ll route you to the right track.
+            </p>
+          </div>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 16, alignItems: 'flex-start' }}>
+            <a href={WAITLIST_HREF} target="_blank" rel="noopener" className="v2-btn-light" style={{ padding: '18px 38px', borderRadius: 999, background: V2.paper, color: V2.ink, fontSize: 16, fontWeight: 600, boxShadow: '0 2px 0 rgba(27,23,20,.15)', minWidth: 280, textAlign: 'center' }}>
+              Join the Waitlist
+            </a>
+            <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
+              <div style={{ display: 'flex' }}>
+                {[{ i: 'CS', c: V2.pink }, { i: 'JL', c: V2.fuel }, { i: 'MR', c: V2.pinkSoft }, { i: 'AT', c: V2.sage }].map((m, idx) => (
+                  <MemberAvatar key={idx} initials={m.i} color={m.c} size={32} style={{ marginLeft: idx === 0 ? 0 : -10 }} />
+                ))}
+              </div>
+              <div style={{ fontSize: 13, color: V2.paper, opacity: 0.7 }}>Takes about 2 minutes.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ── Footer ── */
+function FooterV2() {
+  return (
+    <footer style={{ background: V2.paper, padding: '28px 0' }}>
+      <div style={{ ...v2Wrap, display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 24, fontSize: 13, color: V2.ink, flexWrap: 'wrap' }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+          <span style={{ fontWeight: 700, letterSpacing: '-0.01em' }}>Capacity Club</span>
+          <span style={{ width: 7, height: 7, borderRadius: '50%', background: V2.terracotta, flexShrink: 0 }} />
+        </div>
+        <nav style={{ display: 'flex', gap: 28, opacity: 0.8 }}>
+          {['Overview', 'How it works', 'Cohorts', 'About', 'FAQ'].map((l) => (
+            <a key={l} href="#" style={{ color: V2.ink }}>{l}</a>
+          ))}
+        </nav>
+        <div style={{ display: 'flex', gap: 24, opacity: 0.6 }}>
+          <span>&copy; 2026 Capacity Club</span>
+          <a href="#" style={{ color: V2.ink }}>Privacy</a>
+        </div>
+      </div>
+    </footer>
+  );
+}
+
+/* ── Composer ── */
+function CapacityClubV2() {
+  React.useEffect(() => {
+    const obs = new IntersectionObserver((entries) => {
+      entries.forEach((e) => {
+        if (e.isIntersecting) {
+          e.target.classList.add('v2-visible');
+          obs.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -48px 0px' });
+    document.querySelectorAll('.v2-scroll-reveal, .v2-stagger').forEach((el) => obs.observe(el));
+
+    const onScroll = () => {
+      const parallax = document.querySelector('.v2-hero-parallax');
+      if (!parallax) return;
+      const hero = parallax.closest('section');
+      const rect = hero.getBoundingClientRect();
+      if (rect.bottom < 0 || rect.top > window.innerHeight) return;
+      const progress = Math.max(0, Math.min(1, 1 - rect.bottom / (rect.height + window.innerHeight)));
+      parallax.style.transform = `translateY(${progress * -48}px)`;
+    };
+    window.addEventListener('scroll', onScroll, { passive: true });
+
+    return () => { obs.disconnect(); window.removeEventListener('scroll', onScroll); };
+  }, []);
+
+  return (
+    <div className="cc-v2" style={{ minHeight: '100%', background: V2.paper, color: V2.ink, fontFamily: '"DM Sans", system-ui, sans-serif', fontSize: 17, lineHeight: 1.55 }}>
+      <NavV2 />
+      <HeroV2 />
+      <WhyItExistsV2 />
+      <HabitsV2 />
+
+      <ResultsV2 />
+      <TestimonialsV2 />
+      <WhoForV2 />
+      <WhatHappensNextV2 />
+      <WhyFoundedV2 />
+      <FinalCtaV2 />
+      <FooterV2 />
+    </div>
+  );
+}
+
+window.CapacityClubV2 = CapacityClubV2;
+</script>
+
+<!-- ── App bootstrap ──────────────────────────────────────────────── -->
+<script type="text/babel">
+const TWEAK_DEFAULTS = { accent: 'terracotta' };
+const ACCENTS_V2 = {
+  terracotta: '#D85E27',
+  sage:        '#4F6042',
+  hydrate:     '#1E3A5F',
+};
+
+function App() {
+  const [t, setTweak] = useTweaks(TWEAK_DEFAULTS);
+  React.useEffect(() => {
+    document.documentElement.style.setProperty('--v2-accent', ACCENTS_V2[t.accent] || ACCENTS_V2.terracotta);
+  }, [t.accent]);
+
+  return (
+    <>
+      <CapacityClubV2 />
+      <TweaksPanel title="Tweaks">
+        <TweakSection label="Accent color">
+          <TweakRadio
+            label="Signal"
+            value={t.accent}
+            options={['terracotta', 'sage', 'hydrate']}
+            onChange={(v) => setTweak('accent', v)}
+          />
+        </TweakSection>
+      </TweaksPanel>
+    </>
+  );
+}
+
+ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+</script>
+</body>
+</html>
