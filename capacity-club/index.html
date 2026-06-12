@@ -164,6 +164,8 @@ body {
 .v2-stagger.v2-visible > *:nth-child(2) { opacity:1; transform:translateY(0); transition-delay:0.12s; }
 .v2-stagger.v2-visible > *:nth-child(3) { opacity:1; transform:translateY(0); transition-delay:0.20s; }
 .v2-stagger.v2-visible > *:nth-child(4) { opacity:1; transform:translateY(0); transition-delay:0.28s; }
+.v2-stagger.v2-visible > *:nth-child(5) { opacity:1; transform:translateY(0); transition-delay:0.36s; }
+.v2-stagger.v2-visible > *:nth-child(6) { opacity:1; transform:translateY(0); transition-delay:0.44s; }
 
 /* ── Hero parallax img ───────────────────────────────────── */
 .v2-hero-parallax { will-change: transform; }
@@ -202,6 +204,8 @@ body {
 /* ── 600px mobile ─────────────────────────────────────────── */
 @media (max-width: 600px) {
   /* Layout */
+  .v2-problem-grid   { grid-template-columns: 1fr !important; padding-left: 0 !important; gap: 24px !important; }
+  .v2-problem-squiggle { display: none !important; }
   .v2-outcomes-cards { grid-template-columns: 1fr !important; }
   .v2-testi-cards    { grid-template-columns: 1fr !important; }
   .v2-tracks-grid    { grid-template-columns: 1fr !important; }
@@ -731,7 +735,7 @@ function WhyItExistsV2() {
   return (
     <section id="why" className="v2-section-mobile" style={{ background: V2.cream, padding: '88px 0' }}>
       <div style={{ ...v2Wrap, position: 'relative' }}>
-        <HandSquiggle size={80} style={{ position: 'absolute', left: 8, top: 0 }} />
+        <div className="v2-problem-squiggle" style={{ position: 'absolute', left: 8, top: 0 }}><HandSquiggle size={80} /></div>
         <div className="v2-scroll-reveal v2-problem-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: 48, alignItems: 'start', paddingLeft: 96 }}>
           <div>
             <h2 style={{ ...v2Display, fontSize: 'clamp(28px, 3.5vw, 44px)' }}>
