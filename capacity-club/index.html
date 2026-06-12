@@ -229,9 +229,11 @@ body {
   /* Spacing */
   .v2-wrap-mobile    { padding-left: 24px !important; padding-right: 24px !important; }
   .v2-section-mobile { padding-top: 64px !important; padding-bottom: 64px !important; }
-  /* Hero — fix bleed padding */
+  /* Hero — fix bleed padding + show image below text */
   .v2-hero-section   { min-height: auto !important; }
-  .v2-hero-inner     { padding: 60px 24px 72px !important; }
+  .v2-hero-inner     { padding: 60px 24px 40px !important; }
+  .v2-hero-img       { display: block !important; position: relative !important; width: 100% !important; height: 260px !important; }
+  .v2-hero-img img   { object-position: 40% center !important; }
   .v2-hero-h1        { font-size: clamp(44px, 12vw, 64px) !important; line-height: 0.98 !important; }
   .v2-hero-pills     { display: none !important; }
   /* Results */
