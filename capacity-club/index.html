@@ -626,9 +626,9 @@ function NavV2() {
   const [open, setOpen] = React.useState(false);
   const NAV_H = 68;
   const links = [
-    { label: 'How it works', href: '#how-it-works' },
-    { label: 'The tracks',   href: '#tracks'       },
-    { label: 'Results',      href: '#results'      },
+    { label: 'How it works', href: '#habits'   },
+    { label: 'Who it\'s for', href: '#tracks'  },
+    { label: 'Results',      href: '#results'  },
   ];
   const scrollTo = (e, href) => {
     e.preventDefault(); setOpen(false);
@@ -676,8 +676,7 @@ function NavV2() {
 /* ── Hero ── */
 function HeroV2() {
   const features = [
-    { kind: 'group',    label: 'Small groups' },
-    { kind: 'calendar', label: '30-day sprint' },
+    { kind: 'calendar', label: '30 days' },
     { kind: 'check',    label: 'Daily check-ins' },
     { kind: 'heart',    label: 'Free to join if selected' },
   ];
@@ -689,7 +688,7 @@ function HeroV2() {
             Build more<br />capacity in<br />30 days.
           </h1>
           <p style={{ marginTop: 28, fontSize: 17, lineHeight: 1.6, color: V2.ink, maxWidth: 420, marginBottom: 0 }}>
-            Capacity Club is a simple 30-day sprint built around four daily habits, group accountability, and a community that helps you follow through while making new friends.
+            Capacity Club is a simple 30-day sprint built around four daily habits, group accountability, and a community that helps you follow through.
           </p>
           <div className="v2-hero-pills" style={{ marginTop: 32, display: 'flex', gap: 20, flexWrap: 'wrap' }}>
             {features.map((f) => (
@@ -738,19 +737,21 @@ function WhyItExistsV2() {
             <h2 style={{ ...v2Display, fontSize: 'clamp(28px, 3.5vw, 44px)' }}>
               Most people don&rsquo;t need another complicated wellness plan.
             </h2>
-            <div style={{ marginTop: 24, position: 'relative', display: 'inline-block' }}>
+          </div>
+          <div>
+            <div style={{ marginBottom: 22, position: 'relative', display: 'inline-block' }}>
               <span style={{ ...v2Hand, fontSize: 36 }}>They need:</span>
               <HandUnderline width={150} style={{ position: 'absolute', left: 0, bottom: -10 }} />
             </div>
+            <ul style={{ margin: 0, padding: 0, listStyle: 'none', display: 'grid', gap: 18, paddingTop: 4 }}>
+              {items.map(({ Icon, label }) => (
+                <li key={label} style={{ display: 'flex', alignItems: 'center', gap: 14, fontSize: 16, color: V2.ink }}>
+                  <Icon size={32} />
+                  <span>{label}</span>
+                </li>
+              ))}
+            </ul>
           </div>
-          <ul style={{ margin: 0, padding: 0, listStyle: 'none', display: 'grid', gap: 18, paddingTop: 4 }}>
-            {items.map(({ Icon, label }) => (
-              <li key={label} style={{ display: 'flex', alignItems: 'center', gap: 14, fontSize: 16, color: V2.ink }}>
-                <Icon size={32} />
-                <span>{label}</span>
-              </li>
-            ))}
-          </ul>
           <div className="v2-problem-col3" style={{ paddingTop: 6 }}>
             <p style={{ margin: 0, fontSize: 16, lineHeight: 1.6, color: V2.ink }}>
               Capacity Club gives you four simple daily commitments, a small group of peers doing it with you, and a pressure-free place to check in. It&rsquo;s not just about health. It&rsquo;s about attention, consistency, and follow-through with your new tribe.
@@ -778,7 +779,7 @@ function HabitsV2() {
           <div>
             <div style={{ ...v2Eyebrow, marginBottom: 16 }}>What you&rsquo;ll do</div>
             <h2 style={{ ...v2Display, fontSize: 'clamp(36px, 4vw, 52px)' }}>
-              Four simple daily non-negotiables.
+              Four simple daily habits.
             </h2>
             <p style={{ marginTop: 20, fontSize: 15, lineHeight: 1.6, color: V2.ink, opacity: 0.75, marginBottom: 0 }}>
               For 30 days, you&rsquo;ll commit to four simple habits designed to build more capacity without overcomplicating your life.
@@ -803,7 +804,7 @@ function HabitsV2() {
                 </article>
               ))}
             </div>
-            <p style={{ marginTop: 28, textAlign: 'center', fontSize: 14, lineHeight: 1.6, color: V2.ink, opacity: 0.65 }}>
+            <p style={{ marginTop: 28, textAlign: 'center', fontSize: 14, lineHeight: 1.6, color: V2.ink, fontWeight: 700 }}>
               Every day, you&rsquo;ll check in with your group. You don&rsquo;t have to be perfect. You just have to keep showing up for yourself and each other.
             </p>
           </div>
@@ -838,7 +839,6 @@ function ResultsV2() {
               <div className="v2-stat-row" style={{ display: 'grid', gridTemplateColumns: '200px 1fr 24px', gap: '0 32px', alignItems: 'center' }}>
                 <div className="v2-stat-num" style={{ fontFamily: 'DM Sans, sans-serif', fontWeight: 900, fontSize: 88, lineHeight: 0.9, color: s.color, letterSpacing: '-0.04em' }}>{s.pct}</div>
                 <div>
-                  <div style={{ ...v2Eyebrow, marginBottom: 10 }}>Member Reported</div>
                   <div style={{ fontSize: 18, lineHeight: 1.45, color: V2.ink, marginBottom: 16 }}>{s.label}</div>
                   <div style={{ height: 5, borderRadius: 3, background: `${s.color}${trackAlpha}`, maxWidth: 580, overflow: 'hidden' }}>
                     <div style={{ height: '100%', width: `${s.value}%`, background: s.color, borderRadius: 3, transition: 'width 1.2s cubic-bezier(0.4,0,0.2,1)' }} />
@@ -850,7 +850,7 @@ function ResultsV2() {
           ))}
           <div style={{ borderTop: `1px solid rgba(27,23,20,0.1)`, paddingTop: 20 }}>
             <div style={{ fontFamily: 'DM Sans, sans-serif', fontSize: 11, fontWeight: 500, letterSpacing: '0.1em', textTransform: 'uppercase', color: V2.ink, opacity: 0.45 }}>
-              Based on past member survey respondents &nbsp;&middot;&nbsp; Cohorts 01&ndash;04 &nbsp;&middot;&nbsp; n = 64
+              Based on past member survey respondents
             </div>
           </div>
         </div>
@@ -862,10 +862,10 @@ function ResultsV2() {
 /* ── Testimonials ── */
 function TestimonialsV2() {
   const items = [
-    { quote: "It’s so fun and encouraging.",                                                        attr: 'Cohort 03 Member' },
-    { quote: "I don’t even think of it as a program, it’s a community.",                       attr: 'Cohort 02 Alum' },
-    { quote: "Daily habits with goals geared toward better health and wellness – with no judgement.", attr: 'Cohort 04 Member' },
-    { quote: "You challenge yourself as an individual, but you are never alone.",                         attr: 'Cohort 01 Founding Member' },
+    { quote: "It’s so fun and encouraging!" },
+    { quote: "I don’t even think of it as a program, it’s a community." },
+    { quote: "Daily habits with goals geared toward better health and wellness – with no judgement." },
+    { quote: "You challenge yourself as an individual, but you are never alone." },
   ];
   return (
     <section className="v2-section-mobile" style={{ background: V2.pinkSoft, padding: '80px 0 88px' }}>
@@ -878,7 +878,6 @@ function TestimonialsV2() {
             <figure key={i} className="v2-testi-card" style={{ background: V2.paper, borderRadius: 18, padding: '36px 36px 32px', margin: 0, display: 'flex', flexDirection: 'column' }}>
               <div style={{ fontFamily: 'Georgia, serif', fontWeight: 700, fontSize: 52, lineHeight: 0.7, color: V2.terracotta, marginBottom: 20 }}>&ldquo;</div>
               <blockquote className="v2-testi-quote" style={{ margin: '0 0 auto', fontSize: 22, lineHeight: 1.45, color: V2.ink, fontWeight: 500, fontFamily: 'DM Sans, sans-serif' }}>{t.quote}</blockquote>
-              <div style={{ marginTop: 28, fontFamily: 'DM Sans, sans-serif', fontSize: 12, fontWeight: 600, letterSpacing: '0.12em', textTransform: 'uppercase', color: V2.ink, opacity: 0.55 }}>{t.attr}</div>
             </figure>
           ))}
         </div>
@@ -897,7 +896,7 @@ function WhoForV2() {
     "You're ready to invest in yourself",
   ];
   const tracks = [
-    { num: '01', status: 'OPEN',     statusColor: V2.terracotta, blob: V2.pink,    title: 'Capacity Club',         copy: 'For active people who want to build better hydration, energy, movement, and recovery habits.' },
+    { num: '01', status: 'Join the Waitlist', statusColor: V2.terracotta, blob: V2.pink,    title: 'Capacity Club',         copy: 'For active people who want to build better hydration, energy, movement, and recovery habits.', href: WAITLIST_HREF },
     { num: '02', status: 'CURATED',  statusColor: V2.sage,       blob: '#E8E4DC',  title: 'Founder-Only',          copy: 'For founders building hard things who want to re-prioritize their own health.' },
     { num: '03', status: 'ALUMNI',   statusColor: V2.fuel,       blob: V2.fuel,    title: 'Capacity Club Plus',    copy: 'For alumni who want to keep going with monthly operating habits and ongoing accountability.' },
     { num: '04', status: 'GROUPS',   statusColor: V2.hydrate,    blob: V2.sage,    title: 'Capacity Club Teams',   copy: 'For teams, communities, gyms, or groups interested in running a Capacity Club sprint.' },
@@ -906,7 +905,7 @@ function WhoForV2() {
     <section id="tracks" className="v2-section-mobile" style={{ background: V2.paper, padding: '96px 0 88px' }}>
       <div style={v2Wrap} className="v2-wrap-mobile">
         <div className="v2-scroll-reveal">
-          <div style={{ ...v2Eyebrow, marginBottom: 16 }}>The Tracks</div>
+          <div style={{ ...v2Eyebrow, marginBottom: 16 }}>Who it&rsquo;s for</div>
           <h2 style={{ ...v2Display, fontSize: 'clamp(36px, 4.2vw, 56px)' }}>
             For people who could use a{' '}
             <span style={{ color: V2.terracotta }}>little structure.</span>
@@ -916,7 +915,7 @@ function WhoForV2() {
 
         <div style={{ marginTop: 28, maxWidth: 620 }}>
           <p style={{ margin: 0, fontSize: 17, lineHeight: 1.65, color: V2.ink, opacity: 0.82 }}>
-            For people who know they could feel better, show up better, and live with more intention &mdash; but could use a little structure and a good group of people to help them do it.
+            Capacity Club is for you if you want to feel better, show up better, and live with more intention &mdash; but could use a little structure and a good group of people to help you do it.
           </p>
         </div>
 
@@ -934,20 +933,27 @@ function WhoForV2() {
 
         {/* 2x2 track cards */}
         <div className="v2-tracks-grid v2-stagger" style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: 20, marginTop: 52 }}>
-          {tracks.map((t) => (
-            <div key={t.num} style={{ background: V2.cream, borderRadius: 20, padding: '32px 30px', position: 'relative', overflow: 'hidden' }}>
-              {/* Decorative blob top-right */}
-              <div style={{ position: 'absolute', top: -28, right: -28, width: 100, height: 100, borderRadius: '50%', background: t.blob, opacity: 0.45 }} />
-              <div style={{ position: 'relative', zIndex: 1 }}>
-                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 18 }}>
-                  <div style={{ ...v2Eyebrow }}>Track {t.num}</div>
-                  <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase', color: t.statusColor, background: `${t.statusColor}18`, padding: '4px 10px', borderRadius: 999 }}>{t.status}</div>
+          {tracks.map((t) => {
+            const CardEl = t.href ? 'a' : 'div';
+            const cardProps = t.href ? { href: t.href, target: '_blank', rel: 'noopener' } : {};
+            return (
+              <CardEl key={t.num} {...cardProps} style={{ background: V2.cream, borderRadius: 20, padding: '32px 30px', position: 'relative', overflow: 'hidden', display: 'block', textDecoration: 'none', color: 'inherit', ...(t.href ? { cursor: 'pointer', transition: 'box-shadow 0.2s ease, transform 0.2s ease' } : {}) }}
+                onMouseEnter={t.href ? (e) => { e.currentTarget.style.boxShadow = '0 8px 32px rgba(27,23,20,0.14)'; e.currentTarget.style.transform = 'translateY(-3px)'; } : undefined}
+                onMouseLeave={t.href ? (e) => { e.currentTarget.style.boxShadow = ''; e.currentTarget.style.transform = ''; } : undefined}
+              >
+                {/* Decorative blob top-right */}
+                <div style={{ position: 'absolute', top: -28, right: -28, width: 100, height: 100, borderRadius: '50%', background: t.blob, opacity: 0.45 }} />
+                <div style={{ position: 'relative', zIndex: 1 }}>
+                  <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 18 }}>
+                    <div style={{ ...v2Eyebrow }}>Track {t.num}</div>
+                    <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase', color: t.statusColor, background: `${t.statusColor}18`, padding: '4px 10px', borderRadius: 999 }}>{t.status}</div>
+                  </div>
+                  <h3 style={{ fontFamily: 'DM Sans, sans-serif', fontWeight: 800, fontSize: 22, lineHeight: 1.15, margin: '0 0 12px', color: V2.ink, letterSpacing: '-0.02em' }}>{t.title}</h3>
+                  <p style={{ margin: 0, fontSize: 14, lineHeight: 1.6, color: V2.ink, opacity: 0.78 }}>{t.copy}</p>
                 </div>
-                <h3 style={{ fontFamily: 'DM Sans, sans-serif', fontWeight: 800, fontSize: 22, lineHeight: 1.15, margin: '0 0 12px', color: V2.ink, letterSpacing: '-0.02em' }}>{t.title}</h3>
-                <p style={{ margin: 0, fontSize: 14, lineHeight: 1.6, color: V2.ink, opacity: 0.78 }}>{t.copy}</p>
-              </div>
-            </div>
-          ))}
+              </CardEl>
+            );
+          })}
         </div>
       </div>
     </section>
@@ -959,7 +965,7 @@ function WhatHappensNextV2() {
   const steps = [
     { num: '01', color: V2.terracotta, title: 'Join the waitlist', copy: "Fill out a quick form telling us who you are and what brought you here." },
     { num: '02', color: V2.sage,       title: 'We find your fit',  copy: "If there's a match for an upcoming cohort, we'll follow up with timing and next steps." },
-    { num: '03', color: V2.hydrate,    title: 'Get set up',        copy: "You'll join your small group, get access to the daily check-in, and meet your cohort." },
+    { num: '03', color: V2.hydrate,    title: 'Get set up',        copy: "You'll join a small group in WhatsApp where you'll meet your Capacity Club crew." },
     { num: '04', color: V2.fuel,       title: '30 days',           copy: "Commit to four daily habits, check in with your group, and build real momentum." },
   ];
   const included = [
@@ -1049,10 +1055,10 @@ function WhyFoundedV2() {
           </p>
           {/* Dave attribution */}
           <div style={{ display: 'flex', alignItems: 'center', gap: 16 }}>
-            <div style={{ width: 52, height: 52, borderRadius: '50%', background: V2.cream, border: `2px solid ${V2.terracotta}22`, display: 'grid', placeItems: 'center', fontFamily: 'DM Sans, sans-serif', fontWeight: 700, fontSize: 18, color: V2.terracotta, flexShrink: 0 }}>D</div>
+            <img src="/capacity-club/v2/founder-dave.png" alt="Dave Colina" style={{ width: 56, height: 56, borderRadius: '50%', objectFit: 'cover', objectPosition: 'center top', flexShrink: 0, border: `2px solid ${V2.terracotta}33` }} />
             <div>
-              <div style={{ fontFamily: 'DM Sans, sans-serif', fontWeight: 700, fontSize: 15, color: V2.ink, letterSpacing: '-0.01em' }}>Dave</div>
-              <div style={{ fontSize: 13, color: V2.ink, opacity: 0.6, marginTop: 2 }}>Founder, Capacity Club</div>
+              <div style={{ fontFamily: 'DM Sans, sans-serif', fontWeight: 700, fontSize: 15, color: V2.ink, letterSpacing: '-0.01em' }}>Dave Colina</div>
+              <div style={{ fontSize: 13, color: V2.ink, opacity: 0.6, marginTop: 2 }}>Founder of O2 &amp; Capacity Club</div>
             </div>
           </div>
         </div>
@@ -1104,11 +1110,6 @@ function FooterV2() {
           <span style={{ fontWeight: 700, letterSpacing: '-0.01em' }}>Capacity Club</span>
           <span style={{ width: 7, height: 7, borderRadius: '50%', background: V2.terracotta, flexShrink: 0 }} />
         </div>
-        <nav style={{ display: 'flex', gap: 28, opacity: 0.8 }}>
-          {['Overview', 'How it works', 'Cohorts', 'About', 'FAQ'].map((l) => (
-            <a key={l} href="#" style={{ color: V2.ink }}>{l}</a>
-          ))}
-        </nav>
         <div style={{ display: 'flex', gap: 24, opacity: 0.6 }}>
           <span>&copy; 2026 Capacity Club</span>
           <a href="#" style={{ color: V2.ink }}>Privacy</a>
